@@ -1,0 +1,326 @@
+@font-face
+  font-family: 'BenchNine'
+  font-style: normal
+  font-weight: 700
+  src: url(https://fonts.gstatic.com/s/benchnine/v16/ahcev8612zF4jxrwMosT6-xhgmy4.ttf) format("truetype")
+
+@font-face
+  font-family: 'Open Sans Condensed'
+  font-style: normal
+  font-weight: 300
+  src: url(https://fonts.gstatic.com/s/opensanscondensed/v23/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuXMQg.ttf) format("truetype")
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html, body
+  height: 100%
+
+  /* The old syntax, deprecated, but still needed, prefixed, for WebKit-based and old browsers
+  background: linear-gradient(left, #E7E7E7, white, #E7E7E7)
+
+  /* The new syntax needed by standard-compliant browsers (Opera 12.1, IE 10, Fx 16 onwards), without prefix
+  background: linear-gradient(to right, #E7E7E7, white, #E7E7E7)
+
+.container
+  width: 100%
+  height: 100%
+
+.wrapper
+  width: 270px
+  margin: 50px auto
+  position: Relative
+
+.word
+  display: block
+  text-align: justify
+  font-family: "BenchNine"
+  line-height: 0.8
+  text-transform: uppercase
+  letter-spacing: 0px
+
+.word1, .word2
+  color: #9BC5DE
+
+.word3, .word4
+  color: #90B3C9
+
+.word5, .word6
+  color: #809BB0
+
+.word7
+  color: #6B7B8A
+
+.word8, .word9
+  color: #8B8091
+
+.word10, .word11
+  color: #B68FA2
+
+.word12, .word13
+  color: #D99AB5
+
+.word1
+  font-size: 6.3em
+
+.word2
+  font-size: 8.1em
+
+.word3
+  font-size: 4.8em
+
+.word4
+  font-size: 6.4em
+
+.word5
+  font-size: 3.8em
+
+.word6
+  font-size: 6em
+
+.word7
+  font-size: 4.5em
+
+.word8
+  font-size: 4.8em
+
+.word9, .word11
+  font-size: 7.9em
+
+.word10
+  font-size: 4.9em
+
+.word12
+  font-size: 8.2em
+
+.word13
+  font-size: 7.8em
+
+.bubble1
+  height: 75px
+  width: 75px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #99C5DE
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 0
+  border-top-right-radius: 20px
+  border-bottom-right-radius: 0
+  border-bottom-left-radius: 20px
+  top: 0
+  left: -100px
+  padding: 10px
+  font-size: 1.5em
+  line-height: 1
+
+  span.the-arrow1
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 12px solid transparent
+    border-right: 0px solid #99C5DE
+    border-bottom: 12px solid #99C5DE
+    position: absolute
+    top: 63px
+    left: 75px
+    transform: rotateY(180deg)
+
+.bubble2
+  height: 150px
+  width: 170px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #99C5DE
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 30px
+  border-top-right-radius: 0
+  border-bottom-right-radius: 30px
+  border-bottom-left-radius: 0
+  left: 100%
+  top: 20px
+
+  span.the-arrow2
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #99C5DE
+    border-bottom: 20px solid #99C5DE
+    position: absolute
+    top: 130px
+    left: -19px
+
+  img
+    border-top-left-radius: 20px
+    border-top-right-radius: 0
+    border-bottom-right-radius: 20px
+    border-bottom-left-radius: 0
+    background: white
+    display: block
+    width: 100%
+    height: 100%
+
+.bubble3
+  height: 200px
+  width: 250px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #90B2CB
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 30px
+  border-top-right-radius: 0
+  border-bottom-right-radius: 30px
+  border-bottom-left-radius: 0
+  top: 183px
+  left: -280px
+
+  span.the-arrow3
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #90B2CB
+    border-bottom: 20px solid #90B2CB
+    position: absolute
+    top: 0
+    left: 250px
+    transform: rotate(180deg)
+
+.bubble4
+  height: 180px
+  width: 250px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #809BAE
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 30px
+  border-top-right-radius: 0
+  border-bottom-right-radius: 30px
+  border-bottom-left-radius: 0
+  top: 260px
+  left: 280px
+
+  span.the-arrow4
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #809BAE
+    border-bottom: 20px solid #809BAE
+    position: absolute
+    top: 160px
+    left: -19px
+
+.bubble5
+  height: 200px
+  width: 250px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #697A8A
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 30px
+  border-top-right-radius: 0
+  border-bottom-right-radius: 30px
+  border-bottom-left-radius: 0
+  top: 450px
+  left: -280px
+
+  span.the-arrow5
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #697A8A
+    border-bottom: 20px solid #697A8A
+    position: absolute
+    top: 0
+    left: 250px
+    transform: rotate(180deg)
+
+.bubble6
+  height: 180px
+  width: 250px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #8B8091
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 0
+  border-top-right-radius: 30px
+  border-bottom-right-radius: 0
+  border-bottom-left-radius: 30px
+  top: 509px
+  left: 280px
+  line-height: 1.8
+
+  span.the-arrow6
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #8B8091
+    border-bottom: 20px solid #8B8091
+    position: absolute
+    top: 0px
+    left: -19px
+    transform: rotateX(180deg)
+
+.bubble7
+  height: 200px
+  width: 250px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #B68EA6
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 30px
+  border-top-right-radius: 0
+  border-bottom-right-radius: 30px
+  border-bottom-left-radius: 0
+  top: 675px
+  left: -280px
+
+  span.the-arrow7
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #B68EA6
+    border-bottom: 20px solid #B68EA6
+    position: absolute
+    top: 0
+    left: 250px
+    transform: rotate(180deg)
+
+.bubble8
+  height: 180px
+  width: 250px
+  padding: 20px
+  position: absolute
+  color: white
+  background-color: #D99AB5
+  font-family: "Open Sans Condensed"
+  border-top-left-radius: 30px
+  border-top-right-radius: 0
+  border-bottom-right-radius: 30px
+  border-bottom-left-radius: 0
+  top: 853px
+  left: 280px
+
+  span.the-arrow8
+    display: inline-block
+    width: 0
+    height: 0
+    border-left: 20px solid transparent
+    border-right: 0px solid #D99AB5
+    border-bottom: 20px solid #D99AB5
+    position: absolute
+    top: 160px
+    left: -19px
