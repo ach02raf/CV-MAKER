@@ -1,0 +1,80 @@
+<!-- personal-info.component.html -->
+<div class="m-3">
+  <div class="card p-4">
+    <h5 class="card-title">Dites-nous en plus sur vous</h5>
+    <p class="card-subtitle mb-2 mb-2 text-muted">
+      Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
+    </p>
+    <form class="row mt-2 g-3">
+      <div class="col-md-6">
+        <label class="form-label">Nom</label>
+        <input type="text" class="form-control" placeholder="name" />
+        <small class="form-text text-muted">ex.wanen</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Prenom</label>
+        <input type="text" placeholder="prenom" class="form-control" />
+        <small class="form-text text-muted">ex.yosra</small>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="email" />
+        <small class="form-text text-muted">ex.yosra@gmail.com</small>
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Phone</label>
+        <input type="number" class="form-control" placeholder="phone" />
+        <small class="form-text text-muted">ex.+216 12 345 675 </small>
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress2" class="form-label">Addresse</label>
+        <input type="text" class="form-control" placeholder="adresse" />
+        <small class="form-text text-muted">ex.21 Street, tunis</small>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample"
+      >
+        Informations supplémentaires
+      </button>
+      <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Nationalité</label>
+            <input type="text" class="form-control" placeholder="nationalité" />
+            <small class="form-text text-muted">ex.Tunisienne </small>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Etat Civil</label>
+            <input type="text" class="form-control" placeholder="etat civil" />
+            <small class="form-text text-muted">ex.marié(e)</small>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Date de naissance</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                ngbDatepicker
+                #d="ngbDatepicker"
+              />
+              <button
+                class="btn btn-outline-secondary bi bi-calendar3"
+                (click)="d.toggle()"
+                type="button"
+              >
+                <i class="fas fa-calendar-days"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </span>
+    </form>
+  </div>
+</div>

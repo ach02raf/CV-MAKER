@@ -1,0 +1,29 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs my-4">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>One</button>
+    <ng-template ngbNavContent>
+      <app-editeur></app-editeur>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <button ngbNavLink>Two</button>
+    <ng-template ngbNavContent>
+      <p>
+        al culpa terry richardson biodiesel. Art party scenester stumptown,
+        tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+      </p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <button ngbNavLink>Three</button>
+    <ng-template ngbNavContent>
+      <p>
+        ci varius natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+        neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+      </p>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
