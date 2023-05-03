@@ -18,6 +18,7 @@ import { Cv4Component } from './template/cv4/cv4.component';
 import { Cv5Component } from './template/cv5/cv5.component';
 import { Cv6Component } from './template/cv6/cv6.component';
 import { Cv7Component } from './template/cv7/cv7.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { Cv7Component } from './template/cv7/cv7.component';
     Cv5Component,
     Cv6Component,
     Cv7Component,
+    NavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],

@@ -1,5 +1,5 @@
 <!-- personal-info.component.html -->
-<div class="m-3 p-3">
+<div class="my-3 p-3">
   <div class="card p-4">
     <h5
       class="card-title"
@@ -17,9 +17,10 @@
       [(ngbCollapse)]="isCollapsedcordonnee"
       class="row mt-2 g-3"
     >
-      <input type="file" (change)="onFileSelected($event)" />
-      <img class="w-25" [src]="imageUrl" *ngIf="imageUrl" />
-
+      <div class="col-12">
+        <input type="file" (change)="onFileSelected($event)" />
+        <img class="w-25 mt-2 text-center" [src]="imageUrl" *ngIf="imageUrl" />
+      </div>
       <div class="col-md-6">
         <label class="form-label">Nom</label>
         <input type="text" class="form-control" placeholder="name" />

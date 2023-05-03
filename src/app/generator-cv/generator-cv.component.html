@@ -1,10 +1,74 @@
-<div class="row">
-  <div class="col-5">
-    <app-edit-nav></app-edit-nav>
-  </div>
-  <div class="col">
-    <h4 class="mt-2 text-center">Modéle choisi</h4>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+      <app-edit-nav></app-edit-nav>
+    </div>
+    <div class="col">
+      <h4 class="mt-2 text-center">Modéle choisi</h4>
+      <div class="p-5 bg-secondary">
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <button
+                type="button"
+                class="btn btn-light"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+              >
+                Toggle dropdown
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button
+                  ngbNav
+                  #nav="ngbNav"
+                  [(activeId)]="active"
+                  ngbDropdownItem
+                  class="text-center"
+                >
+                  <div [ngbNavItem]="1">
+                    <img
+                      class="mx-4 border border-secondary"
+                      style="width: 100px"
+                      src="../../assets/cv1.PNG"
+                      alt=""
+                      srcset=""
+                    />
 
-    <app-cv7></app-cv7>
+                    <ng-template ngbNavContent>
+                      <app-cv1></app-cv1>
+                    </ng-template>
+                  </div>
+                </button>
+
+                <button
+                  ngbNav
+                  #nav="ngbNav"
+                  [(activeId)]="active"
+                  ngbDropdownItem
+                  class="text-center"
+                >
+                  <div [ngbNavItem]="2">
+                    <img
+                      class="mx-4 border border-secondary"
+                      style="width: 100px"
+                      src="../../assets/cv2.PNG"
+                      alt=""
+                      srcset=""
+                    />
+
+                    <ng-template ngbNavContent>
+                      <app-cv2></app-cv2>
+                    </ng-template>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <app-cv4></app-cv4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
