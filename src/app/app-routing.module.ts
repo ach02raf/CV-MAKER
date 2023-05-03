@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { EditeurComponent } from './editeur/editeur.component';
 import { Cv1Component } from './template/cv1/cv1.component';
 import { Cv2Component } from './template/cv2/cv2.component';
 import { Cv3Component } from './template/cv3/cv3.component';
