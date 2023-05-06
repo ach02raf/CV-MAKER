@@ -1,85 +1,49 @@
 <!-- personal-info.component.html -->
 <div class="my-3 p-3">
-  <div class="card p-4">
-    <h5
-      class="card-title"
-      (click)="isCollapsedExperience = !isCollapsedExperience"
-      [attr.aria-expanded]="!isCollapsedExperience"
-      aria-controls="collapseExample"
-    >
-      🏢 expérience professionnelle
-    </h5>
-    <p class="card-subtitle mb-2 mb-2 text-muted">
-      Commencez par vos études les plus récentes et remontez dans le passé.
-    </p>
+    <div class="card p-4">
+        <h5 class="card-title" (click)="isCollapsedExperience = !isCollapsedExperience" [attr.aria-expanded]="!isCollapsedExperience" aria-controls="collapseExample">
+            🏢 expérience professionnelle <i class="fas fa-edit text-primary p-3"></i>
+        </h5>
+        <p class="card-subtitle mb-2 mb-2 text-muted">
+            Commencez par vos études les plus récentes et remontez dans le passé.
+        </p>
 
-    <form
-      #collapse="ngbCollapse"
-      [(ngbCollapse)]="isCollapsedExperience"
-      class="row mt-2 g-3"
-      *ngFor="let experience of experiences; let i = index"
-    >
-      <h6 class="my-2">Expercience n° {{ i + 1 }}</h6>
-      <div class="col-md-6">
-        <label class="form-label">Titre du poste</label>
-        <input type="text" class="form-control" placeholder="poste" />
-        <small class="form-text text-muted">ex.Ingénieur</small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Entreprise</label>
-        <input type="text" placeholder="entreprise" class="form-control" />
-        <small class="form-text text-muted">ex.Tekup</small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Depuis</label>
-        <div class="input-group">
-          <input
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp1"
-            ngbDatepicker
-            #d="ngbDatepicker"
-          />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
+        <form #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedExperience" class="row mt-2 g-3" *ngFor="let experience of experiences; let i = index">
+            <h6 class="my-2">Expercience n° {{ i + 1 }}</h6>
+            <div class="col-md-6">
+                <label class="form-label">Titre du poste</label>
+                <input type="text" class="form-control" placeholder="poste" />
+                <small class="form-text text-muted">ex.Ingénieur</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Entreprise</label>
+                <input type="text" placeholder="entreprise" class="form-control" />
+                <small class="form-text text-muted">ex.Tekup</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Depuis</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" ngbDatepicker #d="ngbDatepicker" />
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
             <i class="fas fa-calendar-days"></i>
           </button>
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Jusqu'à</label>
-        <div class="input-group">
-          <input
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp2"
-            ngbDatepicker
-            #d="ngbDatepicker"
-          />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
+            <div class="col-md-6">
+                <label class="form-label">Jusqu'à</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" ngbDatepicker #d="ngbDatepicker" />
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
             <i class="fas fa-calendar-days"></i>
           </button>
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <div class="col-12">
-        <label class="form-label">Description du poste</label>
-        <textarea
-          type="text"
-          rows="2"
-          class="form-control"
-          placeholder="adresse"
-        ></textarea>
-        <small class="form-text text-muted"
-          >ex.Participation aux actions commerciales</small
+            <div class="col-12">
+                <label class="form-label">Description du poste</label>
+                <textarea type="text" rows="2" class="form-control" placeholder="adresse"></textarea>
+                <small class="form-text text-muted">ex.Participation aux actions commerciales</small
         >
       </div>
       <hr />
@@ -100,7 +64,7 @@
       [attr.aria-expanded]="!isCollapsedEducation"
       aria-controls="collapseExample"
     >
-      📚 Education
+      📚 Education <i class="fas fa-edit text-primary p-3"></i>
     </h5>
     <p class="card-subtitle mb-2 mb-2 text-muted">
       Commencez par vos études les plus récentes et remontez dans le passé.
@@ -117,62 +81,36 @@
         <label class="form-label">Titre du diplome</label>
         <input type="text" class="form-control" placeholder="poste" />
         <small class="form-text text-muted">ex.Licence d'art</small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Etablissement</label>
-        <input type="text" placeholder="entreprise" class="form-control" />
-        <small class="form-text text-muted">ex. Tekup University</small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Depuis</label>
-        <div class="input-group">
-          <input
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp1"
-            ngbDatepicker
-            #d="ngbDatepicker"
-          />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Etablissement</label>
+                <input type="text" placeholder="entreprise" class="form-control" />
+                <small class="form-text text-muted">ex. Tekup University</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Depuis</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" ngbDatepicker #d="ngbDatepicker" />
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
             <i class="fas fa-calendar-days"></i>
           </button>
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Jusqu'à</label>
-        <div class="input-group">
-          <input
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp2"
-            ngbDatepicker
-            #d="ngbDatepicker"
-          />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
+            <div class="col-md-6">
+                <label class="form-label">Jusqu'à</label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" ngbDatepicker #d="ngbDatepicker" />
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
             <i class="fas fa-calendar-days"></i>
           </button>
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <div class="col-12">
-        <label class="form-label">Remarque</label>
-        <textarea
-          type="text"
-          rows="2"
-          class="form-control"
-          placeholder="adresse"
-        ></textarea>
-        <small class="form-text text-muted"
-          >ex.Participation aux actions commerciales</small
+            <div class="col-12">
+                <label class="form-label">Remarque</label>
+                <textarea type="text" rows="2" class="form-control" placeholder="adresse"></textarea>
+                <small class="form-text text-muted">ex.Participation aux actions commerciales</small
         >
       </div>
       <hr />
@@ -193,7 +131,7 @@
       [attr.aria-expanded]="!isCollapsedCompetences"
       aria-controls="collapseExample"
     >
-      💻 Compétences
+      💻 Compétences <i class="fas fa-edit text-primary p-3"></i>
     </h5>
     <p class="card-subtitle mb-2 mb-2 text-muted">
       Les compétences que vous ajoutez devraient correspondre aux prérequis du

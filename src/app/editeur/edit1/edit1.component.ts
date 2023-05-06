@@ -16,6 +16,36 @@ export class Edit1Component {
   address: string;
   imageUrl: string;
 
+  tabbleauHobby = [];
+  Hobby: any[] = [];
+  inputValueHobby: string;
+
+  ajouterForm(tab) {
+    tab.push({});
+  }
+
+  addHobby(inpu: any) {
+    event.preventDefault(); // prevent the default form submission behavior
+    console.log('value', inpu);
+
+    console.log('index', this.tabbleauHobby.indexOf(inpu));
+
+    if (this.tabbleauHobby.indexOf(inpu) == -1) {
+      this.tabbleauHobby.push(inpu);
+    }
+    inpu = '';
+    console.log(this.tabbleauHobby);
+  }
+
+  removeHobby(hash: string) {
+    const index = this.tabbleauHobby.indexOf(hash);
+    console.log('innnddd', index);
+
+    if (index !== -1) {
+      this.tabbleauHobby.splice(index, 1);
+    }
+  }
+
   onFileSelected(event): void {
     const file = event.target.files[0]; // get the selected file
     const reader = new FileReader(); // create a new FileReader object

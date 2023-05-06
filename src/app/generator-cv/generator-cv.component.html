@@ -3,70 +3,102 @@
     <div class="col-5">
       <app-edit-nav></app-edit-nav>
     </div>
-    <div class="col">
+
+    <div class="col sticky-top">
       <h4 class="mt-2 text-center">Modéle choisi</h4>
+
       <div class="p-5 bg-secondary">
         <div class="row">
           <div class="col">
-            <div ngbDropdown class="d-inline-block">
-              <button
-                type="button"
-                class="btn btn-light"
-                id="dropdownBasic1"
-                ngbDropdownToggle
-              >
-                Toggle dropdown
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button
+            <button
+              type="button"
+              class="btn btn-light mb-3"
+              (click)="isCollapsed = !isCollapsed"
+              [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseExample"
+            >
+              Autre Modéles
+            </button>
+            <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+              <div class="row">
+                <ul
                   ngbNav
                   #nav="ngbNav"
                   [(activeId)]="active"
-                  ngbDropdownItem
-                  class="text-center"
+                  class="nav-tabs mx-2"
                 >
-                  <div [ngbNavItem]="1">
-                    <img
-                      class="mx-4 border border-secondary"
-                      style="width: 100px"
-                      src="../../assets/cv1.PNG"
-                      alt=""
-                      srcset=""
-                    />
-
+                  <li [ngbNavItem]="1">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv1.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
                     <ng-template ngbNavContent>
                       <app-cv1></app-cv1>
                     </ng-template>
-                  </div>
-                </button>
-
-                <button
-                  ngbNav
-                  #nav="ngbNav"
-                  [(activeId)]="active"
-                  ngbDropdownItem
-                  class="text-center"
-                >
-                  <div [ngbNavItem]="2">
-                    <img
-                      class="mx-4 border border-secondary"
-                      style="width: 100px"
-                      src="../../assets/cv2.PNG"
-                      alt=""
-                      srcset=""
-                    />
-
+                  </li>
+                  <li [ngbNavItem]="2">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv3.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
                     <ng-template ngbNavContent>
-                      <app-cv2></app-cv2>
+                      <p>
+                        <app-cv3></app-cv3>
+                      </p>
                     </ng-template>
-                  </div>
-                </button>
+                  </li>
+                  <li [ngbNavItem]="3">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv4.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
+                    <ng-template ngbNavContent>
+                      <p>
+                        <app-cv4></app-cv4>
+                      </p>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="4">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv7.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
+                    <ng-template ngbNavContent>
+                      <p>
+                        <app-cv7></app-cv7>
+                      </p>
+                    </ng-template>
+                  </li>
+                </ul>
+
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
               </div>
-            </div>
+            </span>
           </div>
-        </div>
-        <div class="">
-          <app-cv4></app-cv4>
+
+          <div>
+            <app-cv1></app-cv1>
+          </div>
         </div>
       </div>
     </div>

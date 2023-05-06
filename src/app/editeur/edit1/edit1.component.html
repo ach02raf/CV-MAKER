@@ -1,72 +1,52 @@
 <!-- personal-info.component.html -->
 <div class="my-3 p-3">
-  <div class="card p-4">
-    <h5
-      class="card-title"
-      (click)="isCollapsedcordonnee = !isCollapsedcordonnee"
-      [attr.aria-expanded]="!isCollapsedcordonnee"
-      aria-controls="collapseExample"
-    >
-      🆔 Coordonnées
-    </h5>
-    <p class="card-subtitle mb-2 mb-2 text-muted">
-      Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
-    </p>
-    <form
-      #collapse="ngbCollapse"
-      [(ngbCollapse)]="isCollapsedcordonnee"
-      class="row mt-2 g-3"
-    >
-      <div class="col-12">
-        <input type="file" (change)="onFileSelected($event)" />
-        <img class="w-25 mt-2 text-center" [src]="imageUrl" *ngIf="imageUrl" />
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Nom</label>
-        <input type="text" class="form-control" placeholder="name" />
-        <small class="form-text text-muted">ex.wanen</small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Prenom</label>
-        <input type="text" placeholder="prenom" class="form-control" />
-        <small class="form-text text-muted">ex.yosra</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" placeholder="email" />
-        <small class="form-text text-muted">ex.yosra@gmail.com</small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Phone</label>
-        <input type="number" class="form-control" placeholder="phone" />
-        <small class="form-text text-muted">ex.+216 12 345 675 </small>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Addresse</label>
-        <input type="text" class="form-control" placeholder="adresse" />
-        <small class="form-text text-muted">ex.21 Street, tunis</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">About me</label>
-        <textarea
-          type="text"
-          class="form-control"
-          rows="4"
-          placeholder="About me"
-        >
+    <div class="card p-4">
+        <h5 class="card-title" (click)="isCollapsedcordonnee = !isCollapsedcordonnee" [attr.aria-expanded]="!isCollapsedcordonnee" aria-controls="collapseExample">
+            🆔 Coordonnées <i class="fas fa-edit text-primary p-3"></i>
+        </h5>
+        <p class="card-subtitle mb-2 mb-2 text-muted">
+            Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
+        </p>
+        <form #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedcordonnee" class="row mt-2 g-3">
+            <div class="col-12">
+                <input type="file" class="form-control" (change)="onFileSelected($event)" />
+                <img class="w-25 mt-2 text-center" [src]="imageUrl" *ngIf="imageUrl" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Nom</label>
+                <input type="text" class="form-control" placeholder="name" />
+                <small class="form-text text-muted">ex.wanen</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Prenom</label>
+                <input type="text" placeholder="prenom" class="form-control" />
+                <small class="form-text text-muted">ex.yosra</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="email" />
+                <small class="form-text text-muted">ex.yosra@gmail.com</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input type="number" class="form-control" placeholder="phone" />
+                <small class="form-text text-muted">ex.+216 12 345 675 </small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Addresse</label>
+                <input type="text" class="form-control" placeholder="adresse" />
+                <small class="form-text text-muted">ex.21 Street, tunis</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label">About me</label>
+                <textarea type="text" class="form-control" rows="4" placeholder="About me">
         </textarea>
-      </div>
+            </div>
 
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed"
-        aria-controls="collapseExample"
-      >
+            <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
         Informations supplémentaires
       </button>
-      <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+            <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
         <div class="row">
           <div class="col-md-6">
             <label for="inputAddress" class="form-label">Nationalité</label>
@@ -100,86 +80,61 @@
           </div>
         </div>
       </span>
-    </form>
-  </div>
+        </form>
+    </div>
 
-  <div class="card p-4 mt-3">
-    <h5
-      class="card-title"
-      (click)="isCollapsedliens = !isCollapsedliens"
-      [attr.aria-expanded]="!isCollapsedliens"
-      aria-controls="collapseExample"
-    >
-      🌐 Liens
-    </h5>
-    <p class="card-subtitle mb-2 mb-2 text-muted">
-      Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
-    </p>
-    <form
-      #collapse="ngbCollapse"
-      [(ngbCollapse)]="isCollapsedliens"
-      class="row mt-2 g-3"
-    >
-      <div class="col-12">
-        <label class="form-label">Linkedin</label>
-        <input type="text" class="form-control" />
-        <small class="form-text text-muted">ex.linkedin.com/yosrawanen</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Github</label>
-        <input type="text" placeholder="prenom" class="form-control" />
-        <small class="form-text text-muted">ex.yosra-wan</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Behance</label>
-        <input type="text" class="form-control" />
-        <small class="form-text text-muted">ex.yosra wanen</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">personal website</label>
-        <input type="text" class="form-control" />
-        <small class="form-text text-muted">ex.www.portfolio.com </small>
-      </div>
-    </form>
-  </div>
+    <div class="card p-4 mt-3">
+        <h5 class="card-title" (click)="isCollapsedliens = !isCollapsedliens" [attr.aria-expanded]="!isCollapsedliens" aria-controls="collapseExample">
+            🌐 Liens <i class="fas fa-edit text-primary p-3"></i>
+        </h5>
+        <p class="card-subtitle mb-2 mb-2 text-muted">
+            Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
+        </p>
+        <form #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedliens" class="row mt-2 g-3">
+            <div class="col-12">
+                <label class="form-label">Linkedin</label>
+                <input type="text" class="form-control" />
+                <small class="form-text text-muted">ex.linkedin.com/yosrawanen</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Github</label>
+                <input type="text" placeholder="prenom" class="form-control" />
+                <small class="form-text text-muted">ex.yosra-wan</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Behance</label>
+                <input type="text" class="form-control" />
+                <small class="form-text text-muted">ex.yosra wanen</small>
+            </div>
+            <div class="col-12">
+                <label class="form-label">personal website</label>
+                <input type="text" class="form-control" />
+                <small class="form-text text-muted">ex.www.portfolio.com </small>
+            </div>
+        </form>
+    </div>
 
-  <div class="card p-4 mt-3">
-    <h5
-      class="card-title"
-      (click)="isCollapsedhobby = !isCollapsedhobby"
-      [attr.aria-expanded]="!isCollapsedhobby"
-      aria-controls="collapseExample"
-    >
-      🎨 Hobby
-    </h5>
-    <p class="card-subtitle mb-2 mb-2 text-muted">
-      Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
-    </p>
-    <form
-      #collapse="ngbCollapse"
-      [(ngbCollapse)]="isCollapsedhobby"
-      class="row mt-2 g-3"
-    >
-      <div class="col-12">
-        <label class="form-label">Linkedin</label>
-        <input type="text" class="form-control" />
-        <small class="form-text text-muted">ex.linkedin.com/yosrawanen</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Github</label>
-        <input type="text" placeholder="prenom" class="form-control" />
-        <small class="form-text text-muted">ex.yosra-wan</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Behance</label>
-        <input type="text" class="form-control" />
-        <small class="form-text text-muted">ex.yosra wanen</small>
-      </div>
-      <div class="col-12">
-        <label class="form-label">personal website</label>
-        <input type="text" class="form-control" />
-        <small class="form-text text-muted">ex.www.portfolio.com </small>
-      </div>
-    </form>
-  </div>
+    <div class="card p-4 mt-3">
+        <h5 class="card-title" (click)="isCollapsedhobby = !isCollapsedhobby" [attr.aria-expanded]="!isCollapsedhobby" aria-controls="collapseExample">
+            🎨 Hobby <i class="fas fa-edit text-primary p-3"></i>
+        </h5>
+        <p class="card-subtitle mb-2 mb-2 text-muted">
+            Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
+        </p>
+        <form #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedhobby" class="row mt-2 g-3">
+            <div class="col-12">
+                <label class="mt-2" for="">Compétences</label>
+                <input class="form-control" type="text" #inp (keydown.enter)="addHobby(inp.value)" placeholder="" />
+
+                <ul *ngFor="let hobby of tabbleauHobby" class="list-group list-group-horizontal mt-1">
+                    <li class="list-group-item mt-1">
+                        {{ hobby }}
+
+                        <span class="mx-2" (click)="removeHobby(hobby)"><i class="fa fa-times" aria-hidden="true"></i
+            ></span>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
 </div>
