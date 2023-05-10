@@ -14,7 +14,7 @@ export class Edit1Component {
   email: string;
   phone: string;
   address: string;
-  imageUrl: string;
+  imageUrl: string = '../../../assets/image_placeholder.jpg';
 
   tabbleauHobby = [];
   Hobby: any[] = [];
@@ -48,6 +48,7 @@ export class Edit1Component {
     reader.onload = () => {
       // set the onload event handler
       this.imageUrl = reader.result as string; // set the imageUrl variable to the image data
+      console.log(this.imageUrl);
     };
   }
 }
