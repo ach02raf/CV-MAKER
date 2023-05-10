@@ -15,9 +15,9 @@ export class Cv3Component {
   webSite: string = 'www.stephen.com';
   skills = [
     { name: 'CSS', porcent: '70%' },
-    { name: 'HTML', porcent: '80%' },
+    { name: 'HTML', porcent: '10%' },
     { name: 'SASS', porcent: '90%' },
     { name: 'JS', porcent: '60%' },
-    { name: 'JQUERY', porcent: '100%' },
+    { name: 'JQUERY', porcent: '50%' },
   ];
 }
