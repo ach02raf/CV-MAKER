@@ -1,3 +1,17 @@
+<input
+  type="color"
+  [(ngModel)]="selectedColor"
+  (input)="updateColor()"
+  title="Choose your color"
+/>
+
+<input
+  type="color"
+  [(ngModel)]="selectedColorTitle"
+  (input)="updateColor()"
+  title="Choose your color"
+/>
+
 <div class="resume">
   <div class="resume_left">
     <div class="resume_profile">

@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 export class GeneratorCvComponent {
   active = 1;
   isCollapsed = true;
+  hidden = false;
+
+  hide() {
+    this.hidden = true;
+  }
 }
