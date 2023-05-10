@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-cv3',
   templateUrl: './cv3.component.html',
-  styleUrls: ['./cv3.component.sass'],
+  styleUrls: ['./cv3.component.scss'],
 })
 export class Cv3Component {
   name: string = 'stephen colbert';

@@ -1,10 +1,106 @@
-<div class="row">
-  <div class="col-5">
-    <app-edit-nav></app-edit-nav>
-  </div>
-  <div class="col">
-    <h4 class="mt-2 text-center">Modéle choisi</h4>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+      <app-edit-nav></app-edit-nav>
+    </div>
 
-    <app-cv7></app-cv7>
+    <div class="col sticky-top">
+      <h4 class="mt-2 text-center">Modéle choisi</h4>
+
+      <div class="p-5 bg-secondary">
+        <div class="row">
+          <div class="col">
+            <button
+              type="button"
+              class="btn btn-light mb-3"
+              (click)="isCollapsed = !isCollapsed"
+              [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseExample"
+            >
+              Autre Modéles
+            </button>
+            <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+              <div class="row">
+                <ul
+                  ngbNav
+                  #nav="ngbNav"
+                  [(activeId)]="active"
+                  class="nav-tabs mx-2"
+                >
+                  <li [ngbNavItem]="1">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv1.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
+                    <ng-template ngbNavContent>
+                      <app-cv1></app-cv1>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="2">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv3.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
+                    <ng-template ngbNavContent>
+                      <p>
+                        <app-cv3></app-cv3>
+                      </p>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="3">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv4.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
+                    <ng-template ngbNavContent>
+                      <p>
+                        <app-cv4></app-cv4>
+                      </p>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="4">
+                    <button ngbNavLink>
+                      <img
+                        class="mx-4 border border-secondary"
+                        style="width: 100px"
+                        src="../../assets/cv7.PNG"
+                        alt=""
+                        srcset=""
+                      />
+                    </button>
+                    <ng-template ngbNavContent>
+                      <p>
+                        <app-cv7></app-cv7>
+                      </p>
+                    </ng-template>
+                  </li>
+                </ul>
+
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+              </div>
+            </span>
+          </div>
+
+          <div>
+            <app-cv1></app-cv1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

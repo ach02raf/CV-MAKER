@@ -1,8 +1,107 @@
-<p>home works!</p>
-<app-cv1></app-cv1>
-<app-cv2></app-cv2>
-<app-cv3></app-cv3>
-<app-cv4></app-cv4>
-<app-cv5></app-cv5>
-<app-cv7></app-cv7>
-<app-cv6></app-cv6>
+<div class="container-fluid bg-light">
+  <div class="header-banner">
+    <div
+      class="container-fluid filter h-100 d-flex align-items-center justify-content-center"
+    >
+      <div class="row text-center justify-content-center">
+        <h1 class="text-uppercase text-light display-5">
+          Créez votre cv
+          <span class="text-uppercase text-info">professionnel!</span>
+        </h1>
+
+        <p class="text-light fs-4 mt-3 mb-5">
+          Easy to use. Time-saver. Professional.
+        </p>
+        <button class="btn btn-lg text-capitalize btn-warning btn-banner fs-4">
+          let's get started
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid py-5 bg-white">
+    <div class="row section-title text-center">
+      <div class="col-12">
+        <h2 class="display-6 text-primary fw-bolder">Comment çà marche ?</h2>
+        <p class="text-grey fs-4 my-4 mx-auto">
+          Effortlessly make a job-worthy resume and cover letter that gets you
+          hired faster.
+        </p>
+      </div>
+      <app-steps></app-steps>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row section-title text-center">
+      <div class="col-12">
+        <h2 class="display-6 text-primary fw-bolder">
+          Nous proposons pour vous
+        </h2>
+        <p class="text-grey fs-4 my-4 mx-auto">
+          Effortlessly make a job-worthy resume and cover letter that gets you
+          hired faster.
+        </p>
+      </div>
+    </div>
+
+    <div class="row templates-list gy-5 gx-lg-5">
+      <div class="templates-item col-lg-6" style="height: 300px">
+        <div class="template-item-img mx-auto me-lg-0 position-relative">
+          <img src="../../assets/cv1.PNG" alt="" class="img-fluid" />
+          <button
+            data-toggle="modal"
+            data-target="#cvModal"
+            class="btn btn-warning position-absolute choose-template-btn"
+          >
+            Select Template
+          </button>
+        </div>
+      </div>
+
+      <div class="templates-item position-relative col-lg-6">
+        <div class="template-item-img mx-auto ms-lg-0 position-relative">
+          <img src="../../assets/portfolio11.png" alt="" class="img-fluid" />
+          <button
+            type="button"
+            data-toggle="modal"
+            data-target="#portfolioModal"
+            class="btn btn-warning position-absolute choose-template-btn"
+          >
+            Select Template
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-around">
+      <div class="card text-white cardimg" style="width: 380px; height: 400px">
+        <img
+          src="../../assets/cv1.PNG"
+          style="object-fit: contain; width: 100%; height: 100%"
+          alt="..."
+        />
+        <div class="card-img-overlay">
+          <div class="overlay">
+            <p>CV Professionnel</p>
+          </div>
+        </div>
+      </div>
+      <div class="card text-white cardimg" style="width: 350px; height: 400px">
+        <img
+          src="../../assets/portfolio1.PNG"
+          style="object-fit: contain; height: 100%"
+          alt="..."
+        />
+        <div class="card-img-overlay">
+          <div class="overlay">
+            <p>Portfolio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <app-cv4></app-cv4>
+  </div>
+</div>
