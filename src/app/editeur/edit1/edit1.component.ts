@@ -25,11 +25,6 @@ export class Edit1Component {
   }
 
   addHobby(inpu: any) {
-    event.preventDefault(); // prevent the default form submission behavior
-    console.log('value', inpu);
-
-    console.log('index', this.tabbleauHobby.indexOf(inpu));
-
     if (this.tabbleauHobby.indexOf(inpu) == -1) {
       this.tabbleauHobby.push(inpu);
     }

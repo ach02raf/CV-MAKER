@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-edit2',
   templateUrl: './edit2.component.html',
@@ -22,16 +21,11 @@ export class Edit2Component {
   competences: any[] = [];
   inputValueCompetences: string;
 
-  ajouterForm(tab) {
+  ajouterForm(tab: any) {
     tab.push({});
   }
 
   addCompetences(inpu: string) {
-    event.preventDefault(); // prevent the default form submission behavior
-    console.log('value', inpu);
-
-    console.log('index', this.tabbleauCompetences.indexOf(inpu));
-
     if (this.tabbleauCompetences.indexOf(inpu) == -1) {
       this.tabbleauCompetences.push(inpu);
     }
