@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     LoginComponent,
     StepsComponent,
+    Portfolio1Component,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
