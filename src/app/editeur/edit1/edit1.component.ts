@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CV } from 'src/app/models/CV';
 
 @Component({
   selector: 'app-edit1',
   templateUrl: './edit1.component.html',
   styleUrls: ['./edit1.component.sass'],
 })
-export class Edit1Component {
+export class Edit1Component implements OnInit {
+  @Input() monCV: CV;
   isCollapsed = true;
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
@@ -14,17 +16,25 @@ export class Edit1Component {
   email: string;
   phone: string;
   address: string;
-  imageUrl: string = '../../../assets/image_placeholder.jpg';
+  imageUrl: string;
 
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
+  constructor() {}
+  ngOnInit(): void {}
 
   ajouterForm(tab) {
     tab.push({});
   }
 
   addHobby(inpu: any) {
+    console.log(this.name);
+    event.preventDefault(); // prevent the default form submission behavior
+    console.log('value', inpu);
+
+    console.log('index', this.tabbleauHobby.indexOf(inpu));
+
     if (this.tabbleauHobby.indexOf(inpu) == -1) {
       this.tabbleauHobby.push(inpu);
     }
@@ -48,7 +58,6 @@ export class Edit1Component {
     reader.onload = () => {
       // set the onload event handler
       this.imageUrl = reader.result as string; // set the imageUrl variable to the image data
-      console.log(this.imageUrl);
     };
   }
 }

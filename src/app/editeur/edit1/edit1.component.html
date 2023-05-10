@@ -30,12 +30,26 @@
       </div>
       <div class="col-md-6">
         <label class="form-label">Nom</label>
-        <input type="text" class="form-control" placeholder="name" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="name"
+          [(ngModel)]="monCV.nom"
+          [ngModelOptions]="{ standalone: true }"
+        />
+
+        /> />
         <small class="form-text text-muted">ex.wanen</small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Prenom</label>
-        <input type="text" placeholder="prenom" class="form-control" />
+        <input
+          type="text"
+          placeholder="prenom"
+          class="form-control"
+          [(ngModel)]="monCV.prenom"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.yosra</small>
       </div>
       <div class="col-12">
@@ -45,12 +59,24 @@
       </div>
       <div class="col-md-6">
         <label class="form-label">Phone</label>
-        <input type="number" class="form-control" placeholder="phone" />
+        <input
+          type="number"
+          class="form-control"
+          placeholder="phone"
+          [(ngModel)]="monCV.phone"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.+216 12 345 675 </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Addresse</label>
-        <input type="text" class="form-control" placeholder="adresse" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="adresse"
+          [(ngModel)]="monCV.adresse"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.21 Street, tunis</small>
       </div>
       <div class="col-12">
@@ -60,6 +86,8 @@
           class="form-control"
           rows="4"
           placeholder="About me"
+          [(ngModel)]="monCV.apropos"
+          [ngModelOptions]="{ standalone: true }"
         >
         </textarea>
       </div>
@@ -77,12 +105,24 @@
         <div class="row">
           <div class="col-md-6">
             <label for="inputAddress" class="form-label">Nationalité</label>
-            <input type="text" class="form-control" placeholder="nationalité" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="nationalité"
+              [(ngModel)]="monCV.nationalite"
+              [ngModelOptions]="{ standalone: true }"
+            />
             <small class="form-text text-muted">ex.Tunisienne </small>
           </div>
           <div class="col-md-6">
             <label class="form-label">Etat Civil</label>
-            <input type="text" class="form-control" placeholder="etat civil" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="etat civil"
+              [(ngModel)]="monCV.etatCivil"
+              [ngModelOptions]="{ standalone: true }"
+            />
             <small class="form-text text-muted">ex.marié(e)</small>
           </div>
 

@@ -20,7 +20,7 @@ import { Cv7Component } from './template/cv7/cv7.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Cv8Component } from './template/cv8/cv8.component';
 
@@ -46,7 +46,7 @@ import { Cv8Component } from './template/cv8/cv8.component';
     StepsComponent,
     Cv8Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
