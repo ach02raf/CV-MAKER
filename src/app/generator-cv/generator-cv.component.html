@@ -6,7 +6,9 @@
 
     <div class="col sticky-top">
       <div class="p-5" style="background-color: #e6e6e6">
-        <h3 class="mt-2 text-center text-primary">Modéle choisi</h3>
+        <h3 class="mt-2 text-center text-primary" (click)="ja()">
+          Modéle choisi
+        </h3>
         <div class="row">
           <div class="col">
             <button
@@ -37,7 +39,7 @@
                       />
                     </button>
                     <ng-template ngbNavContent>
-                      <app-cv1></app-cv1>
+                      <app-cv3></app-cv3>
                     </ng-template>
                   </li>
                   <li [ngbNavItem]="2">
@@ -52,7 +54,7 @@
                     </button>
                     <ng-template ngbNavContent>
                       <p>
-                        <app-cv3></app-cv3>
+                        <app-cv1></app-cv1>
                       </p>
                     </ng-template>
                   </li>
@@ -72,22 +74,6 @@
                       </p>
                     </ng-template>
                   </li>
-                  <!-- <li [ngbNavItem]="4">
-                    <button ngbNavLink>
-                      <img
-                        class="mx-4 border border-secondary"
-                        style="width: 100px"
-                        src="../../assets/cv2.PNG"
-                        alt=""
-                        srcset=""
-                      />
-                    </button>
-                    <ng-template ngbNavContent>
-                      <p>
-                        <app-cv7></app-cv7>
-                      </p>
-                    </ng-template>
-                  </li> -->
                 </ul>
 
                 <div [ngbNavOutlet]="nav" class="mt-2"></div>
@@ -96,8 +82,8 @@
           </div>
 
           <div *ngIf="!hidden">
-            <app-cv1 *ngIf="active === 1"></app-cv1>
-            <app-cv3 *ngIf="active === 2"></app-cv3>
+            <app-cv1 *ngIf="active === 2"></app-cv1>
+            <app-cv3 *ngIf="active === 1"></app-cv3>
             <app-cv4 *ngIf="active === 3"></app-cv4>
           </div>
         </div>

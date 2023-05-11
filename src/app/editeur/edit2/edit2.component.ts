@@ -25,9 +25,7 @@ export class Edit2Component implements OnInit {
   competences: any[] = [];
   inputValueCompetences: string;
   constructor() {}
-  ngOnInit(): void {
-    console.log(this.monCV);
-  }
+  ngOnInit(): void {}
 
   async ajouterForm(tab: any, source: any) {
     if (source === 'experience') {

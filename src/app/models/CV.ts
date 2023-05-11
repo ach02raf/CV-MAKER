@@ -7,6 +7,7 @@ export class CV {
   prenom: string;
   phone: string;
   email: string;
+  metier: string;
   urlImage: string;
   adresse: string;
   apropos: string;

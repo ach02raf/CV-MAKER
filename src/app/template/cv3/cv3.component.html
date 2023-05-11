@@ -26,8 +26,8 @@
     <div class="resume_content">
       <div class="resume_item resume_info">
         <div class="title">
-          <p class="bold">{{ name }}</p>
-          <p class="regular">{{ job }}</p>
+          <p class="bold">{{ cvService.monCV.nom }}</p>
+          <p class="regular">{{ cvService.monCV.metier }}</p>
         </div>
         <ul>
           <li>
@@ -35,27 +35,27 @@
               <i class="fas fa-map-signs"></i>
             </div>
             <div class="data">
-              {{ address }}<br />
-              {{ nationality }}
+              {{ cvService.monCV.adresse }}<br />
+              {{ cvService.monCV.nationalite }}
             </div>
           </li>
           <li>
             <div class="icon">
               <i class="fas fa-mobile-alt"></i>
             </div>
-            <div class="data">+324 {{ phone }}</div>
+            <div class="data">+216 {{ cvService.monCV.phone }}</div>
           </li>
           <li>
             <div class="icon">
               <i class="fas fa-envelope"></i>
             </div>
-            <div class="data">{{ email }}</div>
+            <div class="data">{{ cvService.monCV.email }}</div>
           </li>
           <li>
             <div class="icon">
               <i class="fab fa-weebly"></i>
             </div>
-            <div class="data">{{ webSite }}</div>
+            <div class="data">{{ cvService.monCV.liens[3] }}</div>
           </li>
         </ul>
       </div>

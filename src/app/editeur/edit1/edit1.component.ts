@@ -38,14 +38,6 @@ export class Edit1Component implements OnInit {
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
-
-  ajouterForm(tab) {
-    tab.push({});
-  }
-  varnull: string = '';
-  varnull1: string = '';
-  varnull2: string = '';
-  varnull3: string = '';
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
     if (!this.monCV.urlImage) {
@@ -60,7 +52,6 @@ export class Edit1Component implements OnInit {
       this.monCV.liens.push(new Liens('Behance', ''));
       this.monCV.liens.push(new Liens('website', ''));
     }
-    console.log(this.monCV);
   }
 
   convertImageToBuffer(imageUrl: string): void {
