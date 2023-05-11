@@ -5,9 +5,8 @@
     </div>
 
     <div class="col sticky-top">
-      <h4 class="mt-2 text-center">Modéle choisi</h4>
-
-      <div class="p-5 bg-secondary">
+      <div class="p-5" style="background-color: #e6e6e6">
+        <h3 class="mt-2 text-center text-secondary">Modéle choisi</h3>
         <div class="row">
           <div class="col">
             <button
@@ -20,7 +19,7 @@
               Autre Modéles
             </button>
             <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-              <div class="row">
+              <div (click)="hide()" class="row">
                 <ul
                   ngbNav
                   #nav="ngbNav"
@@ -32,7 +31,7 @@
                       <img
                         class="mx-4 border border-secondary"
                         style="width: 100px"
-                        src="../../assets/cv1.PNG"
+                        src="../../assets/2.png"
                         alt=""
                         srcset=""
                       />
@@ -46,7 +45,7 @@
                       <img
                         class="mx-4 border border-secondary"
                         style="width: 100px"
-                        src="../../assets/cv3.PNG"
+                        src="../../assets/1.png"
                         alt=""
                         srcset=""
                       />
@@ -62,7 +61,7 @@
                       <img
                         class="mx-4 border border-secondary"
                         style="width: 100px"
-                        src="../../assets/cv4.PNG"
+                        src="../../assets/3.png"
                         alt=""
                         srcset=""
                       />
@@ -96,8 +95,8 @@
             </span>
           </div>
 
-          <div>
-            <!-- <app-cv8></app-cv8> -->
+          <div *ngIf="!hidden">
+            <app-cv1></app-cv1>
           </div>
         </div>
       </div>

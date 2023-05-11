@@ -21,7 +21,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { Cv8Component } from './template/cv8/cv8.component';
 
 @NgModule({
