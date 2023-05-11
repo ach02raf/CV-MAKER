@@ -76,11 +76,11 @@
         </div>
         <ul>
           <li *ngFor="let item of cvService.monCV.competences">
-            <div class="skill_name">{{ item }}</div>
+            <div class="skill_name">{{ item.nom }}</div>
             <div class="skill_progress">
-              <span [ngStyle]="{ width: '30%' }"></span>
+              <span [ngStyle]="{ width: item.porcent + '%' }"></span>
             </div>
-            <div class="skill_per">{{ "30%" }}</div>
+            <div class="skill_per">{{ item.porcent + "%" }}</div>
           </li>
         </ul>
       </div>
