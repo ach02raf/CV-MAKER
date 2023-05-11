@@ -106,14 +106,23 @@
           formControlName="email"
           (blur)="myForm.controls['email'].markAsTouched()"
         />
-
         <small
           class="form-text text-danger"
           *ngIf="
-            myForm.controls['email'].invalid && myForm.controls['email'].touched
+            myForm.controls['email'].errors?.['required'] &&
+            myForm.controls['email'].touched
           "
         >
           Le email est requis.
+        </small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['email'].errors?.['email'] &&
+            myForm.controls['email'].touched
+          "
+        >
+          Le format de l'email est invalide.
         </small>
       </div>
       <div class="col-md-6">
@@ -131,6 +140,7 @@
               myForm.controls['phone'].valid && myForm.controls['phone'].touched
           }"
           type="text"
+          [maxLength]="8"
           placeholder="name"
           formControlName="phone"
           (blur)="myForm.controls['phone'].markAsTouched()"
@@ -142,7 +152,12 @@
             myForm.controls['phone'].invalid && myForm.controls['phone'].touched
           "
         >
-          Le phone est requis.
+          <ng-container *ngIf="myForm.controls['phone'].errors?.['required']">
+            Le phone est requis.
+          </ng-container>
+          <ng-container *ngIf="myForm.controls['phone'].errors?.['pattern']">
+            Le phone doit contenir uniquement 8 chiffres.
+          </ng-container>
         </small>
       </div>
       <div class="col-md-6">
@@ -156,7 +171,7 @@
         />
         <small class="form-text text-muted">ex.+216 12 345 675 </small>
       </div>
-      <div class="col-md-6">
+      <div class="col-12">
         <label class="form-label">Addresse</label>
         <input
           type="text"

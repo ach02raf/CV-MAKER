@@ -39,15 +39,23 @@
                   formControlName="email"
                   (blur)="cnxForm.controls['email'].markAsTouched()"
                 />
-
                 <small
                   class="form-text text-danger"
                   *ngIf="
-                    cnxForm.controls['email'].invalid &&
+                    cnxForm.controls['email'].errors?.['required'] &&
                     cnxForm.controls['email'].touched
                   "
                 >
                   Le email est requis.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  *ngIf="
+                    cnxForm.controls['email'].errors?.['email'] &&
+                    cnxForm.controls['email'].touched
+                  "
+                >
+                  Le format de l'email est invalide.
                 </small>
               </div>
               <div class="form-group last mb-4">
