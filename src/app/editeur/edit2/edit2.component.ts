@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CV } from 'src/app/models/CV';
 import { Education } from 'src/app/models/Education';
 import { ExperienceProfessionnelle } from 'src/app/models/ExperienceProfessionnelle';
@@ -24,8 +25,27 @@ export class Edit2Component implements OnInit {
   educations: any[] = [];
   competences: any[] = [];
   inputValueCompetences: string;
+
+  myForm: FormGroup;
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.myForm = new FormGroup({
+      titrePoste: new FormControl('', Validators.required),
+      entreprise: new FormControl('', Validators.required),
+      dateDeb: new FormControl('', Validators.required),
+      dateFin: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      diplome: new FormControl('', Validators.required),
+      etablissement: new FormControl('', Validators.required),
+      dateDebEdu: new FormControl('', Validators.required),
+      dateFinEdu: new FormControl('', Validators.required),
+      mention: new FormControl('', Validators.required),
+    });
+  }
 
   async ajouterForm(tab: any, source: any) {
     if (source === 'experience') {

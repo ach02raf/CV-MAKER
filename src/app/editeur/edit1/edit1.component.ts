@@ -21,24 +21,7 @@ export class Edit1Component implements OnInit {
   isCollapsedliens = true;
   isCollapsedhobby = true;
   isSubmitted = false;
-  name: string;
-  prenom: string;
-  email: string;
-  phone: string;
-  adresse: string;
-  aboutMe: string;
-  nationalite: string;
-  etatCivil: string;
-  dateNaissance: Date;
 
-  nameError: string;
-  prenomError: string;
-  emailError: string;
-  phoneError: string;
-  adresseError: string;
-  nationaliteError: string;
-  etatCivilError: string;
-  dateNaissanceError: string;
   imageUrl: string = '../../../assets/image_placeholder.jpg';
 
   myForm: FormGroup;
@@ -46,6 +29,8 @@ export class Edit1Component implements OnInit {
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
+  etatCivils = ['célibataire', 'marié(e)'];
+  nationalities: string[] = ['Tunisien', 'Algerien', 'Marocain', ''];
 
   ajouterForm(tab) {
     tab.push({});
@@ -56,6 +41,21 @@ export class Edit1Component implements OnInit {
   initializeForm() {
     this.myForm = new FormGroup({
       nom: new FormControl('', Validators.required),
+      nationalite: new FormControl('', Validators.required),
+      prenom: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+      adresse: new FormControl('', Validators.required),
+      about: new FormControl('', Validators.required),
+      dateNaissance: new FormControl('', Validators.required),
+      etatCivil: new FormControl('', Validators.required),
+      linkedin: new FormControl('', Validators.required),
+      github: new FormControl('', Validators.required),
+      behance: new FormControl('', Validators.required),
+      website: new FormControl('', Validators.required),
+      hobby: new FormControl('', Validators.required),
+      metier: new FormControl('', Validators.required),
     });
   }
 
