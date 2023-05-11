@@ -24,6 +24,7 @@ import { StepsComponent } from './steps/steps.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
+import { Cv8Component } from './template/cv8/cv8.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { Portfolio1Component } from './template/portfolio1/portfolio1.component'
     LoginComponent,
     StepsComponent,
     Portfolio1Component,
+    Cv8Component,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],

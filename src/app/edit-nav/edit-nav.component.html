@@ -1,12 +1,12 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mx-2">
   <li [ngbNavItem]="1">
-    <button ngbNavLink>One</button>
+    <button class="btn btn-info" ngbNavLink>Données Personnelles</button>
     <ng-template ngbNavContent>
       <app-edit1></app-edit1>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
-    <button ngbNavLink>Two</button>
+    <button class="btn btn-info" ngbNavLink>Cursus</button>
     <ng-template ngbNavContent>
       <p>
         <app-edit2></app-edit2>
@@ -14,7 +14,7 @@
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
-    <button ngbNavLink>Three</button>
+    <button class="btn btn-info" ngbNavLink>Personnaliser CV</button>
     <ng-template ngbNavContent>
       <p>
         <app-edit3></app-edit3>
