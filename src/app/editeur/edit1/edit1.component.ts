@@ -60,6 +60,7 @@ export class Edit1Component implements OnInit {
       this.monCV.liens.push(new Liens('Behance', ''));
       this.monCV.liens.push(new Liens('website', ''));
     }
+    console.log(this.monCV);
   }
 
   convertImageToBuffer(imageUrl: string): void {

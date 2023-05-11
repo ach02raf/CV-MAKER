@@ -18,7 +18,8 @@ export class CV {
   experiencesPro: ExperienceProfessionnelle[] = [];
   educations: Education[] = [];
   competences: string[] = [];
-  coleurTheme: string;
+  coleurThemeElement: string;
+  coleurThemeTitre: string;
   titreFontSize: string;
   texteFontSize: string;
   fontFamily: string;

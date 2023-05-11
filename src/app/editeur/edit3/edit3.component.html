@@ -18,6 +18,8 @@
           id="exampleColorInput"
           value="#563d7c"
           title="Choose your color"
+          [(ngModel)]="monCV.coleurThemeTitre"
+          [ngModelOptions]="{ standalone: true }"
         />
       </div>
       <div class="col-6">
@@ -28,6 +30,8 @@
           id="exampleColorInput"
           value="#563d7c"
           title="Choose your color"
+          [(ngModel)]="monCV.coleurThemeElement"
+          [ngModelOptions]="{ standalone: true }"
         />
       </div>
       <div class="col-12">
