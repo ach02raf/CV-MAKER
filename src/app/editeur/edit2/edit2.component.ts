@@ -26,6 +26,10 @@ export class Edit2Component {
     tab.push({});
   }
 
+  supprimerForm(tab: any[], index: any) {
+    tab.splice(index, 1);
+  }
+
   addCompetences(inpu: string) {
     event.preventDefault(); // prevent the default form submission behavior
     console.log('value', inpu);

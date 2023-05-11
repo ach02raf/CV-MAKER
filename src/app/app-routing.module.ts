@@ -7,10 +7,12 @@ import { Cv3Component } from './template/cv3/cv3.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GeneratorCvComponent } from './generator-cv/generator-cv.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'inscription', component: RegisterComponent },
 
   {
     path: 'cv',
