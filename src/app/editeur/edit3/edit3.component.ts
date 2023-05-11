@@ -8,5 +8,7 @@ import { CV } from 'src/app/models/CV';
 })
 export class Edit3Component implements OnInit {
   @Input() monCV: CV;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.monCV);
+  }
 }

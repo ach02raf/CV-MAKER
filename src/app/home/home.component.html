@@ -12,7 +12,10 @@
         <p class="text-light fs-4 mt-3 mb-5">
           Easy to use. Time-saver. Professional.
         </p>
-        <button class="btn btn-lg text-capitalize btn-warning btn-banner fs-4">
+        <button
+          [routerLink]="['/cv/edit/information-personnelles']"
+          class="btn btn-lg text-capitalize btn-info btn-banner fs-4"
+        >
           let's get started
         </button>
       </div>
@@ -52,9 +55,10 @@
           <button
             data-toggle="modal"
             data-target="#cvModal"
-            class="btn btn-warning position-absolute choose-template-btn"
+            class="btn btn-info position-absolute choose-template-btn"
+            [routerLink]="['/cv/edit/information-personnelles']"
           >
-            Select Template
+            CV
           </button>
         </div>
       </div>
@@ -66,9 +70,9 @@
             type="button"
             data-toggle="modal"
             data-target="#portfolioModal"
-            class="btn btn-warning position-absolute choose-template-btn"
+            class="btn btn-info position-absolute choose-template-btn"
           >
-            Select Template
+            Potfolios
           </button>
         </div>
       </div>

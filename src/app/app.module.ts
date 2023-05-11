@@ -20,9 +20,11 @@ import { Cv7Component } from './template/cv7/cv7.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Cv8Component } from './template/cv8/cv8.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     StepsComponent,
     Cv8Component,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
