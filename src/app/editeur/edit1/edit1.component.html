@@ -173,6 +173,8 @@
           type="text"
           class="form-control"
           name="Linkedin"
+          [(ngModel)]="monCV.liens[0] ? monCV.liens[0].url : varnull"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputLinkedin.value, inputLinkedin.name)"
           #inputLinkedin
         />
@@ -185,6 +187,8 @@
           placeholder="prenom"
           class="form-control"
           name="Github"
+          [(ngModel)]="monCV.liens[1] ? monCV.liens[1].url : varnull3"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputGithub.value, inputGithub.name)"
           #inputGithub
         />
@@ -196,6 +200,8 @@
           type="text"
           class="form-control"
           name="Behance"
+          [(ngModel)]="monCV.liens[2] ? monCV.liens[2].url : varnull1"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputBehance.value, inputBehance.name)"
           #inputBehance
         />
@@ -207,6 +213,8 @@
           type="text"
           class="form-control"
           name="website"
+          [(ngModel)]="monCV.liens[3] ? monCV.liens[3].url : varnull2"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputwebsite.value, inputwebsite.name)"
           #inputwebsite
         />

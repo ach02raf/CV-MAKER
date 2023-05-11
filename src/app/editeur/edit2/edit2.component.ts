@@ -22,6 +22,7 @@ export class Edit2Component implements OnInit {
   educations: any[] = [];
   competences: any[] = [];
   inputValueCompetences: string;
+  constructor() {}
   ngOnInit(): void {
     console.log(this.monCV);
   }
@@ -30,16 +31,16 @@ export class Edit2Component implements OnInit {
     tab.push({});
   }
 
-  addCompetences(inpu: string) {
+  addCompetences(input: string) {
     event.preventDefault(); // prevent the default form submission behavior
-    console.log('value', inpu);
+    console.log('value', input);
 
-    console.log('index', this.tabbleauCompetences.indexOf(inpu));
+    console.log('index', this.tabbleauCompetences.indexOf(input));
 
-    if (this.tabbleauCompetences.indexOf(inpu) == -1) {
-      this.tabbleauCompetences.push(inpu);
+    if (this.tabbleauCompetences.indexOf(input) == -1) {
+      this.tabbleauCompetences.push(input);
     }
-    inpu = '';
+    input = '';
     console.log(this.tabbleauCompetences);
   }
 

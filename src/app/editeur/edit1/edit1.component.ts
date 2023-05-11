@@ -14,7 +14,10 @@ export class Edit1Component implements OnInit {
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
   isCollapsedhobby = true;
-
+  varnull: string = '';
+  varnull1: string = '';
+  varnull2: string = '';
+  varnull3: string = '';
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
     if (!this.monCV.urlImage) {
