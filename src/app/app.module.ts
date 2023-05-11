@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeneratorCvComponent } from './generator-cv/generator-cv.component';
@@ -21,11 +20,12 @@ import { Cv7Component } from './template/cv7/cv7.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Cv8Component } from './template/cv8/cv8.component';
-
+import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portfoli.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,8 +48,9 @@ import { Cv8Component } from './template/cv8/cv8.component';
     StepsComponent,
     Portfolio1Component,
     Cv8Component,
+    GeneratorPortfoliComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule,  AppRoutingModule, ReactiveFormsModule , NgbModule, FormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -34,7 +34,8 @@ export class Portfolio1Component implements OnInit {
   }
   data = {
 
-     title :  "hi my name maha" ,
+     name :  "maha" ,
+     lastName : " grindi",
      bio : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis tempora explicabo quae quod deserunt eius sapiente solutions for complex problems",
 
      socials : [{Linkedin : "https://www.linkedin.com/"} , { instagram : "https://www.linkedin.com/" },{twitter:"https://www.linkedin.com/"},{gitHub :"https://www.linkedin.com/"}],

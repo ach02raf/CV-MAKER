@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { CV } from 'src/app/models/CV';
 @Component({
   selector: 'app-edit2',
   templateUrl: './edit2.component.html',
   styleUrls: ['./edit2.component.scss'],
 })
-export class Edit2Component {
+export class Edit2Component implements OnInit {
+  @Input() monCV: CV;
   isCollapsed = true;
   isCollapsedExperience = false;
   isCollapsedEducation = false;
@@ -21,8 +22,11 @@ export class Edit2Component {
   educations: any[] = [];
   competences: any[] = [];
   inputValueCompetences: string;
+  ngOnInit(): void {
+    console.log(this.monCV);
+  }
 
-  ajouterForm(tab) {
+  ajouterForm(tab: any) {
     tab.push({});
   }
 

@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CV } from 'src/app/models/CV';
+
+import { Liens } from 'src/app/models/Liens';
 
 @Component({
   selector: 'app-edit1',
   templateUrl: './edit1.component.html',
   styleUrls: ['./edit1.component.sass'],
 })
-export class Edit1Component {
+export class Edit1Component implements OnInit {
+  @Input() monCV: CV;
   isCollapsed = true;
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
@@ -19,33 +23,45 @@ export class Edit1Component {
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
+  constructor() {}
+  ngOnInit(): void {}
 
   ajouterForm(tab) {
     tab.push({});
   }
 
-  addHobby(inpu: any) {
-    event.preventDefault(); // prevent the default form submission behavior
-    console.log('value', inpu);
-
-    console.log('index', this.tabbleauHobby.indexOf(inpu));
-
-    if (this.tabbleauHobby.indexOf(inpu) == -1) {
-      this.tabbleauHobby.push(inpu);
+  addHobby(input: any) {
+    const foundObj = this.monCV.loisirs.find(
+      (obj) => obj === input.target.value
+    );
+    if (foundObj) {
+      input.target.value = '';
+    } else {
+      event.preventDefault(); // prevent the default form submission behavior
+      if (this.monCV.loisirs.indexOf(input.target.value) == -1) {
+        this.monCV.loisirs.push(input.target.value);
+      }
+      input.target.value = '';
     }
-    inpu = '';
-    console.log(this.tabbleauHobby);
   }
 
   removeHobby(hash: string) {
-    const index = this.tabbleauHobby.indexOf(hash);
-    console.log('innnddd', index);
-
+    const index = this.monCV.loisirs.indexOf(hash);
     if (index !== -1) {
-      this.tabbleauHobby.splice(index, 1);
+      this.monCV.loisirs.splice(index, 1);
     }
   }
-
+  async addLiens(event: any, name: any) {
+    let lien = new Liens();
+    lien.nom = name;
+    lien.url = await event;
+    const indexToUpdate = this.monCV.liens.findIndex((obj) => obj.nom === name);
+    if (indexToUpdate !== -1) {
+      this.monCV.liens[indexToUpdate] = lien;
+    } else {
+      this.monCV.liens.push(lien);
+    }
+  }
   onFileSelected(event): void {
     const file = event.target.files[0]; // get the selected file
     const reader = new FileReader(); // create a new FileReader object
@@ -53,7 +69,7 @@ export class Edit1Component {
     reader.onload = () => {
       // set the onload event handler
       this.imageUrl = reader.result as string; // set the imageUrl variable to the image data
-      console.log(this.imageUrl);
+      this.monCV.urlImage = reader.result as string;
     };
   }
 }

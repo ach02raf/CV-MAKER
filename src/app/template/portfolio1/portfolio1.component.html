@@ -2,7 +2,7 @@
 
     <section class="home-hero">
       <div class="home-hero__content">
-        <h1 class="heading-primary">{{data['title']}}</h1>
+        <h1 class="heading-primary">HEY, MY NAME IS {{ data['name']+' '+data['lastName']}}</h1>
         <div class="home-hero__info" *ngIf="data['bio']">
           <p class="textPragrphe">
             {{data['bio']}}
