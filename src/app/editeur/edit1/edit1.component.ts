@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CV } from 'src/app/models/CV';
 import { Liens } from 'src/app/models/Liens';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit1',
@@ -13,22 +14,29 @@ export class Edit1Component implements OnInit {
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
   isCollapsedhobby = true;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  imageUrl: string = '../../../assets/image_placeholder.jpg';
 
-  tabbleauHobby = [];
-  Hobby: any[] = [];
-  inputValueHobby: string;
-  constructor() {}
-  ngOnInit(): void {}
-
-  ajouterForm(tab) {
-    tab.push({});
+  constructor(private http: HttpClient) {}
+  ngOnInit(): void {
+    if (!this.monCV.urlImage) {
+      this.convertImageToBuffer(
+        'http://localhost:4200/assets/image_placeholder.jpg'
+      );
+    }
   }
 
+  convertImageToBuffer(imageUrl: string): void {
+    this.http
+      .get(imageUrl, { responseType: 'arraybuffer' })
+      .subscribe((data: ArrayBuffer) => {
+        const base64Image = btoa(
+          new Uint8Array(data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            ''
+          )
+        );
+        this.monCV.urlImage = `data:image/jpeg;base64,${base64Image}`;
+      });
+  }
   addHobby(input: any) {
     const foundObj = this.monCV.loisirs.find(
       (obj) => obj === input.target.value
@@ -67,7 +75,6 @@ export class Edit1Component implements OnInit {
     reader.readAsDataURL(file); // read the file data as a base64-encoded string
     reader.onload = () => {
       // set the onload event handler
-      this.imageUrl = reader.result as string; // set the imageUrl variable to the image data
       this.monCV.urlImage = reader.result as string;
     };
   }

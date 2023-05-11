@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Cv8Component } from './template/cv8/cv8.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,13 @@ import { Cv8Component } from './template/cv8/cv8.component';
     StepsComponent,
     Cv8Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
