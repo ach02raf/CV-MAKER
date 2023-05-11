@@ -12,7 +12,7 @@
             <button
               type="button"
               class="btn btn-light mb-3"
-              (click)="isCollapsed = !isCollapsed"
+              (click)="show()"
               [attr.aria-expanded]="!isCollapsed"
               aria-controls="collapseExample"
             >
@@ -72,7 +72,7 @@
                       </p>
                     </ng-template>
                   </li>
-                  <li [ngbNavItem]="4">
+                  <!-- <li [ngbNavItem]="4">
                     <button ngbNavLink>
                       <img
                         class="mx-4 border border-secondary"
@@ -87,7 +87,7 @@
                         <app-cv7></app-cv7>
                       </p>
                     </ng-template>
-                  </li>
+                  </li> -->
                 </ul>
 
                 <div [ngbNavOutlet]="nav" class="mt-2"></div>
@@ -96,7 +96,9 @@
           </div>
 
           <div *ngIf="!hidden">
-            <app-cv1></app-cv1>
+            <app-cv1 *ngIf="active === 1"></app-cv1>
+            <app-cv3 *ngIf="active === 2"></app-cv3>
+            <app-cv4 *ngIf="active === 3"></app-cv4>
           </div>
         </div>
       </div>

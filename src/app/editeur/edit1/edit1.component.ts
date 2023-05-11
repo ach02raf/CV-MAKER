@@ -1,24 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-edit1',
   templateUrl: './edit1.component.html',
-  styleUrls: ['./edit1.component.sass'],
+  styleUrls: ['./edit1.component.scss'],
 })
-export class Edit1Component {
+export class Edit1Component implements OnInit {
   isCollapsed = true;
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
   isCollapsedhobby = true;
+
   name: string;
+  prenom: string;
   email: string;
   phone: string;
-  address: string;
+  adresse: string;
+  aboutMe: string;
+  nationalite: string;
+  etatCivil: string;
+  dateNaissance: Date;
+
+  nameError: string;
+  prenomError: string;
+  emailError: string;
+  phoneError: string;
+  adresseError: string;
+  nationaliteError: string;
+  etatCivilError: string;
+  dateNaissanceError: string;
   imageUrl: string = '../../../assets/image_placeholder.jpg';
 
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
+
+  ngOnInit(): void {}
 
   ajouterForm(tab) {
     tab.push({});
