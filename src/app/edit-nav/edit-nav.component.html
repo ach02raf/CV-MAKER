@@ -2,14 +2,14 @@
   <li [ngbNavItem]="1">
     <button class="btn btn-info" ngbNavLink>Données Personnelles</button>
     <ng-template ngbNavContent>
-      <app-edit1></app-edit1>
+      <app-edit1 [monCV]="monCV"></app-edit1>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
     <button class="btn btn-info" ngbNavLink>Cursus</button>
     <ng-template ngbNavContent>
       <p>
-        <app-edit2></app-edit2>
+        <app-edit2 [monCV]="monCV"></app-edit2>
       </p>
     </ng-template>
   </li>
@@ -17,7 +17,7 @@
     <button class="btn btn-info" ngbNavLink>Personnaliser CV</button>
     <ng-template ngbNavContent>
       <p>
-        <app-edit3></app-edit3>
+        <app-edit3 [monCV]="monCV"></app-edit3>
       </p>
     </ng-template>
   </li>

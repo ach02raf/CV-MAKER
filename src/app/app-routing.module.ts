@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { Cv1Component } from './template/cv1/cv1.component';
@@ -17,7 +16,6 @@ const routes: Routes = [
   {
     path: 'cv',
     children: [
-      { path: '', component: GeneratorCvComponent },
       {
         path: 'edit',
         children: [
@@ -33,8 +31,4 @@ const routes: Routes = [
   { path: '**', redirectTo: 'not-found' },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+export const AppRoutingModule = RouterModule.forRoot(routes);

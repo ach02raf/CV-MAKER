@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CV } from 'src/app/models/CV';
+import { Liens } from 'src/app/models/Liens';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit1',
@@ -6,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit1.component.scss'],
 })
 export class Edit1Component implements OnInit {
+  @Input() monCV: CV;
   isCollapsed = true;
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
@@ -35,42 +39,74 @@ export class Edit1Component implements OnInit {
   Hobby: any[] = [];
   inputValueHobby: string;
 
-  ngOnInit(): void {}
-
   ajouterForm(tab) {
     tab.push({});
   }
-
-  addHobby(inpu: any) {
-    event.preventDefault(); // prevent the default form submission behavior
-    console.log('value', inpu);
-
-    console.log('index', this.tabbleauHobby.indexOf(inpu));
-
-    if (this.tabbleauHobby.indexOf(inpu) == -1) {
-      this.tabbleauHobby.push(inpu);
+  varnull: string = '';
+  varnull1: string = '';
+  varnull2: string = '';
+  varnull3: string = '';
+  constructor(private http: HttpClient) {}
+  ngOnInit(): void {
+    if (!this.monCV.urlImage) {
+      this.convertImageToBuffer(
+        'http://localhost:4200/assets/image_placeholder.jpg'
+      );
     }
-    inpu = '';
-    console.log(this.tabbleauHobby);
+  }
+
+  convertImageToBuffer(imageUrl: string): void {
+    this.http
+      .get(imageUrl, { responseType: 'arraybuffer' })
+      .subscribe((data: ArrayBuffer) => {
+        const base64Image = btoa(
+          new Uint8Array(data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            ''
+          )
+        );
+        this.monCV.urlImage = `data:image/jpeg;base64,${base64Image}`;
+      });
+  }
+  addHobby(input: any) {
+    const foundObj = this.monCV.loisirs.find(
+      (obj) => obj === input.target.value
+    );
+    if (foundObj) {
+      input.target.value = '';
+    } else {
+      event.preventDefault(); // prevent the default form submission behavior
+      if (this.monCV.loisirs.indexOf(input.target.value) == -1) {
+        this.monCV.loisirs.push(input.target.value);
+      }
+      input.target.value = '';
+    }
   }
 
   removeHobby(hash: string) {
-    const index = this.tabbleauHobby.indexOf(hash);
-    console.log('innnddd', index);
-
+    const index = this.monCV.loisirs.indexOf(hash);
     if (index !== -1) {
-      this.tabbleauHobby.splice(index, 1);
+      this.monCV.loisirs.splice(index, 1);
     }
   }
-
+  async addLiens(event: any, name: any) {
+    let lien = new Liens();
+    lien.nom = name;
+    lien.url = await event;
+    const indexToUpdate = this.monCV.liens.findIndex((obj) => obj.nom === name);
+    if (indexToUpdate !== -1) {
+      this.monCV.liens[indexToUpdate] = lien;
+    } else {
+      this.monCV.liens.push(lien);
+    }
+  }
   onFileSelected(event): void {
     const file = event.target.files[0]; // get the selected file
     const reader = new FileReader(); // create a new FileReader object
     reader.readAsDataURL(file); // read the file data as a base64-encoded string
     reader.onload = () => {
       // set the onload event handler
-      this.imageUrl = reader.result as string; // set the imageUrl variable to the image data
-      console.log(this.imageUrl);
+      this.monCV.urlImage = reader.result as string;
     };
   }
 }

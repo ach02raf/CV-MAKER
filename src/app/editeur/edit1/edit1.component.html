@@ -19,7 +19,7 @@
     >
       <div class="col-12">
         <label for="fileInput">
-          <img class="w-50 mt-2 text-center border" [src]="imageUrl" />
+          <img class="w-50 mt-2 text-center border" [src]="monCV.urlImage" />
         </label>
         <input
           id="fileInput"
@@ -30,27 +30,59 @@
       </div>
       <div class="col-md-6">
         <label class="form-label">Nom</label>
-        <input type="text" class="form-control" placeholder="name" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="name"
+          [(ngModel)]="monCV.nom"
+          [ngModelOptions]="{ standalone: true }"
+        />
+
+        /> />
         <small class="form-text text-muted">ex.wanen</small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Prenom</label>
-        <input type="text" placeholder="prenom" class="form-control" />
+        <input
+          type="text"
+          placeholder="prenom"
+          class="form-control"
+          [(ngModel)]="monCV.prenom"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.yosra</small>
       </div>
       <div class="col-12">
         <label class="form-label">Email</label>
-        <input type="email" class="form-control" placeholder="email" />
+        <input
+          type="email"
+          class="form-control"
+          placeholder="email"
+          [(ngModel)]="monCV.email"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.yosra@gmail.com</small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Phone</label>
-        <input type="number" class="form-control" placeholder="phone" />
+        <input
+          type="number"
+          class="form-control"
+          placeholder="phone"
+          [(ngModel)]="monCV.phone"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.+216 12 345 675 </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Addresse</label>
-        <input type="text" class="form-control" placeholder="adresse" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="adresse"
+          [(ngModel)]="monCV.adresse"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.21 Street, tunis</small>
       </div>
       <div class="col-12">
@@ -60,6 +92,8 @@
           class="form-control"
           rows="4"
           placeholder="About me"
+          [(ngModel)]="monCV.apropos"
+          [ngModelOptions]="{ standalone: true }"
         >
         </textarea>
       </div>
@@ -77,12 +111,24 @@
         <div class="row">
           <div class="col-md-6">
             <label for="inputAddress" class="form-label">Nationalité</label>
-            <input type="text" class="form-control" placeholder="nationalité" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="nationalité"
+              [(ngModel)]="monCV.nationalite"
+              [ngModelOptions]="{ standalone: true }"
+            />
             <small class="form-text text-muted">ex.Tunisienne </small>
           </div>
           <div class="col-md-6">
             <label class="form-label">Etat Civil</label>
-            <input type="text" class="form-control" placeholder="etat civil" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="etat civil"
+              [(ngModel)]="monCV.etatCivil"
+              [ngModelOptions]="{ standalone: true }"
+            />
             <small class="form-text text-muted">ex.marié(e)</small>
           </div>
 
@@ -93,16 +139,10 @@
                 class="form-control"
                 placeholder="yyyy-mm-dd"
                 name="dp"
-                ngbDatepicker
-                #d="ngbDatepicker"
+                type="date"
+                [(ngModel)]="monCV.dateNaissance"
+                [ngModelOptions]="{ standalone: true }"
               />
-              <button
-                class="btn btn-outline-secondary bi bi-calendar3"
-                (click)="d.toggle()"
-                type="button"
-              >
-                <i class="fas fa-calendar-days"></i>
-              </button>
             </div>
           </div>
         </div>
@@ -129,22 +169,55 @@
     >
       <div class="col-12">
         <label class="form-label">Linkedin</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          name="Linkedin"
+          [(ngModel)]="monCV.liens[0] ? monCV.liens[0].url : varnull"
+          [ngModelOptions]="{ standalone: true }"
+          (blur)="addLiens(inputLinkedin.value, inputLinkedin.name)"
+          #inputLinkedin
+        />
         <small class="form-text text-muted">ex.linkedin.com/yosrawanen</small>
       </div>
       <div class="col-12">
         <label class="form-label">Github</label>
-        <input type="text" placeholder="prenom" class="form-control" />
+        <input
+          type="text"
+          placeholder="prenom"
+          class="form-control"
+          name="Github"
+          [(ngModel)]="monCV.liens[1] ? monCV.liens[1].url : varnull3"
+          [ngModelOptions]="{ standalone: true }"
+          (blur)="addLiens(inputGithub.value, inputGithub.name)"
+          #inputGithub
+        />
         <small class="form-text text-muted">ex.yosra-wan</small>
       </div>
       <div class="col-12">
         <label class="form-label">Behance</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          name="Behance"
+          [(ngModel)]="monCV.liens[2] ? monCV.liens[2].url : varnull1"
+          [ngModelOptions]="{ standalone: true }"
+          (blur)="addLiens(inputBehance.value, inputBehance.name)"
+          #inputBehance
+        />
         <small class="form-text text-muted">ex.yosra wanen</small>
       </div>
       <div class="col-12">
         <label class="form-label">personal website</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          name="website"
+          [(ngModel)]="monCV.liens[3] ? monCV.liens[3].url : varnull2"
+          [ngModelOptions]="{ standalone: true }"
+          (blur)="addLiens(inputwebsite.value, inputwebsite.name)"
+          #inputwebsite
+        />
         <small class="form-text text-muted">ex.www.portfolio.com </small>
       </div>
     </form>
@@ -172,13 +245,12 @@
         <input
           class="form-control"
           type="text"
-          #inp
-          (keydown.enter)="addHobby(inp.value)"
+          (keydown.enter)="addHobby($event)"
           placeholder=""
         />
 
         <ul
-          *ngFor="let hobby of tabbleauHobby"
+          *ngFor="let hobby of monCV.loisirs"
           class="list-group list-group-horizontal mt-1"
         >
           <li class="list-group-item mt-1">

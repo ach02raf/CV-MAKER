@@ -17,24 +17,29 @@
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedExperience"
       class="row mt-2 g-3"
-      *ngFor="let experience of experiences; let i = index"
+      *ngFor="let experience of monCV.experiencesPro; let i = index"
     >
-      <h6 class="my-2">
-        Expercience n° {{ i + 1 }}
-        <i
-          (click)="supprimerForm(experiences, i)"
-          class="fa fa-times text-bg-danger p-1 mx-5"
-        ></i>
-      </h6>
-
+      <h6 class="my-2">Expercience n° {{ i + 1 }}</h6>
       <div class="col-md-6">
         <label class="form-label">Titre du poste</label>
-        <input type="text" class="form-control" placeholder="poste" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="poste"
+          [(ngModel)]="experience.titrePoste"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.Ingénieur</small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Entreprise</label>
-        <input type="text" placeholder="entreprise" class="form-control" />
+        <input
+          type="text"
+          placeholder="entreprise"
+          class="form-control"
+          [(ngModel)]="experience.entreprise"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.Tekup</small>
       </div>
       <div class="col-md-6">
@@ -44,16 +49,10 @@
             class="form-control"
             placeholder="yyyy-mm-dd"
             name="dp1"
-            ngbDatepicker
-            #d="ngbDatepicker"
+            type="date"
+            [(ngModel)]="experience.dateDebut"
+            [ngModelOptions]="{ standalone: true }"
           />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
-            <i class="fas fa-calendar-days"></i>
-          </button>
         </div>
       </div>
 
@@ -64,16 +63,10 @@
             class="form-control"
             placeholder="yyyy-mm-dd"
             name="dp2"
-            ngbDatepicker
-            #d="ngbDatepicker"
+            type="date"
+            [(ngModel)]="experience.dateFin"
+            [ngModelOptions]="{ standalone: true }"
           />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
-            <i class="fas fa-calendar-days"></i>
-          </button>
         </div>
       </div>
 
@@ -84,6 +77,8 @@
           rows="2"
           class="form-control"
           placeholder="adresse"
+          [(ngModel)]="experience.desc"
+          [ngModelOptions]="{ standalone: true }"
         ></textarea>
         <small class="form-text text-muted"
           >ex.Participation aux actions commerciales</small
@@ -122,7 +117,7 @@
       <h6 class="my-2">
         Diplome n° {{ i + 1 }}
         <i
-          (click)="supprimerForm(experiences, i)"
+          (click)="supprimerForm(educations, i)"
           class="fa fa-times text-bg-danger p-1 mx-5"
         ></i>
       </h6>
