@@ -22,9 +22,9 @@ import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Cv8Component } from './template/cv8/cv8.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

@@ -50,10 +50,7 @@ export class Edit1Component implements OnInit {
   ajouterForm(tab) {
     tab.push({});
   }
-  varnull: string = '';
-  varnull1: string = '';
-  varnull2: string = '';
-  varnull3: string = '';
+
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
 
   initializeForm() {
@@ -68,6 +65,14 @@ export class Edit1Component implements OnInit {
       this.convertImageToBuffer(
         'http://localhost:4200/assets/image_placeholder.jpg'
       );
+    }
+    console.log('edit 1', this.monCV);
+
+    if (this.monCV.liens.length === 0) {
+      this.monCV.liens.push(new Liens('Linkedin', ''));
+      this.monCV.liens.push(new Liens('Github', ''));
+      this.monCV.liens.push(new Liens('Behance', ''));
+      this.monCV.liens.push(new Liens('website', ''));
     }
   }
 
@@ -106,25 +111,10 @@ export class Edit1Component implements OnInit {
     }
   }
   async addLiens(event: any, name: any) {
-    let lien = new Liens();
-    lien.nom = name;
-    lien.url = await event;
     const indexToUpdate = this.monCV.liens.findIndex((obj) => obj.nom === name);
     if (indexToUpdate !== -1) {
-      this.monCV.liens[indexToUpdate] = lien;
-    } else {
-      this.monCV.liens.push(lien);
-    }
-  }
-
-  submitForm() {
-    this.isSubmitted = true;
-    if (this.myForm.valid) {
-      console.log('c bon');
-
-      return true;
-    } else {
-      return false;
+      this.monCV.liens[indexToUpdate].nom = name;
+      this.monCV.liens[indexToUpdate].url = await event;
     }
   }
 

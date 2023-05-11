@@ -19,7 +19,14 @@
       class="row mt-2 g-3"
       *ngFor="let experience of monCV.experiencesPro; let i = index"
     >
-      <h6 class="my-2">Expercience n° {{ i + 1 }}</h6>
+      <h6 class="my-2">
+        Expercience n° {{ i + 1 }}
+        <i
+          (click)="supprimerForm(monCV.experiencesPro, i)"
+          class="fa fa-times text-bg-danger p-1 mx-5"
+        ></i>
+      </h6>
+
       <div class="col-md-6">
         <label class="form-label">Titre du poste</label>
         <input
@@ -87,8 +94,10 @@
       <hr />
     </form>
     <button
+      name="experience"
+      #buttonExperience
       type="button"
-      (click)="ajouterForm(experiences)"
+      (click)="ajouterForm(monCV.experiencesPro, buttonExperience.name)"
       class="btn btn-outline-primary mt-2"
     >
       Ajouter expérience
@@ -112,23 +121,35 @@
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedEducation"
       class="row mt-2 g-3"
-      *ngFor="let education of educations; let i = index"
+      *ngFor="let education of monCV.educations; let i = index"
     >
       <h6 class="my-2">
         Diplome n° {{ i + 1 }}
         <i
-          (click)="supprimerForm(educations, i)"
+          (click)="supprimerForm(monCV.educations, i)"
           class="fa fa-times text-bg-danger p-1 mx-5"
         ></i>
       </h6>
       <div class="col-md-6">
         <label class="form-label">Titre du diplome</label>
-        <input type="text" class="form-control" placeholder="poste" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="poste"
+          [(ngModel)]="education.diplome"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex.Licence d'art</small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Etablissement</label>
-        <input type="text" placeholder="entreprise" class="form-control" />
+        <input
+          type="text"
+          placeholder="entreprise"
+          class="form-control"
+          [(ngModel)]="education.etablissement"
+          [ngModelOptions]="{ standalone: true }"
+        />
         <small class="form-text text-muted">ex. Tekup University</small>
       </div>
       <div class="col-md-6">
@@ -138,16 +159,10 @@
             class="form-control"
             placeholder="yyyy-mm-dd"
             name="dp1"
-            ngbDatepicker
-            #d="ngbDatepicker"
+            type="date"
+            [(ngModel)]="education.dateDebut"
+            [ngModelOptions]="{ standalone: true }"
           />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
-            <i class="fas fa-calendar-days"></i>
-          </button>
         </div>
       </div>
 
@@ -158,26 +173,22 @@
             class="form-control"
             placeholder="yyyy-mm-dd"
             name="dp2"
-            ngbDatepicker
-            #d="ngbDatepicker"
+            type="date"
+            [(ngModel)]="education.dateFin"
+            [ngModelOptions]="{ standalone: true }"
           />
-          <button
-            class="btn btn-outline-secondary bi bi-calendar3"
-            (click)="d.toggle()"
-            type="button"
-          >
-            <i class="fas fa-calendar-days"></i>
-          </button>
         </div>
       </div>
 
       <div class="col-12">
-        <label class="form-label">Remarque</label>
+        <label class="form-label">Mention</label>
         <textarea
           type="text"
           rows="2"
           class="form-control"
-          placeholder="adresse"
+          placeholder="mention"
+          [(ngModel)]="education.mention"
+          [ngModelOptions]="{ standalone: true }"
         ></textarea>
         <small class="form-text text-muted"
           >ex.Participation aux actions commerciales</small
@@ -186,8 +197,10 @@
       <hr />
     </form>
     <button
+      name="educations"
+      #buttonEducation
       type="button"
-      (click)="ajouterForm(educations)"
+      (click)="ajouterForm(monCV.educations, buttonEducation.name)"
       class="btn btn-outline-primary mt-2"
     >
       Ajouter Formation
@@ -217,13 +230,12 @@
       <input
         class="form-control"
         type="text"
-        #inp
-        (keydown.enter)="addCompetences(inp.value)"
+        (keydown.enter)="addCompetences($event)"
         placeholder=""
       />
 
       <ul
-        *ngFor="let comp of tabbleauCompetences"
+        *ngFor="let comp of monCV.competences"
         class="list-group list-group-horizontal"
       >
         <li class="list-group-item">

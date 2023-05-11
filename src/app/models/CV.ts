@@ -7,6 +7,7 @@ export class CV {
   prenom: string;
   phone: string;
   email: string;
+  metier: string;
   urlImage: string;
   adresse: string;
   apropos: string;
@@ -18,7 +19,8 @@ export class CV {
   experiencesPro: ExperienceProfessionnelle[] = [];
   educations: Education[] = [];
   competences: string[] = [];
-  coleurTheme: string;
+  coleurThemeElement: string;
+  coleurThemeTitre: string;
   titreFontSize: string;
   texteFontSize: string;
   fontFamily: string;

@@ -131,17 +131,17 @@
       </div>
       <div class="resume_item resume_work">
         <div class="title">
-          <p class="bold">Work Experience</p>
+          <p class="bold">{{ cvService.monCV.nom }}</p>
+          <p class="regular">{{ cvService.monCV.metier }}</p>
         </div>
         <ul>
           <li>
-            <div class="date">2013 - 2015</div>
-            <div class="info">
-              <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum, voluptatibus!
-              </p>
+            <div class="icon">
+              <i class="fas fa-map-signs"></i>
+            </div>
+            <div class="data">
+              {{ cvService.monCV.adresse }}<br />
+              {{ cvService.monCV.nationalite }}
             </div>
           </li>
           <li>
@@ -153,6 +153,7 @@
                 Nostrum, voluptatibus!
               </p>
             </div>
+            <div class="data">+216 {{ cvService.monCV.phone }}</div>
           </li>
           <li>
             <div class="date">2017 - Present</div>
@@ -163,6 +164,27 @@
                 Nostrum, voluptatibus!
               </p>
             </div>
+            <div class="data">{{ cvService.monCV.email }}</div>
+          </li>
+          <li>
+            <div class="icon">
+              <i class="fab fa-weebly"></i>
+            </div>
+            <div class="data">{{ cvService.monCV.liens[3] }}</div>
+          </li>
+        </ul>
+      </div>
+      <div class="resume_item resume_skills">
+        <div class="title">
+          <p class="bold">skill's</p>
+        </div>
+        <ul>
+          <li *ngFor="let item of skills">
+            <div class="skill_name">{{ item.name }}</div>
+            <div class="skill_progress">
+              <span [ngStyle]="{ width: item.porcent }"></span>
+            </div>
+            <div class="skill_per">{{ item.porcent }}</div>
           </li>
         </ul>
       </div>
