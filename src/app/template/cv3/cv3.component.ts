@@ -20,33 +20,22 @@ export class Cv3Component implements OnInit {
   phone: number = 4445678;
   email: string = 'stephen@gmail.com';
   webSite: string = 'www.stephen.com';
-  skills = [
-    { name: 'CSS', porcent: '70%' },
-    { name: 'HTML', porcent: '10%' },
-    { name: 'SASS', porcent: '90%' },
-    { name: 'JS', porcent: '60%' },
-    { name: 'JQUERY', porcent: '50%' },
-  ];
-
-  selectedColor = '#563d7c';
-  selectedColorTitle = '#563d7c';
   constructor(private ref: ChangeDetectorRef, protected cvService: CVService) {}
   ngOnInit(): void {
     console.log(this.cvService.monCV);
-    this.name = this.cvService.monCV.nom;
     this.ref.detectChanges();
   }
-
-  updateColor() {
-    console.log('this', this.selectedColor);
-
-    document.documentElement.style.setProperty(
-      '--primarycolor',
-      this.selectedColor
-    );
-    document.documentElement.style.setProperty(
-      '--secondaryColor',
-      this.selectedColorTitle
-    );
+  affecterClass(st: any) {
+    switch (st) {
+      case 'website':
+        return 'fab fa-weebly';
+      case 'Linkedin':
+        return 'fab fa-linkedin';
+      case 'Behance':
+        return 'fab fa-behance';
+      case 'Github':
+        return 'fab fa-github';
+    }
+    return '';
   }
 }

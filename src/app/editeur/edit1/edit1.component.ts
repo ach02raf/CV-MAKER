@@ -45,7 +45,6 @@ export class Edit1Component implements OnInit {
         'http://localhost:4200/assets/image_placeholder.jpg'
       );
     }
-
     if (this.monCV.liens.length === 0) {
       this.monCV.liens.push(new Liens('Linkedin', ''));
       this.monCV.liens.push(new Liens('Github', ''));
