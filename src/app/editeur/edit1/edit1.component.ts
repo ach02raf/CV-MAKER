@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CV } from 'src/app/models/CV';
 import { Liens } from 'src/app/models/Liens';
 import { HttpClient } from '@angular/common/http';
@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-edit1',
   templateUrl: './edit1.component.html',
-  styleUrls: ['./edit1.component.sass'],
+  styleUrls: ['./edit1.component.scss'],
 })
 export class Edit1Component implements OnInit {
   @Input() monCV: CV;
@@ -14,6 +14,34 @@ export class Edit1Component implements OnInit {
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
   isCollapsedhobby = true;
+
+  name: string;
+  prenom: string;
+  email: string;
+  phone: string;
+  adresse: string;
+  aboutMe: string;
+  nationalite: string;
+  etatCivil: string;
+  dateNaissance: Date;
+
+  nameError: string;
+  prenomError: string;
+  emailError: string;
+  phoneError: string;
+  adresseError: string;
+  nationaliteError: string;
+  etatCivilError: string;
+  dateNaissanceError: string;
+  imageUrl: string = '../../../assets/image_placeholder.jpg';
+
+  tabbleauHobby = [];
+  Hobby: any[] = [];
+  inputValueHobby: string;
+
+  ajouterForm(tab) {
+    tab.push({});
+  }
   varnull: string = '';
   varnull1: string = '';
   varnull2: string = '';
