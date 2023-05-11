@@ -1,0 +1,27 @@
+.step {
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  padding-top: 25px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.step:hover {
+  background-color: #e9ecef;
+}
+
+.step i {
+  color: #007bff;
+}
+
+.step h4 {
+  color: #333333;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.step p {
+  color: #666666;
+}
