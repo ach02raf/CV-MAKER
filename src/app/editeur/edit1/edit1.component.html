@@ -13,9 +13,11 @@
       Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
     </p>
     <form
+      [formGroup]="myForm"
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedcordonnee"
       class="row mt-2 g-3"
+      novalidate
     >
       <div class="col-12">
         <label for="fileInput">
@@ -31,15 +33,28 @@
       <div class="col-md-6">
         <label class="form-label">Nom</label>
         <input
-          type="text"
-          class="form-control"
-          placeholder="name"
           [(ngModel)]="monCV.nom"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['nom'].invalid && myForm.controls['nom'].touched,
+            'is-valid':
+              myForm.controls['nom'].valid && myForm.controls['nom'].touched
+          }"
+          type="text"
+          placeholder="name"
+          formControlName="nom"
+          (blur)="myForm.controls['nom'].markAsTouched()"
         />
 
-        /> />
-        <small class="form-text text-muted">ex.wanen</small>
+        <small
+          class="form-text text-muted"
+          *ngIf="
+            myForm.controls['nom'].invalid && myForm.controls['nom'].touched
+          "
+        >
+          Le nom est requis.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Prenom</label>

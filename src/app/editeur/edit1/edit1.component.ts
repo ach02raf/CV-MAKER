@@ -2,6 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CV } from 'src/app/models/CV';
 import { Liens } from 'src/app/models/Liens';
 import { HttpClient } from '@angular/common/http';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-edit1',
@@ -14,7 +20,7 @@ export class Edit1Component implements OnInit {
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
   isCollapsedhobby = true;
-
+  isSubmitted = false;
   name: string;
   prenom: string;
   email: string;
@@ -35,6 +41,8 @@ export class Edit1Component implements OnInit {
   dateNaissanceError: string;
   imageUrl: string = '../../../assets/image_placeholder.jpg';
 
+  myForm: FormGroup;
+
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
@@ -46,8 +54,16 @@ export class Edit1Component implements OnInit {
   varnull1: string = '';
   varnull2: string = '';
   varnull3: string = '';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
+
+  initializeForm() {
+    this.myForm = new FormGroup({
+      nom: new FormControl('', Validators.required),
+    });
+  }
+
   ngOnInit(): void {
+    this.initializeForm();
     if (!this.monCV.urlImage) {
       this.convertImageToBuffer(
         'http://localhost:4200/assets/image_placeholder.jpg'
@@ -100,6 +116,18 @@ export class Edit1Component implements OnInit {
       this.monCV.liens.push(lien);
     }
   }
+
+  submitForm() {
+    this.isSubmitted = true;
+    if (this.myForm.valid) {
+      console.log('c bon');
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   onFileSelected(event): void {
     const file = event.target.files[0]; // get the selected file
     const reader = new FileReader(); // create a new FileReader object

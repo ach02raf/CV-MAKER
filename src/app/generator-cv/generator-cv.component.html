@@ -5,8 +5,8 @@
     </div>
 
     <div class="col sticky-top">
-      <div class="p-5" style="background-color: #e6e6e6">
-        <h3 class="mt-2 text-center text-primary">Modéle choisi</h3>
+      <div class="px-5" style="background-color: #e6e6e6">
+        <!-- <h3 class="text-center text-primary">Modéle choisi</h3> -->
         <div class="row">
           <div class="col">
             <button
@@ -51,9 +51,9 @@
                       />
                     </button>
                     <ng-template ngbNavContent>
-                      <p>
+                      <div>
                         <app-cv3></app-cv3>
-                      </p>
+                      </div>
                     </ng-template>
                   </li>
                   <li [ngbNavItem]="3">
@@ -72,22 +72,22 @@
                       </p>
                     </ng-template>
                   </li>
-                  <!-- <li [ngbNavItem]="4">
+                  <li [ngbNavItem]="4">
                     <button ngbNavLink>
                       <img
                         class="mx-4 border border-secondary"
                         style="width: 100px"
-                        src="../../assets/cv7.PNG"
+                        src=""
                         alt=""
                         srcset=""
                       />
                     </button>
                     <ng-template ngbNavContent>
-                      <p>
+                      <div style="width: 70%; height: auto">
                         <app-cv7></app-cv7>
-                      </p>
+                      </div>
                     </ng-template>
-                  </li> -->
+                  </li>
                 </ul>
 
                 <div [ngbNavOutlet]="nav" class="mt-2"></div>
@@ -99,6 +99,7 @@
             <app-cv1 *ngIf="active === 1"></app-cv1>
             <app-cv3 *ngIf="active === 2"></app-cv3>
             <app-cv4 *ngIf="active === 3"></app-cv4>
+            <app-cv7 *ngIf="active === 4"></app-cv7>
           </div>
         </div>
       </div>
