@@ -55,6 +55,7 @@ import { RegisterComponent } from './register/register.component';
     NgbModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -13,9 +13,11 @@
       Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
     </p>
     <form
+      [formGroup]="myForm"
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedcordonnee"
       class="row mt-2 g-3"
+      novalidate
     >
       <div class="col-12">
         <label for="fileInput">
@@ -31,48 +33,132 @@
       <div class="col-md-6">
         <label class="form-label">Nom</label>
         <input
-          type="text"
-          class="form-control"
-          placeholder="name"
           [(ngModel)]="monCV.nom"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['nom'].invalid && myForm.controls['nom'].touched,
+            'is-valid':
+              myForm.controls['nom'].valid && myForm.controls['nom'].touched
+          }"
+          type="text"
+          placeholder="name"
+          formControlName="nom"
+          (blur)="myForm.controls['nom'].markAsTouched()"
         />
 
-        /> />
-        <small class="form-text text-muted">ex.wanen</small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['nom'].invalid && myForm.controls['nom'].touched
+          "
+        >
+          Le nom est requis.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Prenom</label>
         <input
           type="text"
           placeholder="prenom"
-          class="form-control"
           [(ngModel)]="monCV.prenom"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['prenom'].invalid &&
+              myForm.controls['prenom'].touched,
+            'is-valid':
+              myForm.controls['prenom'].valid &&
+              myForm.controls['prenom'].touched
+          }"
+          type="text"
+          placeholder="name"
+          formControlName="prenom"
+          (blur)="myForm.controls['prenom'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.yosra</small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['prenom'].invalid &&
+            myForm.controls['prenom'].touched
+          "
+        >
+          Le prenom est requis.
+        </small>
       </div>
       <div class="col-12">
         <label class="form-label">Email</label>
         <input
           type="email"
-          class="form-control"
           placeholder="email"
           [(ngModel)]="monCV.email"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['email'].invalid &&
+              myForm.controls['email'].touched,
+            'is-valid':
+              myForm.controls['email'].valid && myForm.controls['email'].touched
+          }"
+          type="text"
+          placeholder="name"
+          formControlName="email"
+          (blur)="myForm.controls['email'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.yosra@gmail.com</small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['email'].errors?.['required'] &&
+            myForm.controls['email'].touched
+          "
+        >
+          Le email est requis.
+        </small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['email'].errors?.['email'] &&
+            myForm.controls['email'].touched
+          "
+        >
+          Le format de l'email est invalide.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Phone</label>
         <input
           type="number"
-          class="form-control"
           placeholder="phone"
           [(ngModel)]="monCV.phone"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['phone'].invalid &&
+              myForm.controls['phone'].touched,
+            'is-valid':
+              myForm.controls['phone'].valid && myForm.controls['phone'].touched
+          }"
+          type="text"
+          [maxLength]="8"
+          placeholder="name"
+          formControlName="phone"
+          (blur)="myForm.controls['phone'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.+216 12 345 675 </small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['phone'].invalid && myForm.controls['phone'].touched
+          "
+        >
+          <ng-container *ngIf="myForm.controls['phone'].errors?.['required']">
+            Le phone est requis.
+          </ng-container>
+          <ng-container *ngIf="myForm.controls['phone'].errors?.['pattern']">
+            Le phone doit contenir uniquement 8 chiffres.
+          </ng-container>
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Metier</label>
@@ -81,32 +167,70 @@
           class="form-control"
           placeholder="metier"
           [(ngModel)]="monCV.metier"
-          [ngModelOptions]="{ standalone: true }"
+          formControlName="metier"
         />
         <small class="form-text text-muted">ex.+216 12 345 675 </small>
       </div>
-      <div class="col-md-6">
+      <div class="col-12">
         <label class="form-label">Addresse</label>
         <input
           type="text"
-          class="form-control"
           placeholder="adresse"
           [(ngModel)]="monCV.adresse"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['adresse'].invalid &&
+              myForm.controls['adresse'].touched,
+            'is-valid':
+              myForm.controls['adresse'].valid &&
+              myForm.controls['adresse'].touched
+          }"
+          type="text"
+          placeholder="name"
+          formControlName="adresse"
+          (blur)="myForm.controls['adresse'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.21 Street, tunis</small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['adresse'].invalid &&
+            myForm.controls['adresse'].touched
+          "
+        >
+          Le adresse est requis.
+        </small>
       </div>
       <div class="col-12">
         <label class="form-label">About me</label>
         <textarea
           type="text"
-          class="form-control"
-          rows="4"
+          rows="2"
           placeholder="About me"
           [(ngModel)]="monCV.apropos"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['about'].invalid &&
+              myForm.controls['about'].touched,
+            'is-valid':
+              myForm.controls['about'].valid && myForm.controls['about'].touched
+          }"
+          type="text"
+          placeholder="about me "
+          formControlName="about"
+          (blur)="myForm.controls['about'].markAsTouched()"
         >
         </textarea>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['about'].invalid && myForm.controls['about'].touched
+          "
+        >
+          Le about est requis.
+        </small>
       </div>
 
       <button
@@ -121,26 +245,72 @@
       <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
         <div class="row">
           <div class="col-md-6">
-            <label for="inputAddress" class="form-label">Nationalité</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="nationalité"
+            <label for="nationalite" class="form-label">Nationalité</label>
+            <select
+              id="nationalite"
+              placeholder="Nationalité"
+              class="form-select"
+              formControlName="nationalite"
               [(ngModel)]="monCV.nationalite"
-              [ngModelOptions]="{ standalone: true }"
-            />
-            <small class="form-text text-muted">ex.Tunisienne </small>
+              [ngClass]="{
+                'is-invalid':
+                  myForm.controls['nationalite'].invalid &&
+                  myForm.controls['nationalite'].touched,
+                'is-valid':
+                  myForm.controls['nationalite'].valid &&
+                  myForm.controls['nationalite'].touched
+              }"
+            >
+              <option value="" disabled selected>Select Nationality</option>
+              <option
+                *ngFor="let nationality of nationalities"
+                [value]="nationality"
+              >
+                {{ nationality }}
+              </option>
+            </select>
+            <small
+              class="form-text text-muted"
+              *ngIf="
+                myForm.controls['nationalite'].invalid &&
+                myForm.controls['nationalite'].touched
+              "
+            >
+              Nationality is required.
+            </small>
           </div>
+
           <div class="col-md-6">
-            <label class="form-label">Etat Civil</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="etat civil"
+            <label for="etatCivil" class="form-label">Etat civil</label>
+            <select
+              id="etatCivil"
+              placeholder="Etat civil"
+              class="form-select"
+              formControlName="etatCivil"
               [(ngModel)]="monCV.etatCivil"
-              [ngModelOptions]="{ standalone: true }"
-            />
-            <small class="form-text text-muted">ex.marié(e)</small>
+              [ngClass]="{
+                'is-invalid':
+                  myForm.controls['etatCivil'].invalid &&
+                  myForm.controls['etatCivil'].touched,
+                'is-valid':
+                  myForm.controls['etatCivil'].valid &&
+                  myForm.controls['etatCivil'].touched
+              }"
+            >
+              <option value="" disabled selected>Select etat</option>
+              <option *ngFor="let etat of etatCivils" [value]="etat">
+                {{ etat }}
+              </option>
+            </select>
+            <small
+              class="form-text text-danger"
+              *ngIf="
+                myForm.controls['etatCivil'].invalid &&
+                myForm.controls['etatCivil'].touched
+              "
+            >
+              etat is required.
+            </small>
           </div>
 
           <div class="col-md-6">
@@ -174,6 +344,7 @@
       Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
     </p>
     <form
+      [formGroup]="myForm"
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedliens"
       class="row mt-2 g-3"
@@ -185,11 +356,31 @@
           class="form-control"
           name="Linkedin"
           [(ngModel)]="monCV.liens[0]['url']"
-          [ngModelOptions]="{ standalone: true }"
-          (blur)="addLiens(inputLinkedin.value, inputLinkedin.name)"
           #inputLinkedin
+          (blur)="
+            addLiens(inputLinkedin.value, inputLinkedin.name) &&
+              myForm.controls['linkedin'].markAsTouched()
+          "
+          formControlName="linkedin"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['linkedin'].invalid &&
+              myForm.controls['linkedin'].touched,
+            'is-valid':
+              myForm.controls['linkedin'].valid &&
+              myForm.controls['linkedin'].touched
+          }"
         />
-        <small class="form-text text-muted">ex.linkedin.com/yosrawanen</small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['linkedin'].invalid &&
+            myForm.controls['linkedin'].touched
+          "
+        >
+          Le linkedin est requis.
+        </small>
       </div>
       <div class="col-12">
         <label class="form-label">Github</label>
@@ -199,11 +390,32 @@
           class="form-control"
           name="Github"
           [(ngModel)]="monCV.liens[1]['url']"
-          [ngModelOptions]="{ standalone: true }"
-          (blur)="addLiens(inputGithub.value, inputGithub.name)"
+          formControlName="github"
           #inputGithub
+          (blur)="
+            addLiens(inputGithub.value, inputGithub.name) &&
+              myForm.controls['github'].markAsTouched()
+          "
+          formControlName="github"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['github'].invalid &&
+              myForm.controls['github'].touched,
+            'is-valid':
+              myForm.controls['github'].valid &&
+              myForm.controls['github'].touched
+          }"
         />
-        <small class="form-text text-muted">ex.yosra-wan</small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['github'].invalid &&
+            myForm.controls['github'].touched
+          "
+        >
+          Le github est requis.
+        </small>
       </div>
       <div class="col-12">
         <label class="form-label">Behance</label>
@@ -212,11 +424,32 @@
           class="form-control"
           name="Behance"
           [(ngModel)]="monCV.liens[2]['url']"
-          [ngModelOptions]="{ standalone: true }"
-          (blur)="addLiens(inputBehance.value, inputBehance.name)"
+          formControlName="behance"
           #inputBehance
+          (blur)="
+            addLiens(inputBehance.value, inputBehance.name) &&
+              myForm.controls['behance'].markAsTouched()
+          "
+          formControlName="behance"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['behance'].invalid &&
+              myForm.controls['behance'].touched,
+            'is-valid':
+              myForm.controls['behance'].valid &&
+              myForm.controls['behance'].touched
+          }"
         />
-        <small class="form-text text-muted">ex.yosra wanen</small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['behance'].invalid &&
+            myForm.controls['behance'].touched
+          "
+        >
+          Le behance est requis.
+        </small>
       </div>
       <div class="col-12">
         <label class="form-label">personal website</label>
@@ -225,7 +458,7 @@
           class="form-control"
           name="website"
           [(ngModel)]="monCV.liens[3]['url']"
-          [ngModelOptions]="{ standalone: true }"
+          formControlName="website"
           (blur)="addLiens(inputwebsite.value, inputwebsite.name)"
           #inputwebsite
         />

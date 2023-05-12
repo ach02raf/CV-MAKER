@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CV } from 'src/app/models/CV';
 import { competence } from 'src/app/models/Competence';
 import { Education } from 'src/app/models/Education';
@@ -24,8 +25,27 @@ export class Edit2Component implements OnInit {
   educations: any[] = [];
   competences: any[] = [];
   inputValueCompetences: string;
+
+  myForm: FormGroup;
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.myForm = new FormGroup({
+      titrePoste: new FormControl('', Validators.required),
+      entreprise: new FormControl('', Validators.required),
+      dateDeb: new FormControl('', Validators.required),
+      dateFin: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      diplome: new FormControl('', Validators.required),
+      etablissement: new FormControl('', Validators.required),
+      dateDebEdu: new FormControl('', Validators.required),
+      dateFinEdu: new FormControl('', Validators.required),
+      mention: new FormControl('', Validators.required),
+    });
+  }
 
   async ajouterForm(tab: any, source: any) {
     if (source === 'experience') {
@@ -36,6 +56,7 @@ export class Edit2Component implements OnInit {
       await tab.push(edu);
     }
   }
+
   supprimerForm(tab: any[], index: any) {
     tab.splice(index, 1);
   }

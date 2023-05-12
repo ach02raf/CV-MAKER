@@ -14,6 +14,7 @@
     </p>
 
     <form
+      [formGroup]="myForm"
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedExperience"
       class="row mt-2 g-3"
@@ -34,9 +35,29 @@
           class="form-control"
           placeholder="poste"
           [(ngModel)]="experience.titrePoste"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['titrePoste'].invalid &&
+              myForm.controls['titrePoste'].touched,
+            'is-valid':
+              myForm.controls['titrePoste'].valid &&
+              myForm.controls['titrePoste'].touched
+          }"
+          type="text"
+          formControlName="titrePoste"
+          (blur)="myForm.controls['titrePoste'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.Ingénieur</small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['titrePoste'].invalid &&
+            myForm.controls['titrePoste'].touched
+          "
+        >
+          Le titre Poste est requis.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Entreprise</label>
@@ -45,9 +66,29 @@
           placeholder="entreprise"
           class="form-control"
           [(ngModel)]="experience.entreprise"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['entreprise'].invalid &&
+              myForm.controls['entreprise'].touched,
+            'is-valid':
+              myForm.controls['entreprise'].valid &&
+              myForm.controls['entreprise'].touched
+          }"
+          type="text"
+          formControlName="entreprise"
+          (blur)="myForm.controls['entreprise'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.Tekup</small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['entreprise'].invalid &&
+            myForm.controls['entreprise'].touched
+          "
+        >
+          Le titre Poste est requis.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Depuis</label>
@@ -85,11 +126,29 @@
           class="form-control"
           placeholder="adresse"
           [(ngModel)]="experience.desc"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['description'].invalid &&
+              myForm.controls['description'].touched,
+            'is-valid':
+              myForm.controls['description'].valid &&
+              myForm.controls['description'].touched
+          }"
+          type="text"
+          formControlName="description"
+          (blur)="myForm.controls['description'].markAsTouched()"
         ></textarea>
-        <small class="form-text text-muted"
-          >ex.Participation aux actions commerciales</small
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['description'].invalid &&
+            myForm.controls['description'].touched
+          "
         >
+          Le titre Poste est requis.
+        </small>
       </div>
       <hr />
     </form>
@@ -118,6 +177,7 @@
     </p>
 
     <form
+      [formGroup]="myForm"
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedEducation"
       class="row mt-2 g-3"
@@ -137,9 +197,29 @@
           class="form-control"
           placeholder="poste"
           [(ngModel)]="education.diplome"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['diplome'].invalid &&
+              myForm.controls['diplome'].touched,
+            'is-valid':
+              myForm.controls['diplome'].valid &&
+              myForm.controls['diplome'].touched
+          }"
+          type="text"
+          formControlName="diplome"
+          (blur)="myForm.controls['diplome'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex.Licence d'art</small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['diplome'].invalid &&
+            myForm.controls['diplome'].touched
+          "
+        >
+          Le titre Poste est requis.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Etablissement</label>
@@ -148,9 +228,29 @@
           placeholder="entreprise"
           class="form-control"
           [(ngModel)]="education.etablissement"
-          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              myForm.controls['etablissement'].invalid &&
+              myForm.controls['etablissement'].touched,
+            'is-valid':
+              myForm.controls['etablissement'].valid &&
+              myForm.controls['etablissement'].touched
+          }"
+          type="text"
+          formControlName="etablissement"
+          (blur)="myForm.controls['etablissement'].markAsTouched()"
         />
-        <small class="form-text text-muted">ex. Tekup University</small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            myForm.controls['etablissement'].invalid &&
+            myForm.controls['etablissement'].touched
+          "
+        >
+          Le titre Poste est requis.
+        </small>
       </div>
       <div class="col-md-6">
         <label class="form-label">Depuis</label>
@@ -163,6 +263,18 @@
             [(ngModel)]="education.dateDebut"
             [ngModelOptions]="{ standalone: true }"
           />
+          <!-- [ngClass]="{
+              'form-control': true,
+              'is-invalid':
+                myForm.controls['dateDebEdu'].invalid &&
+                myForm.controls['dateDebEdu'].touched,
+              'is-valid':
+                myForm.controls['dateDebEdu'].valid &&
+                myForm.controls['dateDebEdu'].touched
+            }"
+            type="text"
+            formControlName="dateDebEdu"
+            (blur)="myForm.controls['dateDebEdu'].markAsTouched()" -->
         </div>
       </div>
 
@@ -172,7 +284,7 @@
           <input
             class="form-control"
             placeholder="yyyy-mm-dd"
-            name="dp2"
+            name="dp"
             type="date"
             [(ngModel)]="education.dateFin"
             [ngModelOptions]="{ standalone: true }"
@@ -189,10 +301,8 @@
           placeholder="mention"
           [(ngModel)]="education.mention"
           [ngModelOptions]="{ standalone: true }"
-        ></textarea>
-        <small class="form-text text-muted"
-          >ex.Participation aux actions commerciales</small
-        >
+        ></textarea
+        ><br />
       </div>
       <hr />
     </form>
