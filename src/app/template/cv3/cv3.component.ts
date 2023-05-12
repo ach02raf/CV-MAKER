@@ -2,9 +2,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { CVService } from 'src/app/services/cv.service';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-cv3',
@@ -13,6 +17,7 @@ import { CVService } from 'src/app/services/cv.service';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class Cv3Component implements OnInit {
+  @ViewChild('content', { static: false }) content: ElementRef;
   name: string = 'stephen colbert';
   job: string = 'Designer';
   address: string = '21 Street, Texas';
@@ -37,5 +42,18 @@ export class Cv3Component implements OnInit {
         return 'fab fa-github';
     }
     return '';
+  }
+  generatePdf() {
+    const doc = new jsPDF();
+    const htmlContent = this.content.nativeElement;
+
+    html2canvas(htmlContent).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      doc.save('document.pdf');
+    });
   }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 import { CVService } from 'src/app/services/cv.service';
 
 @Component({
@@ -7,6 +9,7 @@ import { CVService } from 'src/app/services/cv.service';
   styleUrls: ['./cv1.component.scss'],
 })
 export class Cv1Component implements OnInit {
+  @ViewChild('content', { static: false }) content: ElementRef;
   ngOnInit(): void {
     console.log('this', this.selectedColor);
   }
@@ -32,5 +35,19 @@ export class Cv1Component implements OnInit {
     // const styleElement = document.createElement('style');
     // styleElement.innerHTML = `:root { --color: ${this.selectedColor}; }`;
     // document.head.appendChild(styleElement);
+  }
+
+  generatePdf() {
+    const doc = new jsPDF();
+    const htmlContent = this.content.nativeElement;
+
+    html2canvas(htmlContent).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      doc.save('document.pdf');
+    });
   }
 }
