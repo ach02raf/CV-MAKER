@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {PortfolioService} from './../portfolio.service';
+import { ExperienceProfessionnelle } from 'src/app/models/ExperienceProfessionnelle';
+import { Education } from 'src/app/models/Education';
+
 @Component({
   selector: 'app-generator-portfoli',
   templateUrl: './generator-portfoli.component.html',
@@ -25,7 +28,28 @@ export class GeneratorPortfoliComponent implements OnInit {
 
   experiences: any[] = [];
   educations: any[] = [];
-  monPortfolio: { Skills: string[] } = { Skills: [] };
+  monPortfolio: {
+    experiencesPro: {
+      titrePoste: string,
+      entreprise: string,
+      dateDebut: string,
+      dateFin: string,
+      desc: string
+    }[],
+    educations: {
+      diplome: string,
+      etablissement: string,
+      dateDebut: string,
+      dateFin: string,
+      mention: string
+    }[],
+    skills: string[]
+  } = {
+    experiencesPro: [],
+    educations: [],
+    skills: []
+  };
+
   isCollapsedaboutme = true;
 
   constructor(private formBuilder: FormBuilder , private router: Router , private portfolioService :PortfolioService) {}
@@ -67,24 +91,24 @@ export class GeneratorPortfoliComponent implements OnInit {
   }
 
   addSkills(input: any) {
-    const foundObj = this.monPortfolio.Skills.find(
+    const foundObj = this.monPortfolio.skills.find(
       (obj) => obj === input.target.value
     );
     if (foundObj) {
       input.target.value = '';
     } else {
       event.preventDefault(); // prevent the default form submission behavior
-      if (this.monPortfolio.Skills.indexOf(input.target.value) == -1) {
-        this.monPortfolio.Skills.push(input.target.value);
+      if (this.monPortfolio.skills.indexOf(input.target.value) == -1) {
+        this.monPortfolio.skills.push(input.target.value);
        }
       input.target.value = '';
     }
   }
 
   removeSkills(hash: string) {
-    const index = this.monPortfolio.Skills.indexOf(hash);
+    const index = this.monPortfolio.skills.indexOf(hash);
     if (index !== -1) {
-      this.monPortfolio.Skills.splice(index, 1);
+      this.monPortfolio.skills.splice(index, 1);
     }
   }
 
@@ -120,13 +144,20 @@ export class GeneratorPortfoliComponent implements OnInit {
   }
 
 
-  ajouterForm(tab: any) {
-    tab.push({});
+  async ajouterForm(tab: any, source: any) {
+    if (source === 'experience') {
+      let exp = new ExperienceProfessionnelle();
+      await tab.push(exp);
+    } else {
+      let edu = new Education();
+      await tab.push(edu);
+    }
+  }
+  supprimerForm(tab: any[], index: any) {
+    tab.splice(index, 1);
   }
 
-
   submitNext(){
-    console.log("next", this.form.value );
 
     const links = [];
 
@@ -145,7 +176,6 @@ export class GeneratorPortfoliComponent implements OnInit {
     if (this.form.value.field_4 && this.form.value.selected_4) {
       links.push({ UrlName: this.form.value.selected_4, value: this.form.value.field_4 });
     }
-    console.log("jj", this.form.value );
 
     for (let i = 0; i < this.fields2.length; i++) {
       const project = {
@@ -156,9 +186,6 @@ export class GeneratorPortfoliComponent implements OnInit {
       };
       this.projectsList.push(project);
     }
-    console.log('====================================');
-    console.log("Skills" , this.monPortfolio.Skills);
-    console.log('====================================');
     const outputObject = {
       name: this.form.value.name,
       email: this.form.value.email,
@@ -166,15 +193,15 @@ export class GeneratorPortfoliComponent implements OnInit {
       tel: this.form.value.tel,
       bio: this.form.value.bio,
       Links: links ,
-      Skills : this.monPortfolio.Skills,
+      Skills : this.monPortfolio.skills,
       parg1 : this.form.value.parg1 ,
       parg2: this.form.value.parg2,
-      project : this.projectsList
+      project : this.projectsList ,
+      educations : this.monPortfolio.educations ,
+      experiences : this.monPortfolio.experiencesPro ,
     };
 
-    console.log('====================================');
     console.log("outputObject" , outputObject );
-    console.log('====================================');
      this.portfolioService.setData(outputObject);
     this.router.navigate(['/portfolio/portfolioreviw']);
   }

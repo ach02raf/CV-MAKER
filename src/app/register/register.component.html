@@ -12,10 +12,9 @@
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="mb-4">
-              <br /><br />
               <br /><br /><br /><br />
 
-              <h3>Se connecter</h3>
+              <h3>Inscrivez-vous !</h3>
               <p class="mb-4">
                 Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
                 consectetur adipisicing.
@@ -23,7 +22,23 @@
             </div>
             <form action="#" method="post">
               <div class="form-group first">
+                <label for="username">Prénom</label>
+                <input type="text" class="form-control" id="username" />
+              </div>
+              <div class="form-group first">
+                <label for="username">Nom</label>
+                <input type="text" class="form-control" id="username" />
+              </div>
+              <div class="form-group first">
                 <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" />
+              </div>
+              <div class="form-group first">
+                <label for="username">Email</label>
+                <input type="text" class="form-control" id="username" />
+              </div>
+              <div class="form-group first">
+                <label for="username">Profession</label>
                 <input type="text" class="form-control" id="username" />
               </div>
               <div class="form-group last mb-4">
@@ -38,8 +53,8 @@
               />
 
               <span class="d-block text-left my-4 text-muted">
-                Vous n'avez pas de compte ?
-                <a [routerLink]="['/inscription']">Inscrive-vous !</a>
+                Vous ave déjà un compte ?
+                <a [routerLink]="['/login']">connectez-vous !</a>
               </span>
             </form>
             <br /><br />

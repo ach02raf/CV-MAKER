@@ -13,15 +13,18 @@
         </div>
       </div>
 <div class="homeherosocials">
-      <div class="homeherosocial" *ngIf="data['socials']">
-       <!--  <a *ngFor="let social of data['socials']" [href]="social[getSocialKey(social)]" class="homeherosocialiconlink">
-          <ng-container [ngSwitch]="getSocialKey(social)">
-            <i *ngSwitchCase="'Linkedin'" class="fab fa-linkedin-in"></i>
-            <i *ngSwitchCase="'instagram'" class="fab fa-instagram"></i>
-            <i *ngSwitchCase="'twitter'" class="fab fa-twitter"></i>
-            <i *ngSwitchCase="'gitHub'" class="fab fa-github"></i>
-          </ng-container>
-        </a> -->
+      <div class="homeherosocial" >
+        <div class="social-links">
+          <a *ngFor="let link of data.Links" [href]="link.value">
+            <i [ngSwitch]="link.UrlName" class="fab" [ngClass]="{
+              'fa-linkedin-in': link.UrlName === 'Linkedin',
+              'fa-instagram': link.UrlName === 'Instagram',
+              'fa-twitter': link.UrlName === 'Twitter',
+              'fa-github': link.UrlName === 'GitHub'
+            }"></i>
+          </a>
+        </div>
+
       </div>
     </div>
 
@@ -53,7 +56,7 @@
             >
           </div>
 
-          <div class="about__content-skills" *ngIf="data['Skills'].length">
+          <div class="about__content-skills" *ngIf="data['Skills']">
             <h3 class="about__content-title">My Skills</h3>
             <div class="skills">
               <div class="skills__skill"  *ngFor="let skill of data['Skills']" >{{skill}}</div>
@@ -103,30 +106,40 @@
       </div>
     </section>
 
-   <section>
-    <p>
-      <br/>
-      <button type="button"
-          class="btn btn-success"
-          (click)="collapse.toggle()"
-          [attr.aria-expanded]="!gfg"
-        aria-controls="collapseExample">
-        Click to collapse
-      </button>
-      </p>
 
-      <div #collapse="ngbCollapse"
-        [(ngbCollapse)]="gfg">
-      <div class="card">
-        <div class="card-body">
-        Angular10 ng bootstrap
+
+
+   <div class="container" *ngIf="data.experiences" >
+    <span class="heading-sec__main">My Experiences</span>
+    <div class="row">
+      <div class="col-sm-6"  *ngFor="let experience of data.experiences">
+        <div class="card"  style="margin: 20px;" >
+          <div class="card-body" >
+            <h5 class="card-title"> {{ experience.titrePoste }} at {{ experience.entreprise }}</h5>
+            <p class="card-text"><strong>Duration:</strong> {{ experience.dateDebut }} - {{ experience.dateFin }}</p>
+                <p>{{ experience.desc }}</p>
+          </div>
         </div>
       </div>
+
+    </div>
+   </div>
+
+   <div class="container" *ngIf="data.educations" >
+    <span class="heading-sec__main">My Educations</span>
+
+    <div class="row"  style="margin: 20px;" *ngFor="let edu of data.educations ">
+      <div class="col-sm-6"   >
+        <div class="card"  >
+          <div class="card-body" >
+            <h5 class="card-title"> {{ edu.diplome }} at {{ edu.etablissement  }}</h5>
+                <p>{{ edu.mention }}</p>
+          </div>
+        </div>
       </div>
 
-   </section>
-
-
+    </div>
+   </div>
     <footer class="main-footer">
       <div class="main-container">
         <div class="main-footer__upper">
@@ -135,61 +148,23 @@
               <span>Social</span>
             </h2>
             <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="../../../assets/png/linkedin-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="../../../assets/png/github-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="../../../assets/png/twitter-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="../../../assets/png/yt-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon main-footer__icon--mr-none"
-                  src="../../../assets/png/insta-ico.png"
-                  alt="icon"
-                />
+
+              <a target="_blank" rel="noreferrer"  *ngFor="let link of data.Links" [href]="link.value">
+                <i [ngSwitch]="link.UrlName" class="fab" [ngClass]="{
+                  'fa-linkedin-in': link.UrlName === 'Linkedin',
+                  'fa-instagram': link.UrlName === 'Instagram',
+                  'fa-twitter': link.UrlName === 'Twitter',
+                  'fa-github': link.UrlName === 'GitHub'
+                }"></i>
               </a>
             </div>
           </div>
-          <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">John Doe</h4>
-            <p class="main-footer__short-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit facilis
-              tempora explicabo quae quod deserunt
-            </p>
-          </div>
+
         </div>
 
         <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
-        <div class="main-footer__lower">
-          &copy; Copyright 2021. Made by
-          <a rel="noreferrer" target="_blank" href="https://rammaheshwari.com"
-            >Ram Maheshwari</a
-          >
-        </div>
+
       </div>
     </footer>
-
-    <script src="./index.js"></script>
+ 
 

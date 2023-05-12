@@ -1,5 +1,5 @@
 <!-- personal-info.component.html -->
-<div class="my-3 p-3">
+<div class="overflowcont my-3 p-3">
   <div class="card p-4">
     <h5
       class="card-title"
@@ -19,7 +19,7 @@
     >
       <div class="col-12">
         <label for="fileInput">
-          <img class="w-50 mt-2 text-center border" [src]="imageUrl" />
+          <img class="w-50 mt-2 text-center border" [src]="monCV.urlImage" />
         </label>
         <input
           id="fileInput"
@@ -70,6 +70,17 @@
           class="form-control"
           placeholder="phone"
           [(ngModel)]="monCV.phone"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.+216 12 345 675 </small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Phone</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="metier"
+          [(ngModel)]="monCV.metier"
           [ngModelOptions]="{ standalone: true }"
         />
         <small class="form-text text-muted">ex.+216 12 345 675 </small>
@@ -173,6 +184,8 @@
           type="text"
           class="form-control"
           name="Linkedin"
+          [(ngModel)]="monCV.liens[0]['url']"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputLinkedin.value, inputLinkedin.name)"
           #inputLinkedin
         />
@@ -185,6 +198,8 @@
           placeholder="prenom"
           class="form-control"
           name="Github"
+          [(ngModel)]="monCV.liens[1]['url']"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputGithub.value, inputGithub.name)"
           #inputGithub
         />
@@ -196,6 +211,8 @@
           type="text"
           class="form-control"
           name="Behance"
+          [(ngModel)]="monCV.liens[2]['url']"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputBehance.value, inputBehance.name)"
           #inputBehance
         />
@@ -207,6 +224,8 @@
           type="text"
           class="form-control"
           name="website"
+          [(ngModel)]="monCV.liens[3]['url']"
+          [ngModelOptions]="{ standalone: true }"
           (blur)="addLiens(inputwebsite.value, inputwebsite.name)"
           #inputwebsite
         />

@@ -1,5 +1,7 @@
 import { Component, OnInit , Input  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ExperienceProfessionnelle } from 'src/app/models/ExperienceProfessionnelle';
+
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
@@ -12,6 +14,8 @@ export class Portfolio1Component implements OnInit {
   @Input() data: any;
   ngOnInit(): void {
     // Initialization logic here
+
+   
   }
    gfg = true;
 

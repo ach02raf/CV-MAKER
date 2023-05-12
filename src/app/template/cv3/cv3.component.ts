@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { CVService } from 'src/app/services/cv.service';
 
 @Component({
   selector: 'app-cv3',
   templateUrl: './cv3.component.html',
   styleUrls: ['./cv3.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class Cv3Component {
+export class Cv3Component implements OnInit {
   name: string = 'stephen colbert';
   job: string = 'Designer';
   address: string = '21 Street, Texas';
@@ -13,27 +20,22 @@ export class Cv3Component {
   phone: number = 4445678;
   email: string = 'stephen@gmail.com';
   webSite: string = 'www.stephen.com';
-  skills = [
-    { name: 'CSS', porcent: '70%' },
-    { name: 'HTML', porcent: '10%' },
-    { name: 'SASS', porcent: '90%' },
-    { name: 'JS', porcent: '60%' },
-    { name: 'JQUERY', porcent: '50%' },
-  ];
-
-  selectedColor = '#563d7c';
-  selectedColorTitle = '#563d7c';
-
-  updateColor() {
-    console.log('this', this.selectedColor);
-
-    document.documentElement.style.setProperty(
-      '--primarycolor',
-      this.selectedColor
-    );
-    document.documentElement.style.setProperty(
-      '--secondaryColor',
-      this.selectedColorTitle
-    );
+  constructor(private ref: ChangeDetectorRef, protected cvService: CVService) {}
+  ngOnInit(): void {
+    console.log(this.cvService.monCV);
+    this.ref.detectChanges();
+  }
+  affecterClass(st: any) {
+    switch (st) {
+      case 'website':
+        return 'fab fa-weebly';
+      case 'Linkedin':
+        return 'fab fa-linkedin';
+      case 'Behance':
+        return 'fab fa-behance';
+      case 'Github':
+        return 'fab fa-github';
+    }
+    return '';
   }
 }

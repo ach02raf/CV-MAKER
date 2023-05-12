@@ -14,11 +14,7 @@ export class LoginComponent {
   isSubmitted = false;
   loggedInUser: any;
   idUser: any;
-  focus;
-  focus1;
-  focus2;
-  focus3;
-  focus4;
+
   userData: { password: string; email: string };
   constructor() {
     this.initializeForm();

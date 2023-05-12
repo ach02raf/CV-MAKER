@@ -195,135 +195,218 @@
       <div>
         <button type="button" class="btn btn-outline-info" (click)="addField2()">Ajouter Project</button>
       </div>
-     
+
     </form>
   </div>
 </div>
 
 <div class="my-3 p-3">
   <div class="card p-4">
-      <h5 class="card-title" (click)="isCollapsedExperience = !isCollapsedExperience" [attr.aria-expanded]="!isCollapsedExperience" aria-controls="collapseExample">
-          🏢 expérience professionnelle <i class="fas fa-edit text-primary p-3"></i>
-      </h5>
-      <p class="card-subtitle mb-2 mb-2 text-muted">
-          Commencez par vos études les plus récentes et remontez dans le passé.
-      </p>
+    <h5
+      class="card-title"
+      (click)="isCollapsedExperience = !isCollapsedExperience"
+      [attr.aria-expanded]="!isCollapsedExperience"
+      aria-controls="collapseExample"
+    >
+      🏢 expérience professionnelle <i class="fas fa-edit text-primary p-3"></i>
+    </h5>
+    <p class="card-subtitle mb-2 mb-2 text-muted">
+      Commencez par vos études les plus récentes et remontez dans le passé.
+    </p>
 
-      <form #collapse="ngbCollapse"  [formGroup]="form" [(ngbCollapse)]="isCollapsedExperience" class="row mt-2 g-3" *ngFor="let experience of experiences; let i = index">
-          <h6 class="my-2">Expercience n° {{ i + 1 }}</h6>
-          <div class="col-md-6">
-              <label class="form-label">Titre du poste</label>
-              <input type="text" class="form-control" [formControlName]="'postname_'+i" placeholder="poste" />
-              <small class="form-text text-muted">ex.Ingénieur</small>
-          </div>
-          <div class="col-md-6">
-              <label class="form-label">Entreprise</label>
-              <input type="text" placeholder="entreprise" [formControlName]="'Entreprise_'+i" class="form-control" />
-              <small class="form-text text-muted">ex.Tekup</small>
-          </div>
-          <div class="col-md-6">
-              <label class="form-label">Depuis</label>
-              <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" [formControlName]="'Depuis_'+i" name="dp1" ngbDatepicker #d="ngbDatepicker" />
-                  <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
-          <i class="fas fa-calendar-days"></i>
-        </button>
-              </div>
-          </div>
+    <form
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="isCollapsedExperience"
+      class="row mt-2 g-3"
+      *ngFor="let experience of monPortfolio.experiencesPro; let i = index"
+    >
+      <h6 class="my-2">
+        Expercience n° {{ i + 1 }}
+        <i
+          (click)="supprimerForm(monPortfolio.experiencesPro, i)"
+          class="fa fa-times text-bg-danger p-1 mx-5"
+        ></i>
+      </h6>
 
-          <div class="col-md-6">
-              <label class="form-label">Jusqu'à</label>
-              <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd"  [formControlName]="'Jusqu_'+i" name="dp2" ngbDatepicker #d="ngbDatepicker" />
-                  <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
-          <i class="fas fa-calendar-days"></i>
-        </button>
-              </div>
-          </div>
+      <div class="col-md-6">
+        <label class="form-label">Titre du poste</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="poste"
+          [(ngModel)]="experience.titrePoste"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.Ingénieur</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Entreprise</label>
+        <input
+          type="text"
+          placeholder="entreprise"
+          class="form-control"
+          [(ngModel)]="experience.entreprise"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.Tekup</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Depuis</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp1"
+            type="date"
+            [(ngModel)]="experience.dateDebut"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
 
-          <div class="col-12">
-              <label class="form-label">Description du poste</label>
-              <textarea type="text" rows="2" class="form-control"  [formControlName]="'Description_post_'+i" placeholder="adresse"></textarea>
-              <small class="form-text text-muted">ex.Participation aux actions commerciales</small
-      >
-    </div>
-    <hr />
-  </form>
-  <button
-    type="button"
-    (click)="ajouterForm(experiences)"
-    class="btn btn-outline-primary mt-2"
-  >
-    Ajouter expérience
-  </button>
-</div>
+      <div class="col-md-6">
+        <label class="form-label">Jusqu'à</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp2"
+            type="date"
+            [(ngModel)]="experience.dateFin"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
 
-<div class="card p-4 mt-3">
-  <h5
-    class="card-title"
-    (click)="isCollapsedEducation = !isCollapsedEducation"
-    [attr.aria-expanded]="!isCollapsedEducation"
-    aria-controls="collapseExample"
-  >
-    📚 Education <i class="fas fa-edit text-primary p-3"></i>
-  </h5>
-  <p class="card-subtitle mb-2 mb-2 text-muted">
-    Commencez par vos études les plus récentes et remontez dans le passé.
-  </p>
+      <div class="col-12">
+        <label class="form-label">Description du poste</label>
+        <textarea
+          type="text"
+          rows="2"
+          class="form-control"
+          placeholder="adresse"
+          [(ngModel)]="experience.desc"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+        <small class="form-text text-muted"
+          >ex.Participation aux actions commerciales</small
+        >
+      </div>
+      <hr />
+    </form>
+    <button
+      name="experience"
+      #buttonExperience
+      type="button"
+      (click)="ajouterForm(monPortfolio.experiencesPro, buttonExperience.name)"
+      class="btn btn-outline-primary mt-2"
+    >
+      Ajouter expérience
+    </button>
+  </div>
 
-  <form
-    #collapse="ngbCollapse"
-    [(ngbCollapse)]="isCollapsedEducation"
-    class="row mt-2 g-3"
-    *ngFor="let education of educations; let i = index"
-  >
-    <h6 class="my-2">Diplome n° {{ i + 1 }}</h6>
-    <div class="col-md-6">
-      <label class="form-label">Titre du diplome</label>
-      <input type="text" class="form-control" placeholder="poste"  [formControlName]="'Diplome_'+i" />
-      <small class="form-text text-muted">ex.Licence d'art</small>
-          </div>
-          <div class="col-md-6">
-              <label class="form-label">Etablissement</label>
-              <input type="text" placeholder="entreprise"  [formControlName]="'Etablissement_'+i" class="form-control" />
-              <small class="form-text text-muted">ex. Tekup University</small>
-          </div>
-          <div class="col-md-6">
-              <label class="form-label">Depuis</label>
-              <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd"  [formControlName]="'DEpuis_diplome_'+i"  name="dp1" ngbDatepicker #d="ngbDatepicker" />
-                  <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
-          <i class="fas fa-calendar-days"></i>
-        </button>
-              </div>
-          </div>
+  <div class="card p-4 mt-3">
+    <h5
+      class="card-title"
+      (click)="isCollapsedEducation = !isCollapsedEducation"
+      [attr.aria-expanded]="!isCollapsedEducation"
+      aria-controls="collapseExample"
+    >
+      📚 Education <i class="fas fa-edit text-primary p-3"></i>
+    </h5>
+    <p class="card-subtitle mb-2 mb-2 text-muted">
+      Commencez par vos études les plus récentes et remontez dans le passé.
+    </p>
 
-          <div class="col-md-6">
-              <label class="form-label">Jusqu'à</label>
-              <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" [formControlName]="'jusqu_diplome_'+i"   name="dp2" ngbDatepicker #d="ngbDatepicker" />
-                  <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
-          <i class="fas fa-calendar-days"></i>
-        </button>
-              </div>
-          </div>
+    <form
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="isCollapsedEducation"
+      class="row mt-2 g-3"
+      *ngFor="let education of monPortfolio.educations; let i = index"
+    >
+      <h6 class="my-2">
+        Diplome n° {{ i + 1 }}
+        <i
+          (click)="supprimerForm(monPortfolio.educations, i)"
+          class="fa fa-times text-bg-danger p-1 mx-5"
+        ></i>
+      </h6>
+      <div class="col-md-6">
+        <label class="form-label">Titre du diplome</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="poste"
+          [(ngModel)]="education.diplome"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.Licence d'art</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Etablissement</label>
+        <input
+          type="text"
+          placeholder="entreprise"
+          class="form-control"
+          [(ngModel)]="education.etablissement"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex. Tekup University</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Depuis</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp1"
+            type="date"
+            [(ngModel)]="education.dateDebut"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
 
-          <div class="col-12">
-              <label class="form-label">Remarque</label>
-              <textarea type="text" rows="2" class="form-control"  [formControlName]="'remarque_diplome_'+i" placeholder="adresse"></textarea>
-              <small class="form-text text-muted">ex.Participation aux actions commerciales</small
-      >
-    </div>
-    <hr />
-  </form>
-  <button
-    type="button"
-    (click)="ajouterForm(educations)"
-    class="btn btn-outline-primary mt-2"
-  >
-    Ajouter Formation
-  </button>
-</div>
+      <div class="col-md-6">
+        <label class="form-label">Jusqu'à</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp2"
+            type="date"
+            [(ngModel)]="education.dateFin"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Mention</label>
+        <textarea
+          type="text"
+          rows="2"
+          class="form-control"
+          placeholder="mention"
+          [(ngModel)]="education.mention"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+        <small class="form-text text-muted"
+          >ex.Participation aux actions commerciales</small
+        >
+      </div>
+      <hr />
+    </form>
+    <button
+      name="educations"
+      #buttonEducation
+      type="button"
+      (click)="ajouterForm(monPortfolio.educations, buttonEducation.name)"
+      class="btn btn-outline-primary mt-2"
+    >
+      Ajouter Formation
+    </button>
+  </div>
 
   </div>
 

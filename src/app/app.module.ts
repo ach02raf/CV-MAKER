@@ -28,6 +28,8 @@ import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portf
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PortfolioReviweComponent } from './portfolio-reviwe/portfolio-reviwe.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,11 +51,18 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     StepsComponent,
     Portfolio1Component,
-    Cv8Component,
+    Cv8Component,RegisterComponent,
     GeneratorPortfoliComponent,
     PortfolioReviweComponent,
   ],
-  imports: [BrowserModule, HttpClientModule ,  AppRoutingModule, ReactiveFormsModule , NgbModule, FormsModule, BrowserAnimationsModule],
+  imports: [   ReactiveFormsModule , BrowserAnimationsModule  ,
+
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

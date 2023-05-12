@@ -9,6 +9,7 @@ import { GeneratorCvComponent } from './generator-cv/generator-cv.component';
 import { PortfolioReviweComponent } from './portfolio-reviwe/portfolio-reviwe.component';
 import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portfoli.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     , { path:'portfolioreviw', component: PortfolioReviweComponent}
   ,],
   },
+  { path: 'inscription', component: RegisterComponent },
 
   {
     path: 'cv',

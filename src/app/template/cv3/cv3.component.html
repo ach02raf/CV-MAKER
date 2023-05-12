@@ -4,30 +4,30 @@
   integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
   crossorigin="anonymous"
 />
-<input
-  type="color"
-  [(ngModel)]="selectedColor"
-  (input)="updateColor()"
-  title="Choose your color"
-/>
-
-<input
-  type="color"
-  [(ngModel)]="selectedColorTitle"
-  (input)="updateColor()"
-  title="Choose your color"
-/>
-
-<div class="resume">
+<div
+  class="resume"
+  [style]="{
+    '--primarycolor': cvService.monCV.coleurThemeElement,
+    '--secondaryColor': cvService.monCV.coleurThemeTitre
+  }"
+>
   <div class="resume_left">
     <div class="resume_profile">
-      <img src="https://i.imgur.com/eCijVBe.png" alt="profile_pic" />
+      <img [src]="cvService.monCV.urlImage" alt="profile_pic" />
     </div>
     <div class="resume_content">
       <div class="resume_item resume_info">
         <div class="title">
-          <p class="bold">{{ name }}</p>
-          <p class="regular">{{ job }}</p>
+          <p class="bold">
+            {{
+              cvService.monCV.nom
+                ? cvService.monCV.nom + " " + cvService.monCV.prenom
+                : name
+            }}
+          </p>
+          <p class="regular">
+            {{ cvService.monCV.metier ? cvService.monCV.metier : job }}
+          </p>
         </div>
         <ul>
           <li>
@@ -35,27 +35,42 @@
               <i class="fas fa-map-signs"></i>
             </div>
             <div class="data">
-              {{ address }}<br />
-              {{ nationality }}
+              {{ cvService.monCV.adresse ? cvService.monCV.adresse : address
+              }}<br />
+              {{
+                cvService.monCV.nationalite
+                  ? cvService.monCV.nationalite
+                  : nationality
+              }}
             </div>
           </li>
           <li>
             <div class="icon">
               <i class="fas fa-mobile-alt"></i>
             </div>
-            <div class="data">+324 {{ phone }}</div>
+            <div class="data">
+              +216 {{ cvService.monCV.phone ? cvService.monCV.phone : phone }}
+            </div>
           </li>
           <li>
             <div class="icon">
               <i class="fas fa-envelope"></i>
             </div>
-            <div class="data">{{ email }}</div>
+            <div class="data">
+              {{ cvService.monCV.email ? cvService.monCV.email : email }}
+            </div>
           </li>
           <li>
             <div class="icon">
               <i class="fab fa-weebly"></i>
             </div>
-            <div class="data">{{ webSite }}</div>
+            <div class="data">
+              {{
+                cvService.monCV.liens[3]
+                  ? cvService.monCV.liens[3].url
+                  : webSite
+              }}
+            </div>
           </li>
         </ul>
       </div>
@@ -64,12 +79,12 @@
           <p class="bold">skill's</p>
         </div>
         <ul>
-          <li *ngFor="let item of skills">
-            <div class="skill_name">{{ item.name }}</div>
+          <li *ngFor="let item of cvService.monCV.competences">
+            <div class="skill_name">{{ item.nom }}</div>
             <div class="skill_progress">
-              <span [ngStyle]="{ width: item.porcent }"></span>
+              <span [ngStyle]="{ width: item.porcent + '%' }"></span>
             </div>
-            <div class="skill_per">{{ item.porcent }}</div>
+            <div class="skill_per">{{ item.porcent + "%" }}</div>
           </li>
         </ul>
       </div>
@@ -78,40 +93,13 @@
           <p class="bold">Social</p>
         </div>
         <ul>
-          <li>
+          <li *ngFor="let item of cvService.monCV.liens">
             <div class="icon">
-              <i class="fab fa-facebook-square"></i>
+              <i [ngClass]="affecterClass(item.nom)"></i>
             </div>
             <div class="data">
-              <p class="semi-bold">Facebook</p>
-              <p>Stephen@facebook</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-twitter-square"></i>
-            </div>
-            <div class="data">
-              <p class="semi-bold">Twitter</p>
-              <p>Stephen@twitter</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-youtube"></i>
-            </div>
-            <div class="data">
-              <p class="semi-bold">Youtube</p>
-              <p>Stephen@youtube</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-linkedin"></i>
-            </div>
-            <div class="data">
-              <p class="semi-bold">Linkedin</p>
-              <p>Stephen@linkedin</p>
+              <p class="semi-bold">{{ item.nom }}</p>
+              <p>{{ item.url }}</p>
             </div>
           </li>
         </ul>
@@ -124,9 +112,7 @@
         <p class="bold">About us</p>
       </div>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis
-        illo fugit officiis distinctio culpa officia totam atque exercitationem
-        inventore repudiandae?
+        {{ cvService.monCV.apropos }}
       </p>
     </div>
     <div class="resume_item resume_work">
@@ -134,33 +120,18 @@
         <p class="bold">Work Experience</p>
       </div>
       <ul>
-        <li>
-          <div class="date">2013 - 2015</div>
-          <div class="info">
-            <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-              voluptatibus!
-            </p>
+        <li *ngFor="let item of cvService.monCV.experiencesPro">
+          <div class="date">
+            {{ item.dateDebut | date : "fullDate" }} -
+            {{ item.dateFin | date : "fullDate" }}
           </div>
-        </li>
-        <li>
-          <div class="date">2015 - 2017</div>
           <div class="info">
-            <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
+            <p class="semi-bold">{{ item.entreprise | uppercase }}</p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-              voluptatibus!
+              {{ item.titrePoste }}
             </p>
-          </div>
-        </li>
-        <li>
-          <div class="date">2017 - Present</div>
-          <div class="info">
-            <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-              voluptatibus!
+              {{ item.desc }}
             </p>
           </div>
         </li>
@@ -171,37 +142,29 @@
         <p class="bold">Education</p>
       </div>
       <ul>
-        <li>
-          <div class="date">2010 - 2013</div>
-          <div class="info">
-            <p class="semi-bold">Web Designing (Texas University)</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-              voluptatibus!
-            </p>
+        <li *ngFor="let item of cvService.monCV.educations">
+          <div class="date">
+            {{ item.dateDebut | date : "fullDate" }} -
+            {{ item.dateFin | date : "fullDate" }}
           </div>
-        </li>
-        <li>
-          <div class="date">2000 - 2010</div>
           <div class="info">
-            <p class="semi-bold">Texas International School</p>
+            <p class="semi-bold">{{ item.etablissement }}</p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-              voluptatibus!
+              {{ item.diplome }}
+            </p>
+            <p>
+              {{ item.mention }}
             </p>
           </div>
         </li>
       </ul>
     </div>
-    <div class="resume_item resume_hobby">
+    <div class="resume_item">
       <div class="title">
         <p class="bold">Hobby</p>
       </div>
-      <ul>
-        <li><i class="fas fa-book"></i></li>
-        <li><i class="fas fa-gamepad"></i></li>
-        <li><i class="fas fa-music"></i></li>
-        <li><i class="fab fa-pagelines"></i></li>
+      <ul *ngFor="let item of cvService.monCV.loisirs">
+        <li>{{ item }}</li>
       </ul>
     </div>
   </div>

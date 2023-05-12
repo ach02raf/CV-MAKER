@@ -16,7 +16,7 @@ export class PortfolioReviweComponent implements OnInit {
 
     this.portfolioService.getData().subscribe(value => this.data = value);
     console.log('====================================');
-    console.log(this.data);
+    console.log(this.data.experiences[0].titrePoste     );
     console.log('====================================');
   }
 

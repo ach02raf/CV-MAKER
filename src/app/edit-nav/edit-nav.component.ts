@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CV } from '../models/CV';
+import { CVService } from '../services/cv.service';
 
 @Component({
   selector: 'app-edit-nav',
@@ -9,6 +10,8 @@ import { CV } from '../models/CV';
 export class EditNavComponent implements OnInit {
   active = 1;
   monCV: CV = new CV();
-
-  ngOnInit(): void {}
+  constructor(private cvService: CVService) {}
+  ngOnInit(): void {
+    this.cvService.monCV = this.monCV;
+  }
 }
