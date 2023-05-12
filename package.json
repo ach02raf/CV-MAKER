@@ -23,6 +23,7 @@
     "bootstrap": "^5.2.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "util": "^0.12.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@angular/cli": "~15.1.5",
     "@angular/compiler-cli": "^15.1.0",
     "@types/jasmine": "~4.3.0",
+    "@types/jsonwebtoken": "^9.0.2",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

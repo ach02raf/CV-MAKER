@@ -7,14 +7,21 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { GeneratorCvComponent } from './generator-cv/generator-cv.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginGuard } from './login.guard';
+import { NotloginGuard } from './notlogin.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'inscription', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+  {
+    path: 'inscription',
+    component: RegisterComponent,
+    canActivate: [LoginGuard],
+  },
 
   {
     path: 'cv',
+    canActivate: [NotloginGuard],
     children: [
       {
         path: 'edit',

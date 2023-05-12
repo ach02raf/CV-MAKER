@@ -25,6 +25,7 @@ import { Cv8Component } from './template/cv8/cv8.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
