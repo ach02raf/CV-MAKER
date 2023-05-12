@@ -27,11 +27,13 @@ export class Edit2Component implements OnInit {
   inputValueCompetences: string;
 
   myForm: FormGroup;
-  constructor() {}
-  ngOnInit(): void {
+  constructor() {
     this.initializeForm();
   }
-
+  ngOnInit(): void {}
+  trackByFn(index: number, item: any) {
+    return index;
+  }
   initializeForm() {
     this.myForm = new FormGroup({
       titrePoste: new FormControl('', Validators.required),
