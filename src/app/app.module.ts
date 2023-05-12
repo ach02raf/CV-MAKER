@@ -16,7 +16,6 @@ import { Cv4Component } from './template/cv4/cv4.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
-import { RouterModule } from '@angular/router';
 import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portfoli.component';
