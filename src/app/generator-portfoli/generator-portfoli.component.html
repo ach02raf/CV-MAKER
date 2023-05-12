@@ -20,29 +20,118 @@
             [(ngbCollapse)]="isCollapsedcordonnee" class="row mt-2 g-3">
 
         <div class="col-md-6">
-          <label class="form-label">Nom</label>
-          <input type="text" class="form-control" placeholder="name" formControlName="name"/>
 
+          <label class="form-label">Nom</label>
+          <input type="text" class="form-control"
+
+          placeholder="name" formControlName="name"  [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              form.controls['name'].invalid &&
+              form.controls['name'].touched,
+            'is-valid':
+              form.controls['name'].valid && form.controls['name'].touched
+          }"
+
+          />
+
+          <small
+          class="form-text text-danger"
+          *ngIf=" form.controls['name'].invalid && form.controls['name'].touched  "
+        >
+          <ng-container *ngIf="form.controls['name'].errors?.['required']">
+            Le name est requis.
+          </ng-container>
+          <ng-container *ngIf="form.controls['name'].errors?.['pattern']">
+            Le name doit contenir uniquement 8 chiffres.
+          </ng-container>
+        </small>
         </div>
         <div class="col-md-6">
           <label class="form-label">Prenom</label>
-          <input type="text" placeholder="prenom" class="form-control" formControlName="prenom"/>
+
+          <input type="text" placeholder="prenom" [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              form.controls['prenom'].invalid &&
+              form.controls['prenom'].touched,
+            'is-valid':
+              form.controls['prenom'].valid && form.controls['prenom'].touched
+          }"
+            class="form-control" formControlName="prenom"  />
+
+            <small
+            class="form-text text-danger"
+            *ngIf=" form.controls['prenom'].invalid && form.controls['prenom'].touched  "
+          >
+            <ng-container *ngIf="form.controls['prenom'].errors?.['required']">
+              Le prenom est requis.
+            </ng-container>
+
+          </small>
         </div>
 
         <div class="col-md-6">
           <label class="form-label">Email</label>
-          <input type="text" placeholder="email" class="form-control" formControlName="email"/>
+          <input type="text" placeholder="email" class="form-control" [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              form.controls['email'].invalid &&
+              form.controls['email'].touched,
+            'is-valid':
+              form.controls['email'].valid && form.controls['email'].touched
+          }"  formControlName="email"/>
+          <small
+          class="form-text text-danger"
+          *ngIf="
+            form.controls['email'].errors?.['required'] &&
+            form.controls['email'].touched
+          "
+        >
+          Le email est requis.
+        </small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            form.controls['email'].errors?.['email'] &&
+            form.controls['email'].touched
+          "
+        >
+          Le format de l'email est invalide.
+        </small>
         </div>
+
+
         <div class="col-md-6">
           <label class="form-label">Numero de telephone</label>
-          <input type="text" placeholder="tel" class="form-control" formControlName="tel"/>
+          <input type="text" [ngClass]="{
+            'form-control': true,
+            'is-invalid':
+              form.controls['tel'].invalid &&
+              form.controls['tel'].touched,
+            'is-valid':
+              form.controls['tel'].valid && form.controls['tel'].touched
+          }" placeholder="tel" class="form-control" formControlName="tel"/>
+
         </div>
 
-
+        <small
+        class="form-text text-danger"
+        *ngIf=" form.controls['tel'].invalid && form.controls['tel'].touched  "
+      >
+        <ng-container *ngIf="form.controls['tel'].errors?.['required']">
+          Le tel est requis.
+        </ng-container>
+        <ng-container *ngIf="form.controls['tel'].errors?.['pattern']">
+          Le tel doit contenir uniquement 8 chiffres.
+        </ng-container>
+      </small>
 
         <div class="col-md-12">
           <label class="form-label">Bio</label>
           <textarea type="text" placeholder="Bio" class="form-control" formControlName="bio"></textarea>
+      <div *ngIf="form.get('bio').invalid && form.get('bio').touched" class="alert alert-danger">Bio is required</div>
+
         </div>
 
           <div *ngFor="let field of fields; let i = index">
@@ -56,12 +145,33 @@
                   <option value="LinkedIn" > <i class="fab fa-linkedin-in"></i>LinkedIn</option>
                 </select>
               </div>
-              <input type="text"   class="form-control"  placeholder="EX : http://Example.com" aria [formControlName]="'field_' + (i + 1)" />
+              <input type="text" [ngClass]="{
+                'form-control': true,
+                'is-invalid':
+                  form.controls['field_' + (i + 1)].invalid &&
+                  form.controls['field_' + (i + 1)].touched,
+                'is-valid':
+                  form.controls['field_' + (i + 1)].valid && form.controls['field_' + (i + 1)].touched
+              }"   class="form-control"  placeholder="EX : http://Example.com" aria [formControlName]="'field_' + (i + 1)" />
 
               <div class="input-group-append">
                 <button type="button" class="btn btn-danger" (click)="removeField(i)">X</button>
               </div>
+
+<br />
+
             </div>
+
+            <small
+            class="form-text text-danger"
+            *ngIf="
+              form.controls['field_' + (i + 1)].errors?.['required'] &&
+              form.controls['field_' + (i + 1)].touched
+            "
+          >
+            Le Link est requis.
+          </small>
+
 
           </div>
 

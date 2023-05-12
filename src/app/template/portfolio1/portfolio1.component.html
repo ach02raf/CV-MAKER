@@ -77,14 +77,14 @@
           </span>
         </h2>
 
-        <div class="projects__content">
+        <div class="projects__content container">
           <div class="projects__row"  *ngFor="let project of data['project'] , let i index" >
             <div class="projects__row-img-cont">
               <img
                 [src]="project['imageUrl']"
                 alt="Software Screenshot"
                 class="projects__row-img"
-                 style="width: 100%;"
+                 style="width: 300px;"
                 loading="lazy"
               />
             </div>
@@ -144,20 +144,8 @@
       <div class="main-container">
         <div class="main-footer__upper">
           <div class="main-footer__row main-footer__row-1">
-            <h2 class="heading heading-sm main-footer__heading-sm">
-              <span>Social</span>
-            </h2>
-            <div class="main-footer__social-cont">
 
-              <a target="_blank" rel="noreferrer"  *ngFor="let link of data.Links" [href]="link.value">
-                <i [ngSwitch]="link.UrlName" class="fab" [ngClass]="{
-                  'fa-linkedin-in': link.UrlName === 'Linkedin',
-                  'fa-instagram': link.UrlName === 'Instagram',
-                  'fa-twitter': link.UrlName === 'Twitter',
-                  'fa-github': link.UrlName === 'GitHub'
-                }"></i>
-              </a>
-            </div>
+
           </div>
 
         </div>
@@ -166,5 +154,5 @@
 
       </div>
     </footer>
- 
+
 
