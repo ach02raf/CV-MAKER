@@ -1,0 +1,420 @@
+
+
+<div  class="container" style="margin-bottom: 30px;">
+
+  <div class="my-3 p-3">
+    <div class="card p-4">
+      <h5
+        class="card-title"
+        (click)="isCollapsedcordonnee = !isCollapsedcordonnee"
+        [attr.aria-expanded]="!isCollapsedcordonnee"
+        aria-controls="collapseExample"
+      >
+        🆔 Coordonnées <i class="fas fa-edit text-primary p-3"></i>
+      </h5>
+      <p class="card-subtitle mb-2 mb-2 text-muted">
+        Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
+      </p>
+
+      <form [formGroup]="form"  #collapse="ngbCollapse"
+            [(ngbCollapse)]="isCollapsedcordonnee" class="row mt-2 g-3">
+
+        <div class="col-md-6">
+          <label class="form-label">Nom</label>
+          <input type="text" class="form-control" placeholder="name" formControlName="name"/>
+
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Prenom</label>
+          <input type="text" placeholder="prenom" class="form-control" formControlName="prenom"/>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="text" placeholder="email" class="form-control" formControlName="email"/>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Numero de telephone</label>
+          <input type="text" placeholder="tel" class="form-control" formControlName="tel"/>
+        </div>
+
+
+
+        <div class="col-md-12">
+          <label class="form-label">Bio</label>
+          <textarea type="text" placeholder="Bio" class="form-control" formControlName="bio"></textarea>
+        </div>
+
+          <div *ngFor="let field of fields; let i = index">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <select class="form-select" formControlName="selected_{{ i + 1 }}">
+                  <option value="GitHub"><i class="fab fa-github"></i>GitHub</option>
+                  <option value="Twitter"><i class="fab fa-twitter"></i>Twitter</option>
+                  <option value="Instagram" > <i  class="fab fa-instagram"></i>Instagram</option>
+                  <option value="LinkedIn" > <i class="fab fa-linkedin-in"></i>LinkedIn</option>
+                </select>
+              </div>
+              <input type="text"   class="form-control"  placeholder="EX : http://Example.com" aria [formControlName]="'field_' + (i + 1)" />
+
+              <div class="input-group-append">
+                <button type="button" class="btn btn-danger" (click)="removeField(i)">X</button>
+              </div>
+            </div>
+
+          </div>
+
+
+        <div>
+          <button type="button" class="btn btn-outline-info" (click)="addField()">Ajouter Link</button>
+      </div>
+
+      </form>
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="my-3 p-3">
+    <div class="card p-4">
+      <h5
+        class="card-title"
+        (click)="isCollapsedaboutme = !isCollapsedaboutme"
+        [attr.aria-expanded]="!isCollapsedaboutme"
+        aria-controls="collapseExample"
+      >
+        🆔 About Me <i class="fas fa-edit text-primary p-3"></i>
+      </h5>
+      <p class="card-subtitle mb-2 mb-2 text-muted">
+        Dites-nous quelque chose sur vous.
+      </p>
+
+      <form [formGroup]="form"  #collapse="ngbCollapse"
+            [(ngbCollapse)]="isCollapsedaboutme" class="row mt-2 g-3">
+
+        <div class="col-md-12">
+          <label class="form-label">paragraphe 1 </label>
+          <textarea type="text" class="form-control" placeholder="Ercire"formControlName="parg1"></textarea>
+
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">paragraphe 2 </label>
+          <textarea type="text" placeholder="prenom" class="form-control" formControlName="parg2"></textarea>
+        </div>
+
+
+
+        <div class="col-12">
+          <label class="mt-2" for="">Skiils</label>
+          <input
+            class="form-control"
+            type="text"
+            (keydown.enter)="addSkills($event)"
+            placeholder=""
+          />
+
+          <ul
+            *ngFor="let Skills of monPortfolio['Skills']"
+            class="list-group list-group-horizontal mt-1"
+          >
+            <li class="list-group-item mt-1">
+              {{ Skills }}
+
+              <span class="mx-2" (click)="removeSkills(Skills)"
+                ><i class="fa fa-times" aria-hidden="true"></i
+              ></span>
+            </li>
+          </ul>
+        </div>
+      </form>
+
+
+
+    </div>
+
+
+  </div>
+
+
+<!-- project  -->
+
+
+<div class="my-3 p-3">
+  <div class="card p-4">
+    <h5
+      class="card-title"
+      (click)="isCollapsedProject = !isCollapsedProject"
+      [attr.aria-expanded]="!isCollapsedProject"
+      aria-controls="collapseExample"
+    >
+      🆔 Projects <i class="fas fa-edit text-primary p-3"></i>
+    </h5>
+    <p class="card-subtitle mb-2 mb-2 text-muted">
+      Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
+    </p>
+
+    <form [formGroup]="form"   #collapse="ngbCollapse"
+          [(ngbCollapse)]="isCollapsedProject" class="row mt-2 g-3">
+      <div *ngFor="let field of fields2; let i = index" class="row">
+
+        <div class="col-12" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger" (click)="removeField2(i)">Remove Project</button>
+        </div>
+        <br/>
+
+        <div class="col-4">
+          <label for="fileInput{{i}}">
+            <img class=" w-100 mt-2 text-center border" [src]="field.imageUrl" />
+          </label>
+          <input id="fileInput{{i}}" type="file" style="display: none" (change)="onFileSelected($event, i)" />
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <label class="form-label"  > Titre</label>
+
+              <input type="text" class="form-control" placeholder="Donnes Title" [formControlName]="'title_' + i"/>
+
+            <label class="form-label" style="padding: 5px;" > Link</label>
+            <input type="text" class="form-control" placeholder="Donnes Link of the project" [formControlName]="'link_' + i"/>
+
+            <label class="form-label" style="padding: 5px;" > Dsiscription</label>
+
+              <textarea type="text" class="form-control" placeholder="Donnes Dsiscription" [formControlName]="'description_' + i" ></textarea>
+
+            </div>
+          </div>
+
+
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-info" (click)="addField2()">Ajouter Project</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="my-3 p-3">
+  <div class="card p-4">
+    <h5
+      class="card-title"
+      (click)="isCollapsedExperience = !isCollapsedExperience"
+      [attr.aria-expanded]="!isCollapsedExperience"
+      aria-controls="collapseExample"
+    >
+      🏢 expérience professionnelle <i class="fas fa-edit text-primary p-3"></i>
+    </h5>
+    <p class="card-subtitle mb-2 mb-2 text-muted">
+      Commencez par vos études les plus récentes et remontez dans le passé.
+    </p>
+
+    <form
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="isCollapsedExperience"
+      class="row mt-2 g-3"
+      *ngFor="let experience of monPortfolio.experiencesPro; let i = index"
+    >
+      <h6 class="my-2">
+        Expercience n° {{ i + 1 }}
+        <i
+          (click)="supprimerForm(monPortfolio.experiencesPro, i)"
+          class="fa fa-times text-bg-danger p-1 mx-5"
+        ></i>
+      </h6>
+
+      <div class="col-md-6">
+        <label class="form-label">Titre du poste</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="poste"
+          [(ngModel)]="experience.titrePoste"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.Ingénieur</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Entreprise</label>
+        <input
+          type="text"
+          placeholder="entreprise"
+          class="form-control"
+          [(ngModel)]="experience.entreprise"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.Tekup</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Depuis</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp1"
+            type="date"
+            [(ngModel)]="experience.dateDebut"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Jusqu'à</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp2"
+            type="date"
+            [(ngModel)]="experience.dateFin"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Description du poste</label>
+        <textarea
+          type="text"
+          rows="2"
+          class="form-control"
+          placeholder="adresse"
+          [(ngModel)]="experience.desc"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+        <small class="form-text text-muted"
+          >ex.Participation aux actions commerciales</small
+        >
+      </div>
+      <hr />
+    </form>
+    <button
+      name="experience"
+      #buttonExperience
+      type="button"
+      (click)="ajouterForm(monPortfolio.experiencesPro, buttonExperience.name)"
+      class="btn btn-outline-primary mt-2"
+    >
+      Ajouter expérience
+    </button>
+  </div>
+
+  <div class="card p-4 mt-3">
+    <h5
+      class="card-title"
+      (click)="isCollapsedEducation = !isCollapsedEducation"
+      [attr.aria-expanded]="!isCollapsedEducation"
+      aria-controls="collapseExample"
+    >
+      📚 Education <i class="fas fa-edit text-primary p-3"></i>
+    </h5>
+    <p class="card-subtitle mb-2 mb-2 text-muted">
+      Commencez par vos études les plus récentes et remontez dans le passé.
+    </p>
+
+    <form
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="isCollapsedEducation"
+      class="row mt-2 g-3"
+      *ngFor="let education of monPortfolio.educations; let i = index"
+    >
+      <h6 class="my-2">
+        Diplome n° {{ i + 1 }}
+        <i
+          (click)="supprimerForm(monPortfolio.educations, i)"
+          class="fa fa-times text-bg-danger p-1 mx-5"
+        ></i>
+      </h6>
+      <div class="col-md-6">
+        <label class="form-label">Titre du diplome</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="poste"
+          [(ngModel)]="education.diplome"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex.Licence d'art</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Etablissement</label>
+        <input
+          type="text"
+          placeholder="entreprise"
+          class="form-control"
+          [(ngModel)]="education.etablissement"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <small class="form-text text-muted">ex. Tekup University</small>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Depuis</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp1"
+            type="date"
+            [(ngModel)]="education.dateDebut"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Jusqu'à</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp2"
+            type="date"
+            [(ngModel)]="education.dateFin"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Mention</label>
+        <textarea
+          type="text"
+          rows="2"
+          class="form-control"
+          placeholder="mention"
+          [(ngModel)]="education.mention"
+          [ngModelOptions]="{ standalone: true }"
+        ></textarea>
+        <small class="form-text text-muted"
+          >ex.Participation aux actions commerciales</small
+        >
+      </div>
+      <hr />
+    </form>
+    <button
+      name="educations"
+      #buttonEducation
+      type="button"
+      (click)="ajouterForm(monPortfolio.educations, buttonEducation.name)"
+      class="btn btn-outline-primary mt-2"
+    >
+      Ajouter Formation
+    </button>
+  </div>
+
+  </div>
+
+  <div class="row justify-content-end">
+<div class="col-2">
+  <button class="btn btn-success " (click)="submitNext()" style="padding-left: 25px; padding-right: 25px;" >Next</button>
+
+</div>
+  </div>
+
+</div>

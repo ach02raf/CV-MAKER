@@ -72,7 +72,13 @@
       </div>
     </div>
   </div> -->
-  <div class="resume">
+  <div
+    [style]="{
+      '--color': cvService.monCV.coleurThemeElement,
+      '--titleColor': cvService.monCV.coleurThemeTitre
+    }"
+    class="resume"
+  >
     <div class="resume-wrap">
       <div class="logo">
         <div class="logo-lines logo-lines_left">
@@ -82,7 +88,7 @@
         </div>
         <div class="w-25">
           <img
-            src="../../../assets/julie.jpeg"
+            [src]="cvService.monCV.urlImage"
             alt=""
             class="img-thumbnail"
             srcset=""
@@ -95,61 +101,70 @@
         </div>
       </div>
       <div class="about">
-        <h1 class="name">Robert Smith</h1>
-        <span class="position">Web Developer / Designer</span>
+        <h1 class="name">
+          {{
+            cvService.monCV.nom
+              ? cvService.monCV.nom + " " + cvService.monCV.prenom
+              : name
+          }}
+        </h1>
+        <span class="position">
+          {{
+            cvService.monCV.nationalite
+              ? cvService.monCV.nationalite
+              : nationality
+          }}</span
+        >
         <address class="about-address">
-          123 Street, 24058, Belgium, Brussels, Liutte 27, BE
+          {{ cvService.monCV.metier ? cvService.monCV.metier : job }}
         </address>
         <div class="about-contacts">
           <a class="about-contacts__link" href="#">
-            <b>t</b>: (1800) 123 45678</a
+            <b>t</b> +216
+            {{ cvService.monCV.phone ? cvService.monCV.phone : phone }}</a
           >
           |
           <a class="about-contacts__link" href="#">
-            <b>e</b>: Robertsmith@gmail.com
+            <b>e</b>:
+            {{ cvService.monCV.email ? cvService.monCV.email : email }}
           </a>
           |
           <a class="about-contacts__link" href="#">
-            <b>w</b>: www.robertsmith.com</a
+            <b>a</b>:
+            {{ cvService.monCV.adresse ? cvService.monCV.adresse : address }}</a
+          >
+          <a class="about-contacts__link" href="#">
+            <b>w</b>:
+            {{
+              cvService.monCV.liens[3] ? cvService.monCV.liens[3].url : webSite
+            }}</a
           >
         </div>
       </div>
       <div class="experience">
         <h2 class="heading heading_dark">Profile</h2>
         <p class="list-item__text">
-          Hello! I’m Robert Smith. Senior Web Developer specializing in front
-          end development. Experienced with all stages of the development cycle
-          for dynamic web projects. Well-versed in numerous programming
-          languages including JavaScript, SQL, and C. Stng background in project
-          management and customer relations.
+          {{ cvService.monCV.apropos }}
         </p>
         <h2 class="heading heading_dark">Experience</h2>
         <ul class="list">
-          <li class="list-item">
-            <h4 class="list-item__title">Hexogan Web Development Company</h4>
-            <span class="list-item__date">Jan 2016 - 0ct 2016</span>
+          <li
+            *ngFor="let item of cvService.monCV.experiencesPro"
+            class="list-item"
+          >
+            <b>
+              <h6 class="">
+                {{ item.titrePoste | uppercase }}
+              </h6>
+            </b>
+
+            <h4 class="list-item__title">{{ item.entreprise | uppercase }}</h4>
+            <span class="list-item__date">
+              {{ item.dateDebut | date : "fullDate" }} -
+              {{ item.dateFin | date : "fullDate" }}</span
+            >
             <p class="list-item__text">
-              Fleeing from the Cylon tyranny the last Battlestar – Galactica -
-              leads a rag-tag fugitive fleet on a lonely quest - a shining
-              planet known as Earth? Texas tea.
-            </p>
-          </li>
-          <li class="list-item">
-            <h4 class="list-item__title">Hexogan Web Development Company</h4>
-            <span class="list-item__date">Jan 2016 - 0ct 2016</span>
-            <p class="list-item__text">
-              Fleeing from the Cylon tyranny the last Battlestar – Galactica -
-              leads a rag-tag fugitive fleet on a lonely quest - a shining
-              planet known as Earth? Texas tea.
-            </p>
-          </li>
-          <li class="list-item">
-            <h4 class="list-item__title">Hexogan Web Development Company</h4>
-            <span class="list-item__date">Jan 2016 - 0ct 2016</span>
-            <p class="list-item__text">
-              Fleeing from the Cylon tyranny the last Battlestar – Galactica -
-              leads a rag-tag fugitive fleet on a lonely quest - a shining
-              planet known as Earth? Texas tea.
+              {{ item.desc }}
             </p>
           </li>
         </ul>
@@ -157,13 +172,17 @@
       <div class="education">
         <h2 class="heading heading_dark">Education</h2>
         <ul class="list">
-          <li class="list-item list-item_non-border">
-            <h4 class="list-item__title">Hexogan Web Development Company</h4>
-            <span class="list-item__date">Jan 2016 - 0ct 2016</span>
+          <li
+            class="list-item list-item_non-border"
+            *ngFor="let item of cvService.monCV.educations"
+          >
+            <h4 class="list-item__title">{{ item.diplome }}</h4>
+            <span class="list-item__date">
+              {{ item.dateDebut | date : "fullDate" }} -
+              {{ item.dateFin | date : "fullDate" }}</span
+            >
             <p class="list-item__text">
-              Fleeing from the Cylon tyranny the last Battlestar – Galactica -
-              leads a rag-tag fugitive fleet on a lonely quest - a shining
-              planet known as Earth? Texas tea.
+              {{ item.etablissement }}
             </p>
           </li>
         </ul>
@@ -171,17 +190,15 @@
       <div class="skills">
         <h2 class="heading heading_dark heading_skills">Skills</h2>
         <ul class="skills-list">
-          <li class="skills-list__item">
-            Wordpress
-            <div class="level level-80"></div>
-          </li>
-          <li class="skills-list__item">
-            HTML
-            <div class="level level-90"></div>
-          </li>
-          <li class="skills-list__item">
-            Photoshop
-            <div class="level level-50"></div>
+          <li
+            class="skills-list__item"
+            *ngFor="let item of cvService.monCV.competences"
+          >
+            {{ item.nom }}
+            <div
+              class="level level-80"
+              [ngStyle]="{ width: item.porcent + '%' }"
+            ></div>
           </li>
         </ul>
       </div>

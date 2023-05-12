@@ -20,10 +20,14 @@ import { Cv7Component } from './template/cv7/cv7.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { StepsComponent } from './steps/steps.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Cv8Component } from './template/cv8/cv8.component';
+import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portfoli.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PortfolioReviweComponent } from './portfolio-reviwe/portfolio-reviwe.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
 
@@ -47,10 +51,13 @@ import { UserService } from './services/user.service';
     NavbarComponent,
     LoginComponent,
     StepsComponent,
-    Cv8Component,
-    RegisterComponent,
+    Portfolio1Component,
+    Cv8Component,RegisterComponent,
+    GeneratorPortfoliComponent,
+    PortfolioReviweComponent,
   ],
-  imports: [
+  imports: [   ReactiveFormsModule , BrowserAnimationsModule  ,
+
     BrowserModule,
     AppRoutingModule,
     NgbModule,

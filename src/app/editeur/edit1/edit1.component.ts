@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CV } from 'src/app/models/CV';
+
 import { Liens } from 'src/app/models/Liens';
 import { HttpClient } from '@angular/common/http';
 import {
