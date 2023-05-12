@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {PortfolioService} from './../portfolio.service';
 import { ExperienceProfessionnelle } from 'src/app/models/ExperienceProfessionnelle';
@@ -54,10 +54,13 @@ export class GeneratorPortfoliComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder , private router: Router , private portfolioService :PortfolioService) {}
 
+
   ngOnInit() {
+
+
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email] ],
       prenom: ['', Validators.required],
       tel: ['', Validators.required],
       bio: ['', Validators.required],
@@ -65,8 +68,11 @@ export class GeneratorPortfoliComponent implements OnInit {
       parg2: ['', Validators.required],
       skills : ['', Validators.required],
       projects:[],
+      field_1: ['', [Validators.required, Validators.pattern('/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i')]],
     });
   }
+
+
 
   hide() {
     this.hidden = true;
@@ -157,6 +163,8 @@ export class GeneratorPortfoliComponent implements OnInit {
     tab.splice(index, 1);
   }
 
+
+
   submitNext(){
 
     const links = [];
@@ -204,6 +212,8 @@ export class GeneratorPortfoliComponent implements OnInit {
     console.log("outputObject" , outputObject );
      this.portfolioService.setData(outputObject);
     this.router.navigate(['/portfolio/portfolioreviw']);
-  }
 
+}
+
+  
 }
