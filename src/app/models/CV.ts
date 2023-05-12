@@ -1,3 +1,4 @@
+import { competence } from './Competence';
 import { Education } from './Education';
 import { ExperienceProfessionnelle } from './ExperienceProfessionnelle';
 import { Liens } from './Liens';
@@ -18,7 +19,7 @@ export class CV {
   loisirs: string[] = [];
   experiencesPro: ExperienceProfessionnelle[] = [];
   educations: Education[] = [];
-  competences: string[] = [];
+  competences: competence[] = [];
   coleurThemeElement: string;
   coleurThemeTitre: string;
   titreFontSize: string;

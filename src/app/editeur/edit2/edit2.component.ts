@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CV } from 'src/app/models/CV';
+import { competence } from 'src/app/models/Competence';
 import { Education } from 'src/app/models/Education';
 import { ExperienceProfessionnelle } from 'src/app/models/ExperienceProfessionnelle';
 @Component({
@@ -20,7 +21,6 @@ export class Edit2Component implements OnInit {
   address: string;
   imageUrl: string;
   tabbleauCompetences = [];
-
   experiences: any[] = [];
   educations: any[] = [];
   competences: any[] = [];
@@ -56,29 +56,39 @@ export class Edit2Component implements OnInit {
       await tab.push(edu);
     }
   }
+
   supprimerForm(tab: any[], index: any) {
     tab.splice(index, 1);
   }
-  addCompetences(input: any) {
-    event.preventDefault(); // prevent the default form submission behavior
-    const foundObj = this.monCV.competences.find(
-      (obj) => obj === input.target.value
+  async updatePorcent(event: any, comp: any) {
+    const indexToUpdate = this.monCV.competences.findIndex(
+      (obj) => obj.nom === comp.nom
     );
-    if (foundObj) {
-      input.target.value = '';
-    } else {
-      event.preventDefault(); // prevent the default form submission behavior
-      if (this.monCV.competences.indexOf(input.target.value) == -1) {
-        this.monCV.competences.push(input.target.value);
-      }
-      input.target.value = '';
+    if (indexToUpdate !== -1) {
+      this.monCV.competences[indexToUpdate].porcent = await (
+        event.target.value * 10
+      ).toString();
     }
   }
 
-  removeCompetences(hash: string) {
-    const index = this.monCV.competences.indexOf(hash);
-    if (index !== -1) {
-      this.monCV.competences.splice(index, 1);
+  async addCompetences(input: any) {
+    event.preventDefault(); // prevent the default form submission behavior
+    const indexToUpdate = this.monCV.competences.findIndex(
+      (obj) => obj.nom === input.target.value
+    );
+    if (indexToUpdate === -1) {
+      let comp = new competence(input.target.value, '50');
+      this.monCV.competences.push(comp);
+    }
+    input.target.value = '';
+  }
+
+  removeCompetences(hash: any) {
+    const indexToUpdate = this.monCV.competences.findIndex(
+      (obj) => obj.nom === hash.nom
+    );
+    if (indexToUpdate !== -1) {
+      this.monCV.competences.splice(indexToUpdate, 1);
     }
   }
 }

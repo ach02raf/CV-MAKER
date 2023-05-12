@@ -99,29 +99,8 @@
             name="dp1"
             type="date"
             [(ngModel)]="experience.dateDebut"
-            [ngClass]="{
-              'form-control': true,
-              'is-invalid':
-                myForm.controls['dateDeb'].invalid &&
-                myForm.controls['dateDeb'].touched,
-              'is-valid':
-                myForm.controls['dateDeb'].valid &&
-                myForm.controls['dateDeb'].touched
-            }"
-            type="text"
-            formControlName="dateDeb"
-            (blur)="myForm.controls['dateDeb'].markAsTouched()"
+            [ngModelOptions]="{ standalone: true }"
           />
-
-          <small
-            class="form-text text-danger"
-            *ngIf="
-              myForm.controls['dateDeb'].invalid &&
-              myForm.controls['dateDeb'].touched
-            "
-          >
-            La date est requis.
-          </small>
         </div>
       </div>
 
@@ -134,29 +113,8 @@
             name="dp2"
             type="date"
             [(ngModel)]="experience.dateFin"
-            [ngClass]="{
-              'form-control': true,
-              'is-invalid':
-                myForm.controls['dateFin'].invalid &&
-                myForm.controls['dateFin'].touched,
-              'is-valid':
-                myForm.controls['dateFin'].valid &&
-                myForm.controls['dateFin'].touched
-            }"
-            type="text"
-            formControlName="dateFin"
-            (blur)="myForm.controls['dateFin'].markAsTouched()"
+            [ngModelOptions]="{ standalone: true }"
           />
-
-          <small
-            class="form-text text-danger"
-            *ngIf="
-              myForm.controls['dateFin'].invalid &&
-              myForm.controls['dateFin'].touched
-            "
-          >
-            Le titre Poste est requis.
-          </small>
         </div>
       </div>
 
@@ -303,7 +261,9 @@
             name="dp1"
             type="date"
             [(ngModel)]="education.dateDebut"
-            [ngClass]="{
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <!-- [ngClass]="{
               'form-control': true,
               'is-invalid':
                 myForm.controls['dateDebEdu'].invalid &&
@@ -314,8 +274,7 @@
             }"
             type="text"
             formControlName="dateDebEdu"
-            (blur)="myForm.controls['dateDebEdu'].markAsTouched()"
-          />
+            (blur)="myForm.controls['dateDebEdu'].markAsTouched()" -->
         </div>
       </div>
 
@@ -325,21 +284,10 @@
           <input
             class="form-control"
             placeholder="yyyy-mm-dd"
-            name="dp2"
+            name="dp"
             type="date"
             [(ngModel)]="education.dateFin"
-            [ngClass]="{
-              'form-control': true,
-              'is-invalid':
-                myForm.controls['dateFinEdu'].invalid &&
-                myForm.controls['dateFinEdu'].touched,
-              'is-valid':
-                myForm.controls['dateFinEdu'].valid &&
-                myForm.controls['dateFinEdu'].touched
-            }"
-            type="text"
-            formControlName="dateFinEdu"
-            (blur)="myForm.controls['dateFinEdu'].markAsTouched()"
+            [ngModelOptions]="{ standalone: true }"
           />
         </div>
       </div>
@@ -401,14 +349,15 @@
         class="list-group list-group-horizontal"
       >
         <li class="list-group-item">
-          {{ comp }}
+          {{ comp.nom }}
 
           <input
             type="range"
             class="custom-range mx-2"
             min="0"
-            max="5"
-            value="2"
+            max="10"
+            value="5"
+            (change)="updatePorcent($event, comp)"
           />
           <span class="mx-2" (click)="removeCompetences(comp)"
             ><i class="fa fa-times" aria-hidden="true"></i
