@@ -21,11 +21,8 @@ export class LoginComponent {
   }
   initializeForm() {
     this.cnxForm = new FormGroup({
-      password: new FormControl(this.pswd, [Validators.required]),
-      email: new FormControl(this.email, [
-        Validators.required,
-        Validators.email,
-      ]),
+      password: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
   cnx() {

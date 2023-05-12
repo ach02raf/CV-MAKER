@@ -3,6 +3,12 @@ import { CV } from 'src/app/models/CV';
 
 import { Liens } from 'src/app/models/Liens';
 import { HttpClient } from '@angular/common/http';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-edit1',
@@ -15,37 +21,66 @@ export class Edit1Component implements OnInit {
   isCollapsedcordonnee = true;
   isCollapsedliens = true;
   isCollapsedhobby = true;
+  isSubmitted = false;
 
-  name: string;
-  prenom: string;
-  email: string;
-  phone: string;
-  adresse: string;
-  aboutMe: string;
-  nationalite: string;
-  etatCivil: string;
-  dateNaissance: Date;
-
-  nameError: string;
-  prenomError: string;
-  emailError: string;
-  phoneError: string;
-  adresseError: string;
-  nationaliteError: string;
-  etatCivilError: string;
-  dateNaissanceError: string;
   imageUrl: string = '../../../assets/image_placeholder.jpg';
+
+  myForm: FormGroup;
 
   tabbleauHobby = [];
   Hobby: any[] = [];
   inputValueHobby: string;
-  constructor(private http: HttpClient) {}
+  etatCivils = ['célibataire', 'marié(e)'];
+  nationalities: string[] = ['Tunisien', 'Algerien', 'Marocain', ''];
+
+  ajouterForm(tab) {
+    tab.push({});
+  }
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
+
+  initializeForm() {
+    this.myForm = new FormGroup({
+      nom: new FormControl('', Validators.required),
+      nationalite: new FormControl('', Validators.required),
+      prenom: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d{8}$/),
+      ]),
+      adresse: new FormControl('', Validators.required),
+      about: new FormControl('', Validators.required),
+      dateNaissance: new FormControl('', Validators.required),
+      etatCivil: new FormControl('', Validators.required),
+      linkedin: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^linkedin\//),
+      ]),
+      github: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^github\//),
+      ]),
+      behance: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^behance\//),
+      ]),
+      website: new FormControl('', Validators.required),
+      hobby: new FormControl('', Validators.required),
+      metier: new FormControl('', Validators.required),
+    });
+  }
+
   ngOnInit(): void {
+    this.initializeForm();
     if (!this.monCV.urlImage) {
       this.convertImageToBuffer(
         'http://localhost:4200/assets/image_placeholder.jpg'
       );
     }
+    console.log('edit 1', this.monCV);
+
     if (this.monCV.liens.length === 0) {
       this.monCV.liens.push(new Liens('Linkedin', ''));
       this.monCV.liens.push(new Liens('Github', ''));
@@ -95,6 +130,7 @@ export class Edit1Component implements OnInit {
       this.monCV.liens[indexToUpdate].url = await event;
     }
   }
+
   onFileSelected(event): void {
     const file = event.target.files[0]; // get the selected file
     const reader = new FileReader(); // create a new FileReader object
