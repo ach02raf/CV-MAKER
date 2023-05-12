@@ -6,6 +6,7 @@ import { Cv3Component } from './template/cv3/cv3.component';
 import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GeneratorCvComponent } from './generator-cv/generator-cv.component';
+import { PortfolioReviweComponent } from './portfolio-reviwe/portfolio-reviwe.component';
 import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portfoli.component';
 import { LoginComponent } from './login/login.component';
 
@@ -14,7 +15,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'portfolio',
-    children: [  {  path: 'edit',   component: GeneratorPortfoliComponent  } , { path:'portfolio_1', component: Portfolio1Component}],
+    children: [
+       {path: 'edit',   component: GeneratorPortfoliComponent  }
+    , { path:'portfolioreviw', component: PortfolioReviweComponent}
+  ,],
   },
 
   {

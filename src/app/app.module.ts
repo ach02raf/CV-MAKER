@@ -26,6 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Cv8Component } from './template/cv8/cv8.component';
 import { GeneratorPortfoliComponent } from './generator-portfoli/generator-portfoli.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PortfolioReviweComponent } from './portfolio-reviwe/portfolio-reviwe.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +51,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Portfolio1Component,
     Cv8Component,
     GeneratorPortfoliComponent,
+    PortfolioReviweComponent,
   ],
-  imports: [BrowserModule,  AppRoutingModule, ReactiveFormsModule , NgbModule, FormsModule, BrowserAnimationsModule],
+  imports: [BrowserModule, HttpClientModule ,  AppRoutingModule, ReactiveFormsModule , NgbModule, FormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,8 +1,6 @@
 
 
-body {
-  box-sizing: border-box;
-  position: relative;
+body { 
   line-height: 1.5;
   font-family: sans-serif;
   overflow-x: hidden;

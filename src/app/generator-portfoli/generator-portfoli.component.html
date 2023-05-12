@@ -1,7 +1,4 @@
-<!--
-<app-about-me></app-about-me>
-<app-projects></app-projects>
-<app-experince></app-experince> -->
+
 
 <div  class="container" style="margin-bottom: 30px;">
 
@@ -19,7 +16,7 @@
         Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
       </p>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" #collapse="ngbCollapse"
+      <form [formGroup]="form"  #collapse="ngbCollapse"
             [(ngbCollapse)]="isCollapsedcordonnee" class="row mt-2 g-3">
 
         <div class="col-md-6">
@@ -73,7 +70,6 @@
           <button type="button" class="btn btn-outline-info" (click)="addField()">Ajouter Link</button>
       </div>
 
-        <button type="submit" class="btn btn-outline-success">Submit</button>
       </form>
 
 
@@ -99,7 +95,7 @@
         Dites-nous quelque chose sur vous.
       </p>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit2()" #collapse="ngbCollapse"
+      <form [formGroup]="form"  #collapse="ngbCollapse"
             [(ngbCollapse)]="isCollapsedaboutme" class="row mt-2 g-3">
 
         <div class="col-md-12">
@@ -136,10 +132,6 @@
             </li>
           </ul>
         </div>
-
-
-
-        <button type="submit" class="btn btn-outline-success">Submit</button>
       </form>
 
 
@@ -167,7 +159,7 @@
       Dites-nous qui vous êtes, comment les employeurs peuvent vous contacter.
     </p>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" #collapse="ngbCollapse"
+    <form [formGroup]="form"   #collapse="ngbCollapse"
           [(ngbCollapse)]="isCollapsedProject" class="row mt-2 g-3">
       <div *ngFor="let field of fields2; let i = index" class="row">
 
@@ -203,6 +195,7 @@
       <div>
         <button type="button" class="btn btn-outline-info" (click)="addField2()">Ajouter Project</button>
       </div>
+     
     </form>
   </div>
 </div>
@@ -216,22 +209,22 @@
           Commencez par vos études les plus récentes et remontez dans le passé.
       </p>
 
-      <form #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedExperience" class="row mt-2 g-3" *ngFor="let experience of experiences; let i = index">
+      <form #collapse="ngbCollapse"  [formGroup]="form" [(ngbCollapse)]="isCollapsedExperience" class="row mt-2 g-3" *ngFor="let experience of experiences; let i = index">
           <h6 class="my-2">Expercience n° {{ i + 1 }}</h6>
           <div class="col-md-6">
               <label class="form-label">Titre du poste</label>
-              <input type="text" class="form-control" placeholder="poste" />
+              <input type="text" class="form-control" [formControlName]="'postname_'+i" placeholder="poste" />
               <small class="form-text text-muted">ex.Ingénieur</small>
           </div>
           <div class="col-md-6">
               <label class="form-label">Entreprise</label>
-              <input type="text" placeholder="entreprise" class="form-control" />
+              <input type="text" placeholder="entreprise" [formControlName]="'Entreprise_'+i" class="form-control" />
               <small class="form-text text-muted">ex.Tekup</small>
           </div>
           <div class="col-md-6">
               <label class="form-label">Depuis</label>
               <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" ngbDatepicker #d="ngbDatepicker" />
+                  <input class="form-control" placeholder="yyyy-mm-dd" [formControlName]="'Depuis_'+i" name="dp1" ngbDatepicker #d="ngbDatepicker" />
                   <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
           <i class="fas fa-calendar-days"></i>
         </button>
@@ -241,7 +234,7 @@
           <div class="col-md-6">
               <label class="form-label">Jusqu'à</label>
               <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" ngbDatepicker #d="ngbDatepicker" />
+                  <input class="form-control" placeholder="yyyy-mm-dd"  [formControlName]="'Jusqu_'+i" name="dp2" ngbDatepicker #d="ngbDatepicker" />
                   <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
           <i class="fas fa-calendar-days"></i>
         </button>
@@ -250,7 +243,7 @@
 
           <div class="col-12">
               <label class="form-label">Description du poste</label>
-              <textarea type="text" rows="2" class="form-control" placeholder="adresse"></textarea>
+              <textarea type="text" rows="2" class="form-control"  [formControlName]="'Description_post_'+i" placeholder="adresse"></textarea>
               <small class="form-text text-muted">ex.Participation aux actions commerciales</small
       >
     </div>
@@ -287,18 +280,18 @@
     <h6 class="my-2">Diplome n° {{ i + 1 }}</h6>
     <div class="col-md-6">
       <label class="form-label">Titre du diplome</label>
-      <input type="text" class="form-control" placeholder="poste" />
+      <input type="text" class="form-control" placeholder="poste"  [formControlName]="'Diplome_'+i" />
       <small class="form-text text-muted">ex.Licence d'art</small>
           </div>
           <div class="col-md-6">
               <label class="form-label">Etablissement</label>
-              <input type="text" placeholder="entreprise" class="form-control" />
+              <input type="text" placeholder="entreprise"  [formControlName]="'Etablissement_'+i" class="form-control" />
               <small class="form-text text-muted">ex. Tekup University</small>
           </div>
           <div class="col-md-6">
               <label class="form-label">Depuis</label>
               <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" ngbDatepicker #d="ngbDatepicker" />
+                  <input class="form-control" placeholder="yyyy-mm-dd"  [formControlName]="'DEpuis_diplome_'+i"  name="dp1" ngbDatepicker #d="ngbDatepicker" />
                   <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
           <i class="fas fa-calendar-days"></i>
         </button>
@@ -308,7 +301,7 @@
           <div class="col-md-6">
               <label class="form-label">Jusqu'à</label>
               <div class="input-group">
-                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" ngbDatepicker #d="ngbDatepicker" />
+                  <input class="form-control" placeholder="yyyy-mm-dd" [formControlName]="'jusqu_diplome_'+i"   name="dp2" ngbDatepicker #d="ngbDatepicker" />
                   <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
           <i class="fas fa-calendar-days"></i>
         </button>
@@ -317,7 +310,7 @@
 
           <div class="col-12">
               <label class="form-label">Remarque</label>
-              <textarea type="text" rows="2" class="form-control" placeholder="adresse"></textarea>
+              <textarea type="text" rows="2" class="form-control"  [formControlName]="'remarque_diplome_'+i" placeholder="adresse"></textarea>
               <small class="form-text text-muted">ex.Participation aux actions commerciales</small
       >
     </div>
@@ -336,7 +329,7 @@
 
   <div class="row justify-content-end">
 <div class="col-2">
-  <button class="btn btn-success " style="padding-left: 25px; padding-right: 25px;" >Next</button>
+  <button class="btn btn-success " (click)="submitNext()" style="padding-left: 25px; padding-right: 25px;" >Next</button>
 
 </div>
   </div>

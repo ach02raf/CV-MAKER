@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,10 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class Portfolio1Component implements OnInit {
 
-
+  @Input() data: any;
   ngOnInit(): void {
     // Initialization logic here
   }
+   gfg = true;
 
   contactForm: FormGroup;
 
@@ -32,7 +33,8 @@ export class Portfolio1Component implements OnInit {
   onSubmit() {
     // Handle form submission here
   }
-  data = {
+
+/*   data = {
 
      name :  "maha" ,
      lastName : " grindi",
@@ -45,7 +47,7 @@ export class Portfolio1Component implements OnInit {
      skills : ["HTML","css", "JavaScript","React","SASS","Wordpress","Google ADS","Facebook Ads"],
      aboutcontent : " I'm a bit of a digital product junky. Over the years, I've used     hundreds of web and mobile apps in different industries and     verticals. Feel free to"
   }
-
+ */
 
   getSocialKey(social: any): string {
     return Object.keys(social)[0];

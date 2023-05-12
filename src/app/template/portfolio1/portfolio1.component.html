@@ -2,7 +2,7 @@
 
     <section class="home-hero">
       <div class="home-hero__content">
-        <h1 class="heading-primary">HEY, MY NAME IS {{ data['name']+' '+data['lastName']}}</h1>
+        <h1 class="heading-primary">HEY, MY NAME IS {{ data['name']+' '+data['prenom']}}</h1>
         <div class="home-hero__info" *ngIf="data['bio']">
           <p class="textPragrphe">
             {{data['bio']}}
@@ -14,14 +14,14 @@
       </div>
 <div class="homeherosocials">
       <div class="homeherosocial" *ngIf="data['socials']">
-        <a *ngFor="let social of data['socials']" [href]="social[getSocialKey(social)]" class="homeherosocialiconlink">
+       <!--  <a *ngFor="let social of data['socials']" [href]="social[getSocialKey(social)]" class="homeherosocialiconlink">
           <ng-container [ngSwitch]="getSocialKey(social)">
             <i *ngSwitchCase="'Linkedin'" class="fab fa-linkedin-in"></i>
             <i *ngSwitchCase="'instagram'" class="fab fa-instagram"></i>
             <i *ngSwitchCase="'twitter'" class="fab fa-twitter"></i>
             <i *ngSwitchCase="'gitHub'" class="fab fa-github"></i>
           </ng-container>
-        </a>
+        </a> -->
       </div>
     </div>
 
@@ -33,19 +33,19 @@
 
     <section id="about" class="about sec-pad">
       <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med" *ngIf="data['aboutMe']">
+        <h2 class="heading heading-sec heading-sec__mb-med" *ngIf="data['parg1']">
           <span class="heading-sec__main">About Me</span>
           <span class="heading-sec__sub">
-            {{data['aboutMe']}}
+            {{data['parg1']}}
           </span>
         </h2>
         <div class="about__content" >
-          <div class="about__content-main" *ngIf="data['aboutcontent']" >
+          <div class="about__content-main" *ngIf="data['parg2']" >
             <h3 class="about__content-title">Get to know me!</h3>
             <div class="about__content-details">
 
               <p class="about__content-details-para">
-              {{data['aboutcontent']}}
+              {{data['parg2']}}
               </p>
             </div>
             <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
@@ -53,19 +53,18 @@
             >
           </div>
 
-          <div class="about__content-skills" *ngIf="data['skills'].length">
+          <div class="about__content-skills" *ngIf="data['Skills'].length">
             <h3 class="about__content-title">My Skills</h3>
             <div class="skills">
-              <div class="skills__skill"  *ngFor="let skill of data['skills']" >{{skill}}</div>
+              <div class="skills__skill"  *ngFor="let skill of data['Skills']" >{{skill}}</div>
             </div>
           </div>
-
 
 
         </div>
       </div>
     </section>
-    <section id="projects" class="projects sec-pad" *ngIf="data['project'].length" >
+   <section id="projects" class="projects sec-pad" *ngIf="data['project']" >
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-bg">
           <span class="heading-sec__main">Projects</span>
@@ -76,23 +75,23 @@
         </h2>
 
         <div class="projects__content">
-          <div class="projects__row"  *ngFor="let project of data['project']" >
+          <div class="projects__row"  *ngFor="let project of data['project'] , let i index" >
             <div class="projects__row-img-cont">
               <img
-                src="../../../assets/project-mockup-example.jpeg"
+                [src]="project['imageUrl']"
                 alt="Software Screenshot"
                 class="projects__row-img"
-                 style="width: 70%;"
+                 style="width: 100%;"
                 loading="lazy"
               />
             </div>
             <div class="projects__row-content" >
-              <h3 class="projects__row-content-title">Project {{project['id']}}</h3>
+              <h3 class="projects__row-content-title"> {{project['title']}}</h3>
               <p class="projects__row-content-desc">
-               {{project['disc']}}
+               {{project['description']}}
               </p>
               <a
-                href="./project-1.html"
+                [href]="project['link']"
                 class="btn btn--med btn--theme dynamicBgClr"
                 target="_blank"
                 >Case Study</a
@@ -103,7 +102,31 @@
         </div>
       </div>
     </section>
-   
+
+   <section>
+    <p>
+      <br/>
+      <button type="button"
+          class="btn btn-success"
+          (click)="collapse.toggle()"
+          [attr.aria-expanded]="!gfg"
+        aria-controls="collapseExample">
+        Click to collapse
+      </button>
+      </p>
+
+      <div #collapse="ngbCollapse"
+        [(ngbCollapse)]="gfg">
+      <div class="card">
+        <div class="card-body">
+        Angular10 ng bootstrap
+        </div>
+      </div>
+      </div>
+
+   </section>
+
+
     <footer class="main-footer">
       <div class="main-container">
         <div class="main-footer__upper">
