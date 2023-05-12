@@ -5,8 +5,15 @@
     </div>
 
     <div class="col sticky-top">
-      <div class="px-5" style="background-color: #e6e6e6">
-        <!-- <h3 class="mt-1 text-center text-primary">Modéle choisi</h3> -->
+      <div
+        class="p-5"
+        style="
+          background-color: #e6e6e6;
+          max-width: max-content;
+          max-height: fit-content;
+        "
+      >
+        <h3 class="mt-2 text-center text-primary">Modéle choisi</h3>
         <div class="row">
           <div class="col mt-1">
             <button
@@ -18,13 +25,7 @@
             >
               <i class="far fa-object-group text-primary"></i>
             </button>
-            <button
-              type="button"
-              class="btn btn-light mb-3 mx-2"
-              aria-controls="collapseExample"
-            >
-              <i class="fas fa-download" style="color: rgb(0, 197, 43)"></i>
-            </button>
+
             <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
               <div (click)="hide()" class="row">
                 <ul

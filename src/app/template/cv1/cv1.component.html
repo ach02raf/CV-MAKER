@@ -58,11 +58,20 @@
       </div>
     </div>
   </div> -->
+  <button
+    type="button"
+    class="btn btn-light mb-3 mx-2"
+    aria-controls="collapseExample"
+    (click)="generatePdf()"
+  >
+    <i class="fas fa-download" style="color: rgb(0, 197, 43)"></i>
+  </button>
   <div
     [style]="{
       '--color': cvService.monCV.coleurThemeElement,
       '--titleColor': cvService.monCV.coleurThemeTitre
     }"
+    #content
     class="resume"
   >
     <div class="resume-wrap">
