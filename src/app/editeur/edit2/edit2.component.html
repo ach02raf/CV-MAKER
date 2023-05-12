@@ -18,7 +18,7 @@
       #collapse="ngbCollapse"
       [(ngbCollapse)]="isCollapsedExperience"
       class="row mt-2 g-3"
-      *ngFor="let experience of monCV.experiencesPro; let i = index"
+      *ngFor="let experience of monCV.experiencesPro; let i = index ;trackBy: trackByFn"
     >
       <h6 class="my-2">
         Expercience n° {{ i + 1 }}
