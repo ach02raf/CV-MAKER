@@ -1,9 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { Cv1Component } from './template/cv1/cv1.component';
-import { Cv2Component } from './template/cv2/cv2.component';
-import { Cv3Component } from './template/cv3/cv3.component';
-import { Portfolio1Component } from './template/portfolio1/portfolio1.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GeneratorCvComponent } from './generator-cv/generator-cv.component';
 import { PortfolioReviweComponent } from './portfolio-reviwe/portfolio-reviwe.component';
