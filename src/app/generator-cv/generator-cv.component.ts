@@ -4,7 +4,7 @@ import { CVService } from '../services/cv.service';
 @Component({
   selector: 'app-generator-cv',
   templateUrl: './generator-cv.component.html',
-  styleUrls: ['./generator-cv.component.sass'],
+  styleUrls: ['./generator-cv.component.scss'],
 
   providers: [CVService],
 })
