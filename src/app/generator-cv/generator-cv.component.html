@@ -5,17 +5,10 @@
     </div>
 
     <div class="col sticky-top">
-      <div
-        class="p-5"
-        style="
-          background-color: #e6e6e6;
-          max-width: max-content;
-          max-height: fit-content;
-        "
-      >
-        <h3 class="mt-2 text-center text-primary">Modéle choisi</h3>
+      <div class="px-5" style="background-color: #e6e6e6">
+        <!-- <h3 class="mt-1 text-center text-primary">Modéle choisi</h3> -->
         <div class="row">
-          <div class="col">
+          <div class="col mt-1">
             <button
               type="button"
               class="btn btn-light mb-3"
@@ -23,7 +16,14 @@
               [attr.aria-expanded]="!isCollapsed"
               aria-controls="collapseExample"
             >
-              Autre Modéles
+              <i class="far fa-object-group text-primary"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light mb-3 mx-2"
+              aria-controls="collapseExample"
+            >
+              <i class="fas fa-download" style="color: rgb(0, 197, 43)"></i>
             </button>
             <span #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
               <div (click)="hide()" class="row">
@@ -38,13 +38,13 @@
                       <img
                         class="mx-4 border border-secondary"
                         style="width: 100px"
-                        src="../../assets/2.png"
+                        src="../../assets/3.png"
                         alt=""
                         srcset=""
                       />
                     </button>
                     <ng-template ngbNavContent>
-                      <app-cv3></app-cv3>
+                      <app-cv1></app-cv1>
                     </ng-template>
                   </li>
                   <li [ngbNavItem]="2">
@@ -59,7 +59,7 @@
                     </button>
                     <ng-template ngbNavContent>
                       <p>
-                        <app-cv1></app-cv1>
+                        <app-cv3></app-cv3>
                       </p>
                     </ng-template>
                   </li>
@@ -68,7 +68,7 @@
                       <img
                         class="mx-4 border border-secondary"
                         style="width: 100px"
-                        src="../../assets/3.png"
+                        src="../../assets/2.png"
                         alt=""
                         srcset=""
                       />
@@ -87,8 +87,8 @@
           </div>
 
           <div *ngIf="!hidden">
-            <app-cv1 *ngIf="active === 2"></app-cv1>
-            <app-cv3 *ngIf="active === 1"></app-cv3>
+            <app-cv1 *ngIf="active === 1"></app-cv1>
+            <app-cv3 *ngIf="active === 2"></app-cv3>
             <app-cv4 *ngIf="active === 3"></app-cv4>
           </div>
         </div>

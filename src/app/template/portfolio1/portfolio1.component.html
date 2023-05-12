@@ -1,0 +1,170 @@
+
+
+    <section class="home-hero">
+      <div class="home-hero__content">
+        <h1 class="heading-primary">HEY, MY NAME IS {{ data['name']+' '+data['prenom']}}</h1>
+        <div class="home-hero__info" *ngIf="data['bio']">
+          <p class="textPragrphe">
+            {{data['bio']}}
+          </p>
+        </div>
+        <div class="home-hero__cta" *ngIf="data['project']">
+          <a href="./#projects" class="btn btn--bg">Projects</a>
+        </div>
+      </div>
+<div class="homeherosocials">
+      <div class="homeherosocial" >
+        <div class="social-links">
+          <a *ngFor="let link of data.Links" [href]="link.value">
+            <i [ngSwitch]="link.UrlName" class="fab" [ngClass]="{
+              'fa-linkedin-in': link.UrlName === 'Linkedin',
+              'fa-instagram': link.UrlName === 'Instagram',
+              'fa-twitter': link.UrlName === 'Twitter',
+              'fa-github': link.UrlName === 'GitHub'
+            }"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+      <div class="home-hero__mouse-scroll-cont">
+        <div class="mouse"></div>
+      </div>
+    </section>
+
+
+    <section id="about" class="about sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-med" *ngIf="data['parg1']">
+          <span class="heading-sec__main">About Me</span>
+          <span class="heading-sec__sub">
+            {{data['parg1']}}
+          </span>
+        </h2>
+        <div class="about__content" >
+          <div class="about__content-main" *ngIf="data['parg2']" >
+            <h3 class="about__content-title">Get to know me!</h3>
+            <div class="about__content-details">
+
+              <p class="about__content-details-para">
+              {{data['parg2']}}
+              </p>
+            </div>
+            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
+              >Contact</a
+            >
+          </div>
+
+          <div class="about__content-skills" *ngIf="data['Skills']">
+            <h3 class="about__content-title">My Skills</h3>
+            <div class="skills">
+              <div class="skills__skill"  *ngFor="let skill of data['Skills']" >{{skill}}</div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+   <section id="projects" class="projects sec-pad" *ngIf="data['project']" >
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">Projects</span>
+          <span class="heading-sec__sub">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis
+            tempora explicabo quae quod deserunt eius sapiente
+          </span>
+        </h2>
+
+        <div class="projects__content">
+          <div class="projects__row"  *ngFor="let project of data['project'] , let i index" >
+            <div class="projects__row-img-cont">
+              <img
+                [src]="project['imageUrl']"
+                alt="Software Screenshot"
+                class="projects__row-img"
+                 style="width: 100%;"
+                loading="lazy"
+              />
+            </div>
+            <div class="projects__row-content" >
+              <h3 class="projects__row-content-title"> {{project['title']}}</h3>
+              <p class="projects__row-content-desc">
+               {{project['description']}}
+              </p>
+              <a
+                [href]="project['link']"
+                class="btn btn--med btn--theme dynamicBgClr"
+                target="_blank"
+                >Case Study</a
+              >
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+   <div class="container" *ngIf="data.experiences" >
+    <span class="heading-sec__main">My Experiences</span>
+    <div class="row">
+      <div class="col-sm-6"  *ngFor="let experience of data.experiences">
+        <div class="card"  style="margin: 20px;" >
+          <div class="card-body" >
+            <h5 class="card-title"> {{ experience.titrePoste }} at {{ experience.entreprise }}</h5>
+            <p class="card-text"><strong>Duration:</strong> {{ experience.dateDebut }} - {{ experience.dateFin }}</p>
+                <p>{{ experience.desc }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+   </div>
+
+   <div class="container" *ngIf="data.educations" >
+    <span class="heading-sec__main">My Educations</span>
+
+    <div class="row"  style="margin: 20px;" *ngFor="let edu of data.educations ">
+      <div class="col-sm-6"   >
+        <div class="card"  >
+          <div class="card-body" >
+            <h5 class="card-title"> {{ edu.diplome }} at {{ edu.etablissement  }}</h5>
+                <p>{{ edu.mention }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+   </div>
+    <footer class="main-footer">
+      <div class="main-container">
+        <div class="main-footer__upper">
+          <div class="main-footer__row main-footer__row-1">
+            <h2 class="heading heading-sm main-footer__heading-sm">
+              <span>Social</span>
+            </h2>
+            <div class="main-footer__social-cont">
+
+              <a target="_blank" rel="noreferrer"  *ngFor="let link of data.Links" [href]="link.value">
+                <i [ngSwitch]="link.UrlName" class="fab" [ngClass]="{
+                  'fa-linkedin-in': link.UrlName === 'Linkedin',
+                  'fa-instagram': link.UrlName === 'Instagram',
+                  'fa-twitter': link.UrlName === 'Twitter',
+                  'fa-github': link.UrlName === 'GitHub'
+                }"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
+
+      </div>
+    </footer>
+ 
+
