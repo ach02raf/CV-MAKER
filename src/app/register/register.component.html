@@ -17,43 +17,128 @@
               <h3>Inscrivez-vous !</h3>
               <p class="mb-4">Inscrivez-vous et profitez de nos services !</p>
             </div>
-            <form action="#" method="post">
+            <form
+              class="form"
+              [formGroup]="inscriptionForm"
+              (ngSubmit)="signup()"
+            >
               <div class="form-group first">
-                <label for="username">Prénom</label>
-                <input type="text" class="form-control" id="username" />
+                <label for="prenom">Prénom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="prenom"
+                  formControlName="prenom"
+                  [ngClass]="{
+                    'is-invalid':
+                      inscriptionForm.controls['prenom'].invalid &&
+                      inscriptionForm.controls['prenom'].touched,
+                    'is-valid':
+                      inscriptionForm.controls['prenom'].valid &&
+                      inscriptionForm.controls['prenom'].touched
+                  }"
+                />
+                <small
+                  class="form-text text-danger"
+                  *ngIf="
+                    inscriptionForm.get('prenom').invalid &&
+                    inscriptionForm.get('prenom').touched
+                  "
+                >
+                  Le prénom est requis.
+                </small>
               </div>
+
               <div class="form-group first">
-                <label for="username">Nom</label>
-                <input type="text" class="form-control" id="username" />
+                <label for="nom">Nom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nom"
+                  formControlName="nom"
+                  [ngClass]="{
+                    'is-invalid':
+                      inscriptionForm.controls['nom'].invalid &&
+                      inscriptionForm.controls['nom'].touched,
+                    'is-valid':
+                      inscriptionForm.controls['nom'].valid &&
+                      inscriptionForm.controls['nom'].touched
+                  }"
+                />
+                <small
+                  class="form-text text-danger"
+                  *ngIf="
+                    inscriptionForm.get('nom').invalid &&
+                    inscriptionForm.get('nom').touched
+                  "
+                >
+                  Le nom est requis.
+                </small>
               </div>
+
               <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" />
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                  [ngClass]="{
+                    'is-invalid':
+                      inscriptionForm.controls['email'].invalid &&
+                      inscriptionForm.controls['email'].touched,
+                    'is-valid':
+                      inscriptionForm.controls['email'].valid &&
+                      inscriptionForm.controls['email'].touched
+                  }"
+                />
+                <small
+                  class="form-text text-danger"
+                  *ngIf="
+                    inscriptionForm.get('email').invalid &&
+                    inscriptionForm.get('email').touched
+                  "
+                >
+                  L'email est requis ou invalide.
+                </small>
               </div>
-              <div class="form-group first">
-                <label for="username">Email</label>
-                <input type="text" class="form-control" id="username" />
-              </div>
-              <div class="form-group first">
-                <label for="username">Profession</label>
-                <input type="text" class="form-control" id="username" />
-              </div>
+
               <div class="form-group last mb-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" />
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  [ngClass]="{
+                    'is-invalid':
+                      inscriptionForm.controls['password'].invalid &&
+                      inscriptionForm.controls['password'].touched,
+                    'is-valid':
+                      inscriptionForm.controls['password'].valid &&
+                      inscriptionForm.controls['password'].touched
+                  }"
+                />
+                <small
+                  class="form-text text-danger"
+                  *ngIf="
+                    inscriptionForm.get('password').invalid &&
+                    inscriptionForm.get('password').touched
+                  "
+                >
+                  Le mot de passe est requis.
+                </small>
               </div>
 
-              <input
+              <button
                 type="submit"
-                value="Log In"
+                [disabled]="inscriptionForm.invalid"
                 class="btn btn-block btn-primary"
-              />
-
-              <span class="d-block text-left my-4 text-muted">
-                Vous ave déjà un compte ?
-                <a [routerLink]="['/login']">connectez-vous !</a>
-              </span>
+              >
+                Sign Up
+              </button>
             </form>
+
             <br /><br />
 
             <br /><br /><br />

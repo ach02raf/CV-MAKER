@@ -67,8 +67,19 @@
         type="button"
         class="btn btn-login btn-primary ms-lg-4 px-4 fs-18 mt-3 mt-lg-0"
         [routerLink]="['/login']"
+        *ngIf="!userServ.isLogging()"
       >
         Login/Register
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-login btn-primary ms-lg-4 px-4 fs-18 mt-3 mt-lg-0"
+        [routerLink]="['/login']"
+        *ngIf="userServ.isLogging()"
+        (click)="logout()"
+      >
+        Logout
       </button>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   idUser: any;
 
   userData: { password: string; email: string };
-  constructor() {
+  constructor(private userServ: UserService) {
     this.initializeForm();
   }
   initializeForm() {
@@ -25,16 +26,21 @@ export class LoginComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
+
   cnx() {
-    this.userData = {
-      password: this.pswd,
-      email: this.email,
-    };
     this.isSubmitted = true;
+    const credentials = this.cnxForm.value;
+    console.log(this.cnxForm.value);
 
     if (this.cnxForm.invalid) {
       return false;
     } else {
+      const user = this.userServ.getUser(
+        credentials.email,
+        credentials.password
+      );
+      localStorage.setItem('user', JSON.stringify(user));
+
       return true;
     }
   }

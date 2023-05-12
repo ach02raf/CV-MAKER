@@ -18,7 +18,7 @@
               <h3>Se connecter</h3>
               <p class="mb-4">Connectez vous et profitez de nos services</p>
             </div>
-            <form action="#" [formGroup]="cnxForm">
+            <form [formGroup]="cnxForm" (ngSubmit)="cnx()">
               <div class="form-group first">
                 <label for="email">Email</label>
                 <input
