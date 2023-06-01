@@ -21,11 +21,16 @@
     >
       <div class="col-12">
         <label for="fileInput">
-          <img class="w-50 mt-2 text-center border" [src]="monCV.urlImage" />
+          <img
+            class="w-50 mt-2 text-center border"
+            [src]="monCV.urlImage"
+            ngDefaultControl
+            srcset="http://localhost:4200/assets/image_placeholder.jpg"
+          />
         </label>
         <input
           id="fileInput"
-          type="file"
+          type="image"
           style="display: none"
           (change)="onFileSelected($event)"
         />
