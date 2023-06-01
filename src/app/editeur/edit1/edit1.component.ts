@@ -75,7 +75,7 @@ export class Edit1Component implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     if (!this.monCV.urlImage) {
-      this.convertImageToBuffer('../../assets/image_placeholder.jpg');
+      this.convertImageToBuffer('../../CV-MAKER/assets/image_placeholder.jpg');
     }
     console.log('edit 1', this.monCV);
 
