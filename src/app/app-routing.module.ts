@@ -29,7 +29,6 @@ const routes: Routes = [
 
   {
     path: 'cv',
-    canActivate: [NotloginGuard],
     children: [
       {
         path: 'edit',
