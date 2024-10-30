@@ -8,8 +8,6 @@ Portfolio and CV generator
 ## Authors
 
 - [@ach02raf](https://github.com/ach02raf/)
-- [@yosra-wan](https://github.com/yosra-wan/)
-- [@maha grindi](https://github.com/mahagrindi/)
 
 
 ## Deployment
